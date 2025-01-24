@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Full Stack Developer</title>
+    <link href="assets/style.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/functions.js"></script>
+</head>
+<body>
+    <div class="background-animation">
+        <div class="circle" style="width: 300px; height: 300px; top: 10%; left: 10%;"></div>
+        <div class="circle" style="width: 200px; height: 200px; top: 60%; left: 70%;"></div>
+        <div class="circle" style="width: 150px; height: 150px; top: 40%; left: 40%;"></div>
+    </div>
+
+    <nav>
+        <div class="logo">BL Dev</div>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <i class='bx bx-moon'></i>
+        </button>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Desenvolvedor Full Stack</h1>
+            <p>Guia completo das habilidades necessárias para que você possa se tornar um desenvolvedor Full Stack</p>
+        </section>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Front-end</h3>
+                <ul>
+                    <li><i class='bx bxl-html5'></i>HTML5</li>
+                    <div class="progress-bar"><div class="progress" data-width="90"></div></div>
+                    <li><i class='bx bxl-css3'></i>CSS3</li>
+                    <div class="progress-bar"><div class="progress" data-width="85"></div></div>
+                    <li><i class='bx bxl-javascript'></i>JavaScript</li>
+                    <div class="progress-bar"><div class="progress" data-width="80"></div></div>
+                    <li><i class='bx bxl-react'></i>React.js</li>
+                    <div class="progress-bar"><div class="progress" data-width="75"></div></div>
+                    <li><i class='bx bxl-vuejs'></i>Vue.js</li>
+                    <div class="progress-bar"><div class="progress" data-width="70"></div></div>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>Back-end</h3>
+                <ul>
+                    <li><i class='bx bxl-nodejs'></i>Node.js</li>
+                    <div class="progress-bar"><div class="progress" data-width="85"></div></div>
+                    <li><i class='bx bxl-python'></i>Python</li>
+                    <div class="progress-bar"><div class="progress" data-width="80"></div></div>
+                    <li><i class='bx bxl-java'></i>C#</li>
+                    <div class="progress-bar"><div class="progress" data-width="75"></div></div>
+                    <li><i class='bx bx-data'></i>SQL</li>
+                    <div class="progress-bar"><div class="progress" data-width="85"></div></div>
+                    <li><i class='bx bxl-php'></i>PHP</li>
+                    <div class="progress-bar"><div class="progress" data-width="70"></div></div>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>DevOps & Ferramentas</h3>
+                <ul>
+                    <li><i class='bx bxl-git'></i>Git</li>
+                    <div class="progress-bar"><div class="progress" data-width="90"></div></div>
+                    <li><i class='bx bxl-docker'></i>Docker</li>
+                    <div class="progress-bar"><div class="progress" data-width="75"></div></div>
+                    <li><i class='bx bx-server'></i>AWS</li>
+                    <div class="progress-bar"><div class="progress" data-width="70"></div></div>
+                    <li><i class='bx bx-terminal'></i>CLI</li>
+                    <div class="progress-bar"><div class="progress" data-width="85"></div></div>
+                    <li><i class='bx bx-test-tube'></i>Testing</li>
+                    <div class="progress-bar"><div class="progress" data-width="80"></div></div>
+                </ul>
+            </div>
+        </div>
+
+        <section class="roadmap">
+            <h2>Roadmap de Aprendizado</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Fundamentos</h3>
+                    <p>HTML, CSS, JavaScript básico</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Front-end Avançado</h3>
+                    <p>Frameworks, State Management, API Integration</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Back-end Básico</h3>
+                    <p>Node.js, Express, Databases</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Back-end Avançado</h3>
+                    <p>Authentication, Security, Performance</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>DevOps</h3>
+                    <p>CI/CD, Cloud Services, Containers</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Recursos Úteis</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class='bx bx-book-open'></i>
+                    <h3>Documentação</h3>
+                    <p>MDN Web Docs, W3Schools</p>
+                </div>
+                <div class="resource-card">
+                    <i class='bx bx-video'></i>
+                    <h3>Cursos Online</h3>
+                    <p>Udemy, Coursera, freeCodeCamp</p>
+                </div>
+                <div class="resource-card">
+                    <i class='bx bx-code-block'></i>
+                    <h3>Prática</h3>
+                    <p>CodePen, GitHub, LeetCode</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Borge Levisberg. Todos os direitos Reservados</p>
+    </footer>
+
+    
+</body>
+</html>
