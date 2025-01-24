@@ -29,7 +29,7 @@ Html, Css e JavaScript puro pra uma interface moderna e dinâmica.
 
 1. Clone o repositório:
 
-git clone https://github.com/seu-usuario/roadmapfullstack.git
+git clone https://github.com/borgelevisberg17/roadmapfullstack.git
 cd roadmapfullstack
 
 
