@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossário Tech - RoadmapFullstack</title>
+    <link href="assets/style.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <i class='bx bx-map-alt'></i> RoadmapFullstack
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Roadmaps</a>
+            <a href="forum.html">Fórum</a>
+            <a href="preparacao.html">Preparação</a>
+            <a href="glossario.html">Glossário</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="contribuir.html">Contribuir</a>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <i class='bx bx-moon'></i>
+        </button>
+    </nav>
+
+    <div class="container" style="display: block; max-width: 800px;">
+        <header style="text-align: center; margin-bottom: 30px;">
+            <h1>Glossário Tech para Iniciantes</h1>
+            <p>Entenda o "juridiquês" do mundo da programação.</p>
+            <input type="text" id="glossary-search" placeholder="Pesquisar termo..." style="width: 100%; padding: 12px; margin-top: 20px; border: 1px solid var(--border-color); border-radius: 5px; background: var(--bg-light); color: var(--text-light);">
+        </header>
+
+        <div id="glossary-content">
+            <!-- Content loaded via JS -->
+        </div>
+    </div>
+
+    <script src="assets/functions.js"></script>
+    <script>
+        let glossaryData = {};
+
+        async function loadGlossary() {
+            const res = await fetch('data/glossary.json');
+            glossaryData = await res.json();
+            renderGlossary(glossaryData);
+        }
+
+        function renderGlossary(data) {
+            const container = document.getElementById('glossary-content');
+            container.innerHTML = '';
+
+            for (const term in data) {
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                card.style.marginBottom = '15px';
+                card.innerHTML = `
+                    <h3 style="color: var(--primary-color);">${term}</h3>
+                    <p>${data[term]}</p>
+                `;
+                container.appendChild(card);
+            }
+        }
+
+        document.getElementById('glossary-search').addEventListener('input', (e) => {
+            const search = e.target.value.toLowerCase();
+            const filtered = {};
+            for (const term in glossaryData) {
+                if (term.toLowerCase().includes(search) || glossaryData[term].toLowerCase().includes(search)) {
+                    filtered[term] = glossaryData[term];
+                }
+            }
+            renderGlossary(filtered);
+        });
+
+        window.addEventListener('DOMContentLoaded', loadGlossary);
+    </script>
+    <script src="assets/tips.js"></script>
+</body>
+</html>

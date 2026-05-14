@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artigos - RoadmapFullstack</title>
+    <link href="assets/style.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <i class='bx bx-map-alt'></i> RoadmapFullstack
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Roadmaps</a>
+            <a href="forum.html">Fórum</a>
+            <a href="preparacao.html">Preparação</a>
+            <a href="glossario.html">Glossário</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="contribuir.html">Contribuir</a>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <i class='bx bx-moon'></i>
+        </button>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Navegação</h3>
+            <ul id="article-list">
+                <!-- Articles load here -->
+            </ul>
+        </aside>
+
+        <main class="content-area">
+            <div id="article-content">
+                <section class="hero-section">
+                    <h1>Artigos Técnicos</h1>
+                    <p>Conhecimento profundo partilhado pela comunidade.</p>
+                </section>
+                <div id="article-placeholder">
+                    <p>Selecione um artigo na barra lateral para começar a leitura.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/functions.js"></script>
+    <script src="assets/articles.js"></script>
+    <script src="assets/tips.js"></script>
+</body>
+</html>

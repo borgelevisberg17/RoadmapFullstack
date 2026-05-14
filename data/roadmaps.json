@@ -1,0 +1,111 @@
+{
+  "fullstack": {
+    "title": "Fullstack Developer",
+    "description": "Domine tanto o frontend quanto o backend.",
+    "levels": {
+      "junior": {
+        "title": "Junior level",
+        "steps": [
+          {
+            "category": "Frontend Fundamentos",
+            "items": ["HTML5", "CSS3", "JavaScript"],
+            "project": "Crie um portfólio pessoal estático."
+          },
+          {
+            "category": "Backend Básico",
+            "items": ["Node.js", "Express", "SQL Básico"],
+            "project": "Crie uma API de lista de tarefas (CRUD)."
+          }
+        ]
+      },
+      "middle": {
+        "title": "Middle level",
+        "steps": [
+          {
+            "category": "Frontend Frameworks",
+            "items": ["React.js", "State Management", "Tailwind CSS"],
+            "project": "Crie um Dashboard de Finanças consumindo sua própria API."
+          },
+          {
+            "category": "Arquitetura & Bancos",
+            "items": ["PostgreSQL Avançado", "Auth JWT", "REST APIs"],
+            "project": "Sistema de autenticação completo com login social."
+          }
+        ]
+      },
+      "senior": {
+        "title": "Senior level",
+        "steps": [
+          {
+            "category": "Escalabilidade & DevOps",
+            "items": ["Docker", "Kubernetes", "CI/CD Pipelines", "AWS/GCP"],
+            "project": "Deploy escalável de uma aplicação microservices."
+          },
+          {
+            "category": "Qualidade & Soft Skills",
+            "items": ["Testes Unitários/E2E", "Arquitetura Clean", "Liderança Técnica"],
+            "project": "Refatore um sistema legado para Clean Architecture."
+          }
+        ]
+      }
+    }
+  },
+  "frontend": {
+    "title": "Frontend Developer",
+    "description": "Foque na interface e experiência do usuário.",
+    "levels": {
+      "junior": {
+        "title": "Junior level",
+        "steps": [
+          {
+            "category": "Fundamentos",
+            "items": ["HTML", "CSS", "JavaScript Moderno"],
+            "project": "Recrie a landing page de um serviço popular."
+          }
+        ]
+      },
+      "middle": {
+        "title": "Middle level",
+        "steps": [
+          {
+            "category": "Frameworks & Tooling",
+            "items": ["React", "TypeScript", "Vite", "SASS"],
+            "project": "Desenvolva um E-commerce funcional (Carrinho, Filtros)."
+          }
+        ]
+      }
+    }
+  },
+  "backend": {
+    "title": "Backend Developer",
+    "description": "Lógica, banco de dados e APIs robustas.",
+    "levels": {
+      "junior": {
+        "title": "Junior level",
+        "steps": [
+          {
+            "category": "Linguagens",
+            "items": ["Node.js", "Python", "SQL"],
+            "project": "Sistema de Blog com comentários."
+          }
+        ]
+      }
+    }
+  },
+  "mobile": {
+    "title": "Mobile Developer",
+    "description": "Apps nativos e cross-platform.",
+    "levels": {
+      "junior": {
+        "title": "Junior level",
+        "steps": [
+          {
+            "category": "Frameworks",
+            "items": ["React Native", "Flutter"],
+            "project": "App de previsão do tempo."
+          }
+        ]
+      }
+    }
+  }
+}
