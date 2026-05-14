@@ -29,9 +29,15 @@
         <aside class="sidebar">
             <h3>Navegação</h3>
             <div class="mobile-nav-select">
-                <select id="article-select" onchange="showArticle(this.value)">
-                    <option value="">Selecione um artigo...</option>
-                </select>
+                <div class="custom-select-wrapper">
+                    <select id="article-select" onchange="showArticle(this.value)" style="display: none;">
+                        <option value="">Selecione um artigo...</option>
+                    </select>
+                    <div class="custom-select">
+                        <div class="custom-select-trigger">Selecione um artigo...</div>
+                        <div class="custom-options"></div>
+                    </div>
+                </div>
             </div>
             <ul id="article-list">
                 <!-- Articles load here -->

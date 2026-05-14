@@ -23,26 +23,36 @@
     ]
   },
   {
-    "id": "leitura-docs",
-    "title": "Como Ler Documentações sem se Sentir Burro",
+    "id": "clean-code-introducao",
+    "title": "Código Limpo: Por que a estética do seu código importa?",
     "author": "Borge Levisberg",
-    "date": "24 de Maio, 2024",
-    "content": "Documentações técnicas não são livros de romance. Você não as lê do início ao fim. Elas são manuais de consulta. \n\nO erro mais comum do iniciante é achar que precisa entender cada palavra da documentação do React antes de escrever `npm start`. Mentira.\n\n### O Guia de Sobrevivência\n\n- **Vá direto no 'Quick Start'**: Quase toda ferramenta moderna tem um tutorial de 5 minutos. Comece por lá.\n- **A barra de pesquisa é sua melhor amiga**: Precisa saber como usar o `map` no JavaScript? Busque por `Array map` na MDN.\n- **Exemplos de código são ouro**: Ignore o texto denso no início e procure pelos blocos de código. Veja como é usado na prática.\n\n```javascript\n// Exemplo de como a documentação mostra o uso\nconst numeros = [1, 2, 3];\nconst dobrados = numeros.map(n => n * 2);\nconsole.log(dobrados); // [2, 4, 6]\n```\n\nLembre-se: se a documentação é ruim, a culpa raramente é sua. Algumas bibliotecas são escritas de forma confusa mesmo. Não tenha medo de procurar por [tutoriais no YouTube](https://www.youtube.com/) se a doc oficial estiver muito densa.",
-    "sources": ["MDN Web Docs", "React Docs"],
+    "date": "25 de Maio, 2024",
+    "content": "Você já abriu um código que você mesmo escreveu há seis meses e pensou: 'Quem foi o maluco que fez isso?'. Se sim, você sentiu na pele a falta de **Clean Code**.\n\nEscrever código limpo não é sobre ser perfeccionista, é sobre ser empático com o 'você do futuro' e com seus colegas de equipe.\n\n### Princípios Básicos\n\n- **Nomes Significativos**: Em vez de `let d = 10;`, use `let diasParaVencimento = 10;`. O nome deve dizer o que a variável faz.\n- **Funções Pequenas**: Uma função deve fazer apenas uma coisa e fazê-la bem.\n- **Comentários Necessários**: O código deve ser autoexplicativo. Use comentários apenas para explicar o 'porquê' de uma decisão complexa, não o 'quê' o código está fazendo.\n\n```javascript\n// Ruim\nfunction c(a, b) {\n  return a + b;\n}\n\n// Bom\nfunction calcularTotalPedido(subtotal, frete) {\n  return subtotal + frete;\n}\n```\n\nLembre-se: 'Qualquer tolo consegue escrever código que um computador entenda. Bons programadores escrevem código que humanos entendam.' (Martin Fowler)",
+    "sources": ["Clean Code (Robert C. Martin)", "Refactoring (Martin Fowler)"],
     "links": [
-      { "text": "MDN - O que é documentação?", "url": "https://developer.mozilla.org/pt-BR/docs/Learn/Getting_started_with_the_web" }
+      { "text": "Clean Code JavaScript", "url": "https://github.com/ryanmcdermott/clean-code-javascript" }
     ]
   },
   {
-    "id": "laravel-para-iniciantes",
-    "title": "Por que Laravel é o framework favorito dos desenvolvedores PHP?",
+    "id": "arquitetura-mvc",
+    "title": "Entendendo o MVC: A base das aplicações modernas",
     "author": "Borge Levisberg",
     "date": "25 de Maio, 2024",
-    "content": "Se você está começando no backend e escolheu PHP, o Laravel é quase um destino obrigatório. Ele transforma tarefas complexas em algo elegante e simples.\n\n### O que torna o Laravel especial?\n\n- **Eloquent ORM**: Interaja com o banco de dados como se estivesse lidando com objetos simples.\n- **Blade Template Engine**: Uma forma limpa de misturar HTML e PHP sem aquela bagunça de tags abrindo e fechando.\n- **Artisan CLI**: Uma ferramenta de linha de comando que faz quase tudo por você, desde criar controllers até rodar migrations.\n\n```php\n// Exemplo de Eloquent ORM\n$user = User::find(1);\n$user->name = 'Borge';\n$user->save();\n```\n\n### Como começar?\n\nO melhor lugar é o [Laracasts](https://laracasts.com/). É como o 'Netflix para desenvolvedores'. Você aprende praticando e vendo como profissionais constroem sistemas reais.",
-    "sources": ["Laravel Docs", "Laracasts"],
+    "content": "O MVC (Model-View-Controller) é um dos padrões de arquitetura mais antigos e mais utilizados na web. Ele ajuda a separar as responsabilidades do seu código, tornando-o mais fácil de manter.\n\n### As Três Peças do Quebra-cabeça\n\n1. **Model (Modelo)**: Lida com os dados e a lógica de negócio. É onde você interage com o banco de dados.\n2. **View (Visão)**: É o que o usuário vê (o HTML/CSS). Ela não deve processar lógica complexa, apenas exibir informações.\n3. **Controller (Controlador)**: O intermediário. Ele recebe o pedido do usuário, pede os dados para o Model e envia para a View.\n\n### Por que usar?\n\nImagine que você quer mudar o visual do seu site de azul para vermelho. Se o seu código estiver misturado, você terá que mexer em tudo. No MVC, você altera apenas a **View**, mantendo o **Model** intacto.\n\n```php\n// Exemplo Simplista em PHP/Laravel\n// Controller\npublic function show(User $user) {\n    return view('profile', ['user' => $user]);\n}\n```\n\nEntender o MVC é o primeiro passo para dominar frameworks como Laravel, Django ou Spring Boot.",
+    "sources": ["Padrões de Arquitetura de Software", "Documentação Laravel"],
     "links": [
-      { "text": "Laravel Oficial", "url": "https://laravel.com/" },
-      { "text": "Laravel Daily (YouTube)", "url": "https://www.youtube.com/@LaravelDaily" }
+      { "text": "MDN - MVC Pattern", "url": "https://developer.mozilla.org/en-US/docs/Glossary/MVC" }
+    ]
+  },
+  {
+    "id": "soft-skills-dev",
+    "title": "Além do Código: Soft Skills que todo Dev precisa",
+    "author": "Borge Levisberg",
+    "date": "25 de Maio, 2024",
+    "content": "Você pode ser o melhor programador do mundo, mas se não souber se comunicar, sua carreira terá um teto. Programação é um esporte de equipe.\n\nAs **Soft Skills** são habilidades comportamentais que te ajudam a trabalhar melhor com outras pessoas e a lidar com os desafios do dia a dia.\n\n### As mais importantes\n\n- **Comunicação**: Saiba explicar problemas técnicos para pessoas que não são técnicas (clientes, gestores).\n- **Trabalho em Equipe**: Estar disposto a ajudar e a pedir ajuda quando necessário.\n- **Adaptabilidade**: O mundo da tecnologia muda rápido. Esteja aberto a aprender novas ferramentas e processos.\n- **Empatia**: Entenda que por trás de cada bug reportado, existe um usuário frustrado.\n\n### Como desenvolver?\n\nLeia livros sobre psicologia e liderança, participe de comunidades e, principalmente, pratique a escuta ativa em suas reuniões. Ser um 'dev gente boa' abre tantas portas quanto saber uma linguagem nova.",
+    "sources": ["The Pragmatic Programmer", "Experiência de Mercado"],
+    "links": [
+      { "text": "Soft Skills (Artigo)", "url": "https://www.freecodecamp.org/news/soft-skills-for-developers/" }
     ]
   }
 ]
