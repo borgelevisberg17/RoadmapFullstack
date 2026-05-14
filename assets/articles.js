@@ -42,8 +42,9 @@ function showArticle(id) {
     const content = document.getElementById('article-content');
     let formattedContent = article.content
         .replace(/### (.*)\n/g, '<h3>$1</h3>')
-        .replace(/```javascript\n([\s\S]*?)\n```/g, '<pre><code>$1</code></pre>')
-        .replace(/```bash\n([\s\S]*?)\n```/g, '<pre><code>$1</code></pre>')
+        .replace(/```(javascript|bash|css|html|sql)\n([\s\S]*?)\n```/g, '<pre><code class="language-$1">$2</code></pre>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
         .replace(/\n/g, '<br>');
 
     content.innerHTML = `
