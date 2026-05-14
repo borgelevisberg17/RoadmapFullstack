@@ -170,6 +170,12 @@ function showPost(id) {
     questionView.style.display = 'block';
     titleEl.textContent = post.title;
 
+    // Hide filters and "Ask" button for a cleaner view
+    const filters = document.querySelector('.forum-filters');
+    const askBtn = document.querySelector('header .btn');
+    if (filters) filters.style.display = 'none';
+    if (askBtn) askBtn.style.display = 'none';
+
     let answersHtml = '';
     post.answers.sort((a, b) => (b.votes || 0) - (a.votes || 0)).forEach(answer => {
         answersHtml += `
@@ -200,26 +206,27 @@ function showPost(id) {
 
     content.innerHTML = `
         <div class="post-view">
-            <div style="font-size: 0.85rem; color: #6a737c; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; display: flex; gap: 15px;">
+            <div class="post-header-meta">
                 <span>Perguntado <strong>${getRelativeTime(post.date)}</strong></span>
                 <span>Visualizada <strong>${post.views} vezes</strong></span>
+                <span>Categoria: <strong>${post.category || 'Geral'}</strong></span>
             </div>
 
-            <div class="post-layout" style="border-bottom: 1px solid var(--border-color); padding-bottom: 30px;">
+            <div class="post-layout post-main-content">
                 <div class="voter">
-                    <i class='bx bxs-up-arrow' onclick="votePost('${post.id}', 1)"></i>
+                    <i class='bx bxs-up-arrow' title="Útil" onclick="votePost('${post.id}', 1)"></i>
                     <span class="vote-count">${post.votes || 0}</span>
-                    <i class='bx bxs-down-arrow' onclick="votePost('${post.id}', -1)"></i>
+                    <i class='bx bxs-down-arrow' title="Não útil" onclick="votePost('${post.id}', -1)"></i>
                 </div>
                 <div class="post-text">
-                    <p>${escapeHTML(post.content)}</p>
-                    <div class="question-tags" style="margin-top: 20px;">
+                    <div class="post-body-content">${escapeHTML(post.content).replace(/\n/g, '<br>')}</div>
+                    <div class="question-tags">
                         ${(post.tags || []).map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
                     </div>
-                    <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
-                        <div class="user-card" style="background: #e1ecf4; padding: 10px; border-radius: 3px;">
-                            <div>
-                                <span style="font-size: 0.7rem; display: block; margin-bottom: 3px;">perguntado ${getRelativeTime(post.date)}</span>
+                    <div class="post-signature-container">
+                        <div class="user-card post-signature">
+                            <span class="date">perguntado ${getRelativeTime(post.date)}</span>
+                            <div class="user-info">
                                 <span class="username">${escapeHTML(post.author || 'Anônimo')}</span>
                                 <span class="reputation">${post.reputation || 1}</span>
                             </div>
@@ -228,8 +235,8 @@ function showPost(id) {
                 </div>
             </div>
 
-            <div style="margin-top: 30px;">
-                <h3 style="margin-bottom: 20px; font-weight: 400; font-size: 1.3rem;">${post.answers.length} Resposta${post.answers.length !== 1 ? 's' : ''}</h3>
+            <div class="answers-section">
+                <h3 class="answers-count-title">${post.answers.length} Resposta${post.answers.length !== 1 ? 's' : ''}</h3>
                 ${answersHtml}
             </div>
 
@@ -246,6 +253,12 @@ function backToForum() {
     const url = new URL(window.location);
     url.searchParams.delete('post');
     window.history.pushState({}, '', url);
+
+    const filters = document.querySelector('.forum-filters');
+    const askBtn = document.querySelector('header .btn');
+    if (filters) filters.style.display = 'flex';
+    if (askBtn) askBtn.style.display = 'block';
+
     loadPosts();
 }
 
