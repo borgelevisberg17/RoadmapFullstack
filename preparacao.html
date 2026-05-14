@@ -6,6 +6,55 @@
     <title>Preparação para o Mercado - RoadmapFullstack</title>
     <link href="assets/style.css" rel="stylesheet"/>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        .qa-section {
+            margin-bottom: 40px;
+        }
+        .qa-item {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        .qa-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .qa-item p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .qa-item ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        .qa-item li {
+            margin-bottom: 8px;
+        }
+        .career-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .career-nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            padding: 10px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+        .career-nav a:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -25,110 +74,98 @@
         </button>
     </nav>
 
-    <div class="prep-container">
-        <header style="text-align: center; margin-bottom: 50px;">
-            <h1>Guia de Carreira Completo</h1>
-            <p>Do primeiro código à liderança técnica: trilhas práticas para cada estágio.</p>
+    <div class="container" style="display: block; max-width: 900px;">
+        <header style="text-align: center; margin-bottom: 40px; padding: 40px 0;">
+            <h1>Dúvidas de Carreira & Preparação</h1>
+            <p>Respostas diretas para as perguntas que todo desenvolvedor se faz em cada etapa da jornada.</p>
         </header>
 
-        <section class="career-stage">
-            <h2 class="stage-title junior">Nível Junior: O Início da Jornada</h2>
-            <div class="prep-grid">
-                <div class="prep-card">
-                    <i class='bx bx-rocket'></i>
-                    <h3>Foco no Aprendizado</h3>
-                    <ul>
-                        <li><i class='bx bx-check-circle'></i> <strong>Fundamentos Primeiro:</strong> Domine HTML, CSS e lógica antes de pular para frameworks.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>LinkedIn e GitHub:</strong> Mantenha seu perfil atualizado com projetos reais, não apenas exercícios de curso.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Networking:</strong> Participe de comunidades e eventos. O primeiro emprego muitas vezes vem de indicação.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Portfolio:</strong> Crie 3 projetos sólidos que resolvam problemas reais.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>CV Objetivo:</strong> Uma página, foco em tecnologias que você domina e seus projetos.</li>
-                    </ul>
-                </div>
-                <div class="prep-card">
-                    <i class='bx bx-briefcase'></i>
-                    <h3>Dicas para Entrevistas</h3>
-                    <ul>
-                        <li><i class='bx bx-check-circle'></i> <strong>Estude a Empresa:</strong> Saiba o que eles fazem e qual stack utilizam.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Soft Skills:</strong> Demonstre vontade de aprender e boa comunicação.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Explique sua Lógica:</strong> Em testes técnicos, o processo é mais importante que o resultado final.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Faça Perguntas:</strong> Demonstre interesse sobre a cultura e os desafios do time.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Português e Inglês:</strong> Escreva bem e comece a estudar inglês técnico agora.</li>
-                    </ul>
-                </div>
+        <nav class="career-nav">
+            <a href="#junior">Iniciante / Junior</a>
+            <a href="#pleno">Pleno / Middle</a>
+            <a href="#senior">Sênior / Specialist</a>
+            <a href="#geral">Dicas Gerais</a>
+        </nav>
+
+        <section id="junior" class="qa-section">
+            <h2 class="stage-title junior">Nível Junior: Entrando no Mercado</h2>
+
+            <div class="qa-item">
+                <h3><i class='bx bx-question-mark'></i> Preciso de faculdade para conseguir o primeiro emprego?</h3>
+                <p>Não é obrigatório, mas ajuda muito. A faculdade abre portas para <strong>estágios</strong>, que são a forma mais fácil de entrar no mercado. Se você não faz faculdade, seu portfólio precisa ser excepcional para provar seu valor.</p>
+            </div>
+
+            <div class="qa-item">
+                <h3><i class='bx bx-question-mark'></i> O que devo colocar no meu portfólio de Junior?</h3>
+                <p>Fuja de projetos de cursos (como Lista de Tarefas ou Pokedex). Tente resolver um problema real:</p>
+                <ul>
+                    <li>Um sistema de agendamento para a barbearia do bairro.</li>
+                    <li>Um dashboard de controle financeiro pessoal.</li>
+                    <li>Uma aplicação que consome uma API pública de um assunto que você gosta.</li>
+                </ul>
+                <p>O importante é mostrar que você sabe <strong>pensar</strong> e resolver problemas, não apenas copiar código.</p>
+            </div>
+
+            <div class="qa-item">
+                <h3><i class='bx bx-question-mark'></i> Como me destacar em entrevistas técnicas?</h3>
+                <p>Muitos juniores travam no código. O segredo é <strong>falar enquanto codifica</strong>. Explique sua lógica. Se não souber algo, admita, mas diga como você pesquisaria a solução. Empresas buscam atitude e capacidade de aprendizado em juniores.</p>
             </div>
         </section>
 
-        <section class="career-stage">
-            <h2 class="stage-title middle">Nível Pleno: Consolidando a Base</h2>
-            <div class="prep-grid">
-                <div class="prep-card">
-                    <i class='bx bx-code-alt'></i>
-                    <h3>Qualidade de Código</h3>
-                    <ul>
-                        <li><i class='bx bx-check-circle'></i> <strong>Clean Code:</strong> Aplique princípios de código limpo e legível.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Testes:</strong> Aprenda a escrever testes unitários e de integração.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Design Patterns:</strong> Entenda quando e como aplicar padrões de projeto.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Code Review:</strong> Seja crítico e construtivo ao revisar o código dos colegas.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Autonomia:</strong> Comece a tomar decisões técnicas e resolver problemas complexos sozinho.</li>
-                    </ul>
-                </div>
-                <div class="prep-card">
-                    <i class='bx bx-trending-up'></i>
-                    <h3>Evolução Profissional</h3>
-                    <ul>
-                        <li><i class='bx bx-check-circle'></i> <strong>Especialização:</strong> Escolha uma área (frontend, backend, cloud) para se aprofundar.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Mentoria:</strong> Comece a ajudar os devs mais juniores do time.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Visão de Produto:</strong> Entenda o impacto das suas entregas no negócio.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Gestão de Tempo:</strong> Aprenda a estimar prazos com mais precisão.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Contribuição Open Source:</strong> Comece a contribuir com bibliotecas que você usa.</li>
-                    </ul>
-                </div>
+        <section id="pleno" class="qa-section">
+            <h2 class="stage-title middle">Nível Pleno: Evoluindo a Qualidade</h2>
+
+            <div class="qa-item">
+                <h3><i class='bx bx-question-mark'></i> Como sair do nível Junior para o Pleno?</h3>
+                <p>O Pleno é alguém que já tem <strong>autonomia</strong>. Você não precisa mais que alguém te diga exatamente o que fazer. Você recebe um problema, discute a solução e a implementa com qualidade, considerando testes e manutenibilidade.</p>
+            </div>
+
+            <div class="qa-item">
+                <h3><i class='bx bx-question-mark'></i> Devo me especializar ou ser Generalista?</h3>
+                <p>O ideal é o perfil em "T": Conheça um pouco de tudo (fullstack), mas seja <strong>especialista</strong> em uma área (ex: Deep dive em React ou Performance em Node.js). Isso te torna valioso e versátil.</p>
+            </div>
+
+            <div class="qa-item">
+                <h3><i class='bx bx-question-mark'></i> Qual a importância de testes automatizados?</h3>
+                <p>Fundamental. Um Pleno que não escreve testes é apenas um Junior com mais tempo de casa. Testes garantem que seu código funciona hoje e não vai quebrar amanhã quando outra pessoa mexer nele.</p>
             </div>
         </section>
 
-        <section class="career-stage">
-            <h2 class="stage-title senior">Nível Sênior: Liderança e Estratégia</h2>
-            <div class="prep-grid">
-                <div class="prep-card">
-                    <i class='bx bx-crown'></i>
-                    <h3>Arquitetura e Liderança</h3>
-                    <ul>
-                        <li><i class='bx bx-check-circle'></i> <strong>System Design:</strong> Projete sistemas escaláveis, resilientes e seguros.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Mentoria Ativa:</strong> Desenvolva outros profissionais e ajude a elevar o nível do time.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Tomada de Decisão:</strong> Escolha tecnologias baseadas em trade-offs reais, não em hype.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Influência:</strong> Ajude a definir a direção técnica do produto ou empresa.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Resolução de Conflitos:</strong> Lide com problemas técnicos e interpessoais complexos.</li>
-                    </ul>
-                </div>
-                <div class="prep-card">
-                    <i class='bx bx-globe'></i>
-                    <h3>Além do Código</h3>
-                    <ul>
-                        <li><i class='bx bx-check-circle'></i> <strong>Foco no Negócio:</strong> Alinhe as decisões técnicas aos objetivos estratégicos da empresa.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Comunicação Executiva:</strong> Saiba explicar problemas técnicos para stakeholders não técnicos.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Escalabilidade Humana:</strong> Otimize processos e documentação para facilitar o onboarding.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Inovação:</strong> Mantenha-se atualizado e traga soluções inovadoras para problemas antigos.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Ética e Responsabilidade:</strong> Considere o impacto social e ético do que está sendo construído.</li>
-                    </ul>
-                </div>
+        <section id="senior" class="qa-section">
+            <h2 class="stage-title senior">Nível Sênior: Liderança e Impacto</h2>
+
+            <div class="qa-item">
+                <h3><i class='bx bx-question-mark'></i> Sênior é quem sabe todas as linguagens?</h3>
+                <p>Definitivamente não. O Sênior é quem sabe <strong>qual ferramenta escolher</strong> para cada problema, entendendo os trade-offs (ganhos e perdas). O foco sai do "como codar" para o "o que construir" e "por que".</p>
+            </div>
+
+            <div class="qa-item">
+                <h3><i class='bx bx-question-mark'></i> Como exercer liderança técnica sem ser gestor?</h3>
+                <p>Através da <strong>mentoria</strong> e do exemplo. Ajude os outros a crescerem, faça code reviews que ensinam, documente processos e ajude a definir a arquitetura que facilite a vida do time. Um sênior é um multiplicador de talentos.</p>
+            </div>
+
+            <div class="qa-item">
+                <h3><i class='bx bx-question-mark'></i> Como manter a relevância técnica com o passar dos anos?</h3>
+                <p>Não se apegue a frameworks. Entenda os <strong>fundamentos</strong> (algoritmos, redes, sistemas operacionais, arquitetura). Frameworks morrem, fundamentos são eternos. E claro, mantenha a curiosidade de um iniciante.</p>
             </div>
         </section>
 
-        <section class="career-stage">
+        <section id="geral" class="qa-section">
             <h2 class="stage-title tips">Dicas Gerais de Ouro</h2>
-            <div class="prep-grid">
-                <div class="prep-card">
-                    <i class='bx bx-bulb'></i>
-                    <h3>Freelancing & Networking</h3>
-                    <ul>
-                        <li><i class='bx bx-check-circle'></i> <strong>Networking Constante:</strong> Não procure pessoas apenas quando precisar de emprego.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Personal Branding:</strong> Escreva artigos, dê palestras ou compartilhe o que aprende.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Freelance como Escola:</strong> Use projetos freela para aprender novas tecnologias e ganhar experiência.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Gestão Financeira:</strong> Se for PJ ou freela, aprenda o básico de contabilidade e impostos.</li>
-                        <li><i class='bx bx-check-circle'></i> <strong>Equilíbrio Vida/Trabalho:</strong> Evite o burnout; a carreira é uma maratona, não um sprint.</li>
-                    </ul>
-                </div>
+
+            <div class="qa-item">
+                <h3><i class='bx bx-bulb'></i> Inglês: O divisor de águas</h3>
+                <p>Se você quer salários altos e trabalhar para o exterior, o inglês não é opcional. Comece lendo documentações em inglês e vá evoluindo para a conversação. O mercado global paga em dólar/euro.</p>
+            </div>
+
+            <div class="qa-item">
+                <h3><i class='bx bx-bulb'></i> Networking não é pedir emprego</h3>
+                <p>Networking é criar conexões reais. Ajude as pessoas no LinkedIn, participe de fóruns, contribua com open source. Quando você precisar de algo, as pessoas já saberão quem você é e o que você faz.</p>
+            </div>
+
+            <div class="qa-item" style="border-left: 4px solid var(--primary-color);">
+                <h3><i class='bx bx-heart'></i> Cuidado com o Burnout</h3>
+                <p>A área de TI é intensa. Não tente aprender tudo de uma vez. A carreira é uma maratona de 30 anos, não um sprint de 6 meses. Descanse, tenha hobbies fora do computador e cuide da sua saúde mental.</p>
             </div>
         </section>
     </div>
