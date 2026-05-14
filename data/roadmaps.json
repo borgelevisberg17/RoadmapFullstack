@@ -1,0 +1,110 @@
+{
+  "fullstack": {
+    "title": "Fullstack Developer",
+    "description": "Domine tanto o frontend quanto o backend.",
+    "steps": [
+      {
+        "category": "Frontend Fundamentos",
+        "items": ["HTML5", "CSS3", "JavaScript"]
+      },
+      {
+        "category": "Frontend Avançado",
+        "items": ["React.js", "Vue.js", "State Management"]
+      },
+      {
+        "category": "Backend Fundamentos",
+        "items": ["Node.js", "Express", "PostgreSQL"]
+      },
+      {
+        "category": "DevOps",
+        "items": ["Docker", "CI/CD", "AWS"]
+      }
+    ]
+  },
+  "frontend": {
+    "title": "Frontend Developer",
+    "description": "Foque na interface e experiência do usuário.",
+    "steps": [
+      {
+        "category": "Básico",
+        "items": ["HTML", "CSS", "JavaScript"]
+      },
+      {
+        "category": "Estilização",
+        "items": ["SASS", "Tailwind CSS", "Bootstrap"]
+      },
+      {
+        "category": "Frameworks",
+        "items": ["React", "Vue", "Angular"]
+      }
+    ]
+  },
+  "backend": {
+    "title": "Backend Developer",
+    "description": "Foque na lógica, banco de dados e APIs.",
+    "steps": [
+      {
+        "category": "Linguagens",
+        "items": ["Node.js", "Python", "Go", "Java"]
+      },
+      {
+        "category": "Bancos de Dados",
+        "items": ["PostgreSQL", "MongoDB", "Redis"]
+      },
+      {
+        "category": "APIs",
+        "items": ["REST", "GraphQL", "gRPC"]
+      }
+    ]
+  },
+  "mobile": {
+    "title": "Mobile Developer",
+    "description": "Desenvolva aplicativos para Android e iOS.",
+    "steps": [
+      {
+        "category": "Cross-Platform",
+        "items": ["React Native", "Flutter"]
+      },
+      {
+        "category": "Nativo",
+        "items": ["Swift (iOS)", "Kotlin (Android)"]
+      }
+    ]
+  },
+  "cybersecurity": {
+    "title": "Cybersecurity",
+    "description": "Proteja sistemas e redes contra ataques.",
+    "steps": [
+      {
+        "category": "Fundamentos",
+        "items": ["Redes de Computadores", "Sistemas Operacionais", "Criptografia"]
+      },
+      {
+        "category": "Segurança Ofensiva",
+        "items": ["Pentesting", "Web Hacking", "Exploitation"]
+      },
+      {
+        "category": "Segurança Defensiva",
+        "items": ["SOC", "Incident Response", "Forensics"]
+      }
+    ]
+  },
+  "datascience": {
+    "title": "Data Science",
+    "description": "Analise dados e extraia conhecimento.",
+    "steps": [
+      {
+        "category": "Matemática & Estatística",
+        "items": ["Álgebra Linear", "Cálculo", "Probabilidade"]
+      },
+      {
+        "category": "Programação",
+        "items": ["Python", "R", "SQL"]
+      },
+      {
+        "category": "Machine Learning",
+        "items": ["Scikit-Learn", "TensorFlow", "Pandas"]
+      }
+    ]
+  }
+}
