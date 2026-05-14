@@ -1,51 +1,86 @@
 {
   "HTML5": {
     "docs": "https://developer.mozilla.org/pt-BR/docs/Web/HTML",
-    "youtube": ["Kevin Powell", "Curso em Vídeo"],
-    "books": ["HTML5 e CSS3: Domine a web moderna - Terry Felke-Morris"],
+    "youtube": ["Kevin Powell", "Curso em Vídeo", "Código Fonte TV", "Traversy Media"],
+    "books": ["HTML5 e CSS3: Domine a web moderna - Terry Felke-Morris", "Learning Web Design - Jennifer Robbins"],
     "courses": ["https://www.freecodecamp.org/portuguese/learn/2022/responsive-web-design/"],
-    "projects": ["Crie uma página de portfólio pessoal"]
+    "projects": ["Crie uma página de portfólio pessoal", "Clone da landing page do Instagram"]
   },
   "CSS3": {
     "docs": "https://developer.mozilla.org/pt-BR/docs/Web/CSS",
-    "youtube": ["Kevin Powell", "Codando TV"],
-    "books": ["CSS Secrets - Lea Verou"],
-    "courses": ["https://web.dev/learn/css/"],
-    "projects": ["Recrie a interface do Google"]
+    "youtube": ["Kevin Powell", "Codando TV", "DevSoutinho", "Online Tutorials", "Layout Land"],
+    "books": ["CSS Secrets - Lea Verou", "CSS: The Definitive Guide - Eric Meyer", "Resilient Web Design - Jeremy Keith"],
+    "courses": ["https://web.dev/learn/css/", "https://flexboxfroggy.com/", "https://cssgridgarden.com/"],
+    "projects": ["Recrie a interface do Google", "Crie um layout de Dashboard com Grid"]
   },
   "JavaScript": {
     "docs": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript",
-    "youtube": ["Filipe Deschamps", "Rocketseat", "The Net Ninja"],
-    "books": ["Eloquent JavaScript - Marijn Haverbeke", "You Don't Know JS - Kyle Simpson"],
-    "courses": ["https://javascript.info/"],
-    "projects": ["Todo List", "Calculadora"]
+    "youtube": ["Filipe Deschamps", "Rocketseat", "The Net Ninja", "Fabio Akita", "Wes Bos"],
+    "books": ["Eloquent JavaScript - Marijn Haverbeke", "You Don't Know JS - Kyle Simpson", "Código Limpo - Robert C. Martin", "JavaScript: The Good Parts - Douglas Crockford"],
+    "courses": ["https://javascript.info/", "https://es6.io/", "https://scrimba.com/learn/learnjavascript"],
+    "projects": ["Todo List", "Calculadora", "Clone do Netflix (frontend)"]
   },
   "React.js": {
     "docs": "https://react.dev/",
-    "youtube": ["PedroTech", "Jack Herrington", "Web Dev Simplified"],
-    "books": ["The Road to React - Robin Wieruch"],
-    "courses": ["https://egghead.io/courses/the-beginner-s-guide-to-react"],
-    "projects": ["Dashboard de Finanças", "Clone do Twitter"]
+    "youtube": ["PedroTech", "Jack Herrington", "Web Dev Simplified", "Rocketseat", "Kent C. Dodds"],
+    "books": ["The Road to React - Robin Wieruch", "React Key Concepts - Maximilian Schwarzmüller", "Learning React - Alex Banks"],
+    "courses": ["https://egghead.io/courses/the-beginner-s-guide-to-react", "https://fullstackopen.com/pt/", "https://scrimba.com/learn/learnreact"],
+    "projects": ["Dashboard de Finanças", "Clone do Twitter", "E-commerce simples"]
   },
   "Node.js": {
     "docs": "https://nodejs.org/en/docs/",
-    "youtube": ["The Net Ninja", "Traversy Media"],
-    "books": ["Node.js Design Patterns - Mario Casciaro"],
-    "courses": ["https://www.udemy.com/course/the-complete-nodejs-developer-course-2/"],
-    "projects": ["API REST para E-commerce"]
+    "youtube": ["The Net Ninja", "Traversy Media", "Erick Wendel", "Rodrigo Branas", "Lucas Montano"],
+    "books": ["Node.js Design Patterns - Mario Casciaro", "Web Development with Node and Express - Ethan Brown"],
+    "courses": ["https://www.udemy.com/course/the-complete-nodejs-developer-course-2/", "https://nodeschool.io/"],
+    "projects": ["API REST para E-commerce", "Chat em Tempo Real com Socket.io"]
+  },
+  "Laravel": {
+    "docs": "https://laravel.com/docs",
+    "youtube": ["Laravel Daily", "Laracasts", "Tiago Matos", "Pinguim do Laravel"],
+    "books": ["Laravel: Up & Running - Matt Stauffer"],
+    "courses": ["https://laracasts.com/", "https://laravel-news.com/category/laravel-tutorials"],
+    "projects": ["Sistema de Gestão de Inventário", "Blog com autenticação e filtros", "API para App de Delivery"]
   },
   "Python": {
     "docs": "https://docs.python.org/3/",
-    "youtube": ["Corey Schafer", "Programming with Mosh"],
-    "books": ["Python Fluente - Luciano Ramalho"],
-    "courses": ["https://www.coursera.org/specializations/python"],
-    "projects": ["Web Scraper", "Automação de Tarefas"]
+    "youtube": ["Corey Schafer", "Programming with Mosh", "Dunossauro", "Hashtag Programação", "Sentdex"],
+    "books": ["Python Fluente - Luciano Ramalho", "Pense em Python - Allen B. Downey", "Automate the Boring Stuff with Python - Al Sweigart"],
+    "courses": ["https://www.coursera.org/specializations/python", "https://www.learnpython.org/"],
+    "projects": ["Web Scraper", "Automação de Tarefas", "Bot para Telegram"]
   },
   "TypeScript": {
       "docs": "https://www.typescriptlang.org/docs/",
-      "youtube": ["Matt Pocock", "Rocketseat"],
-      "books": ["Effective TypeScript - Dan Vanderkam"],
-      "courses": ["https://www.totaltypescript.com/"],
-      "projects": ["Refatore um projeto JS para TS"]
+      "youtube": ["Matt Pocock", "Rocketseat", "Steve Griffith", "Michigan TypeScript"],
+      "books": ["Effective TypeScript - Dan Vanderkam", "Programming TypeScript - Boris Cherny"],
+      "courses": ["https://www.totaltypescript.com/", "https://www.typescriptlang.org/play"],
+      "projects": ["Refatore um projeto JS para TS", "Biblioteca de utilitários tipada"]
+  },
+  "SQL Básico": {
+    "docs": "https://www.w3schools.com/sql/",
+    "youtube": ["Curso em Vídeo", "Boson Treinamentos", "Hussein Nasser"],
+    "books": ["SQL: Guia Prático - Alice Zhao", "Learning SQL - Alan Beaulieu"],
+    "courses": ["https://www.khanacademy.org/computing/computer-programming/sql", "https://sqlbolt.com/"],
+    "projects": ["Modelagem de banco para uma livraria", "Relatórios complexos com JOINs"]
+  },
+  "Express": {
+    "docs": "https://expressjs.com/",
+    "youtube": ["Traversy Media", "Rocketseat", "Academind"],
+    "books": ["Express in Action - Evan Hahn"],
+    "courses": ["https://www.freecodecamp.org/learn/back-end-development-and-apis/"],
+    "projects": ["Microserviço de envio de emails"]
+  },
+  "Tailwind CSS": {
+    "docs": "https://tailwindcss.com/docs",
+    "youtube": ["Tailwind Labs", "Laravel Daily", "Shruti Balasa"],
+    "books": ["Refactoring UI - Adam Wathan & Steve Schoger"],
+    "courses": ["https://tailwindui.com/components", "https://www.youtube.com/playlist?list=PL5f_mz_zU5eXWYDXHUDOLBE0scnuJofX0"],
+    "projects": ["Landing Page de Agência", "Dashboard StackOverflow-style"]
+  },
+  "Docker": {
+    "docs": "https://docs.docker.com/",
+    "youtube": ["LinuxTips", "FullCycle", "Jeff Geerling"],
+    "books": ["Docker: Up & Running - Sean P. Kane", "Docker Deep Dive - Nigel Poulton"],
+    "courses": ["https://www.docker.com/101-tutorial/", "https://training.play-with-docker.com/"],
+    "projects": ["Containerizar uma aplicação Fullstack", "Configurar CI/CD com Docker"]
   }
 }

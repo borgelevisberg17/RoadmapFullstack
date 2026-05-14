@@ -1,36 +1,48 @@
 [
   {
-    "id": "js-moderno",
-    "title": "Fundamentos do JavaScript Moderno (ES6+)",
-    "author": "Equipe RoadmapFullstack",
-    "date": "20 de Maio, 2024",
-    "content": "O JavaScript mudou muito desde o ES6. Hoje, entender conceitos como Arrow Functions, Destructuring e Template Literals é essencial para qualquer desenvolvedor.\n\n### Arrow Functions\nAs arrow functions permitem uma sintaxe mais curta e não possuem seu próprio `this`.\n\n```javascript\n// Antigamente\nvar soma = function(a, b) {\n  return a + b;\n};\n\n// Hoje\nconst soma = (a, b) => a + b;\n```\n\n### Destructuring\nExtrair dados de arrays ou objetos ficou muito mais simples.\n\n```javascript\nconst usuario = { nome: 'João', idade: 25 };\nconst { nome } = usuario;\nconsole.log(nome); // João\n```",
-    "sources": ["MDN Web Docs", "JavaScript.info"],
+    "id": "vale-do-aprendizado",
+    "title": "O Vale do Aprendizado: Por que parece que você desaprendeu?",
+    "author": "Borge Levisberg",
+    "date": "24 de Maio, 2024",
+    "content": "Sabe aquele momento em que você termina um curso básico de HTML e CSS, sente que é o mestre da web, e logo em seguida tenta fazer um projeto sozinho e trava completamente? Parabéns, você entrou no **Vale do Aprendizado**.\n\nIsso acontece porque seguir um tutorial é como andar de bicicleta com rodinhas. O instrutor guia cada movimento seu. Quando as rodinhas saem, o equilíbrio é com você. \n\n### Como sair do vale?\n\n- **Aceite o erro**: Você vai esquecer como centralizar uma div. Eu esqueço quase todo dia. O segredo não é decorar, é saber onde pesquisar.\n- **Projetos pequenos**: Não tente fazer um clone do Facebook logo de cara. Comece com um contador de cliques em JS.\n- **Leia o erro**: O terminal não está gritando com você, ele está te dando o mapa do tesouro. Leia a mensagem de erro com calma.\n\n```javascript\n// O erro é seu amigo\ntry {\n  voce.aprende();\n} catch (erro) {\n  console.log(\"Continue tentando: \", erro.message);\n}\n```\n\nNão tenha pressa. Cada erro é um degrau na sua evolução. Se estiver travado, dê uma olhada no nosso [Fórum](forum.html) ou procure por ajuda na [MDN](https://developer.mozilla.org/).",
+    "sources": ["Experiência Prática", "Comunidade Dev"],
     "links": [
-      { "text": "MDN JavaScript Guide", "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide" }
+      { "text": "The Valley of Despair (Blog)", "url": "https://www.thinkful.com/blog/why-learning-to-code-is-hard/" }
     ]
   },
   {
-    "id": "escolha-backend",
-    "title": "Como escolher sua primeira linguagem de Backend",
-    "author": "Senior Dev",
-    "date": "21 de Maio, 2024",
-    "content": "A escolha do backend depende muito do seu objetivo. Node.js é ótimo para quem já sabe JS, enquanto Python brilha em ciência de dados e rapidez de desenvolvimento.\n\n### Node.js\nIdeal para aplicações em tempo real e se você quer manter tudo em uma única linguagem.\n\n### Python (Django/Flask)\nExcelente legibilidade e uma biblioteca padrão gigantesca. Muito usado em IA e automação.",
-    "sources": ["Blog do Deschamps", "Stack Overflow Insights"],
+    "id": "git-na-pratica",
+    "title": "Git Sem Medo: O workflow que você realmente vai usar",
+    "author": "Borge Levisberg",
+    "date": "24 de Maio, 2024",
+    "content": "Git parece assustador com seus comandos e termos como `rebase` ou `cherry-pick`. Mas a verdade é que 90% do seu dia a dia se resume a uns 5 comandos. \n\nEsqueça a interface visual por um momento. Entender o terminal te dá superpoderes e te salva de 'detonados' acidentais no código da equipe.\n\n### O Ciclo Sagrado\n\nSempre que for começar algo novo, garanta que está no lugar certo:\n\n```bash\n# Atualiza sua máquina com o que tem no servidor\ngit pull origin main\n\n# Cria uma 'ramificação' para sua nova funcionalidade\ngit checkout -b minha-nova-feature\n```\n\nDepois de codar, é hora de salvar:\n\n```bash\n# Adiciona as mudanças\ngit add .\n\n# Dá um nome para o que você fez\ngit commit -m \"feat: adiciona sistema de login\"\n\n# Envia para o mundo\ngit push origin minha-nova-feature\n```\n\n### Dicas de Ouro\n\n- **Commits Pequenos**: É melhor fazer 10 commits pequenos do que um gigante que ninguém entende.\n- **Mensagens Claras**: Use padrões como [Conventional Commits](https://www.conventionalcommits.org/).\n- **Não entre em pânico**: Quase tudo no Git pode ser desfeito. O comando `git reflog` é o seu botão de 'Ctrl+Z' de emergência.",
+    "sources": ["Git Documentation", "GitHub Flow"],
     "links": [
-      { "text": "Node.js Official Docs", "url": "https://nodejs.org/en/docs/" },
-      { "text": "Python Docs", "url": "https://docs.python.org/3/" }
+      { "text": "Git - Documentação Oficial", "url": "https://git-scm.com/doc" },
+      { "text": "Oh My Git! (Jogo)", "url": "https://ohmygit.org/" }
     ]
   },
   {
-    "id": "seguranca-web",
-    "title": "Segurança Básica para Web: O que todo Junior deve saber",
-    "author": "Security Team",
-    "date": "22 de Maio, 2024",
-    "content": "Segurança não é opcional. Começar com o básico pode salvar sua aplicação de ataques simples.\n\n### 1. Nunca confie no input do usuário\nSempre sanitize os dados que vêm do frontend antes de salvar no banco.\n\n### 2. HTTPS em tudo\nUse certificados SSL para garantir que a comunicação entre o cliente e o servidor seja criptografada.\n\n```bash\n# Exemplo de comando para gerar certificado (auto-assinado para teste)\nopenssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365\n```",
-    "sources": ["OWASP Top 10", "Mozilla Observatory"],
+    "id": "leitura-docs",
+    "title": "Como Ler Documentações sem se Sentir Burro",
+    "author": "Borge Levisberg",
+    "date": "24 de Maio, 2024",
+    "content": "Documentações técnicas não são livros de romance. Você não as lê do início ao fim. Elas são manuais de consulta. \n\nO erro mais comum do iniciante é achar que precisa entender cada palavra da documentação do React antes de escrever `npm start`. Mentira.\n\n### O Guia de Sobrevivência\n\n- **Vá direto no 'Quick Start'**: Quase toda ferramenta moderna tem um tutorial de 5 minutos. Comece por lá.\n- **A barra de pesquisa é sua melhor amiga**: Precisa saber como usar o `map` no JavaScript? Busque por `Array map` na MDN.\n- **Exemplos de código são ouro**: Ignore o texto denso no início e procure pelos blocos de código. Veja como é usado na prática.\n\n```javascript\n// Exemplo de como a documentação mostra o uso\nconst numeros = [1, 2, 3];\nconst dobrados = numeros.map(n => n * 2);\nconsole.log(dobrados); // [2, 4, 6]\n```\n\nLembre-se: se a documentação é ruim, a culpa raramente é sua. Algumas bibliotecas são escritas de forma confusa mesmo. Não tenha medo de procurar por [tutoriais no YouTube](https://www.youtube.com/) se a doc oficial estiver muito densa.",
+    "sources": ["MDN Web Docs", "React Docs"],
     "links": [
-      { "text": "OWASP Official Website", "url": "https://owasp.org/" }
+      { "text": "MDN - O que é documentação?", "url": "https://developer.mozilla.org/pt-BR/docs/Learn/Getting_started_with_the_web" }
+    ]
+  },
+  {
+    "id": "laravel-para-iniciantes",
+    "title": "Por que Laravel é o framework favorito dos desenvolvedores PHP?",
+    "author": "Borge Levisberg",
+    "date": "25 de Maio, 2024",
+    "content": "Se você está começando no backend e escolheu PHP, o Laravel é quase um destino obrigatório. Ele transforma tarefas complexas em algo elegante e simples.\n\n### O que torna o Laravel especial?\n\n- **Eloquent ORM**: Interaja com o banco de dados como se estivesse lidando com objetos simples.\n- **Blade Template Engine**: Uma forma limpa de misturar HTML e PHP sem aquela bagunça de tags abrindo e fechando.\n- **Artisan CLI**: Uma ferramenta de linha de comando que faz quase tudo por você, desde criar controllers até rodar migrations.\n\n```php\n// Exemplo de Eloquent ORM\n$user = User::find(1);\n$user->name = 'Borge';\n$user->save();\n```\n\n### Como começar?\n\nO melhor lugar é o [Laracasts](https://laracasts.com/). É como o 'Netflix para desenvolvedores'. Você aprende praticando e vendo como profissionais constroem sistemas reais.",
+    "sources": ["Laravel Docs", "Laracasts"],
+    "links": [
+      { "text": "Laravel Oficial", "url": "https://laravel.com/" },
+      { "text": "Laravel Daily (YouTube)", "url": "https://www.youtube.com/@LaravelDaily" }
     ]
   }
 ]

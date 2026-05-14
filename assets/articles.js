@@ -29,6 +29,70 @@ function renderArticleList() {
     });
 }
 
+function parseMarkdown(text) {
+    // Escapar HTML básico para segurança, mas mantendo o que vamos gerar
+    let html = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
+    // Code blocks - handle before other replacements to avoid escaping issues
+    // Using a placeholder to protect code blocks from further processing
+    const codeBlocks = [];
+    html = html.replace(/```(javascript|typescript|bash|css|html|sql|php|python|json|yaml|dockerfile)\n([\s\S]*?)\n```/g, (match, lang, code) => {
+        const placeholder = `__CODE_BLOCK_${codeBlocks.length}__`;
+        codeBlocks.push(`<pre><code class="language-${lang}">${code}</code></pre>`);
+        return placeholder;
+    });
+
+    html = html
+        // Headers
+        .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+
+        // Inline code
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+
+        // Bold
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+
+        // Links: [text](url)
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+
+        // Lists
+        .replace(/^\s*[-*]\s+(.*)/gm, '<li>$1</li>');
+
+    // Wrap consecutive <li> groups in <ul>
+    html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>\n$1</ul>\n');
+
+    // Paragraphs: Wrap blocks of text separated by double newlines that are NOT tags
+    let lines = html.split(/\n\n+/);
+    html = lines.map(line => {
+        const trimmed = line.trim();
+        if (!trimmed) return '';
+        // If it starts with a tag we handled, don't wrap in <p>
+        if (/^<(h1|h2|h3|ul|li|pre|div|a|strong|code)/.test(trimmed)) {
+            return trimmed;
+        }
+        return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
+    }).join('\n');
+
+    // Restore code blocks
+    codeBlocks.forEach((block, i) => {
+        html = html.replace(`__CODE_BLOCK_${i}__`, block);
+    });
+
+    // Unescape some things that might have been escaped by mistake in link URLs or similar
+    // but the regexes above should have handled it if used carefully.
+    // Actually, the initial escape is good, but our replacements used literal < and >.
+    // Let's fix the literal replacements in the regexes above:
+    // Actually, the replacement strings in .replace() are literals, so they are fine.
+    // The only issue is if the text content itself had < or > which we WANT to keep escaped.
+
+    return html;
+}
+
 function showArticle(id) {
     const article = articlesData.find(a => a.id === id);
     if (!article) return;
@@ -40,11 +104,7 @@ function showArticle(id) {
     });
 
     const content = document.getElementById('article-content');
-    let formattedContent = article.content
-        .replace(/### (.*)\n/g, '<h3>$1</h3>')
-        .replace(/```javascript\n([\s\S]*?)\n```/g, '<pre><code>$1</code></pre>')
-        .replace(/```bash\n([\s\S]*?)\n```/g, '<pre><code>$1</code></pre>')
-        .replace(/\n/g, '<br>');
+    let formattedContent = parseMarkdown(article.content);
 
     content.innerHTML = `
         <article class="article-body">
@@ -64,13 +124,13 @@ function showArticle(id) {
                 </ul>
                 <div style="margin-top: 20px;">
                     <h4>Links Úteis:</h4>
-                    ${article.links.map(l => `<a href="${l.url}" target="_blank" class="btn btn-outline" style="margin-right: 10px; margin-top: 10px;">${l.text}</a>`).join('')}
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        ${article.links.map(l => `<a href="${l.url}" target="_blank" class="btn btn-outline">${l.text}</a>`).join('')}
+                    </div>
                 </div>
             </div>
         </article>
     `;
-
-    // Re-run any code highlighting or formatting if needed
 }
 
 window.addEventListener('DOMContentLoaded', loadArticles);
