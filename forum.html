@@ -6,74 +6,6 @@
     <title>Fórum Anônimo - RoadmapFullstack</title>
     <link href="assets/style.css" rel="stylesheet"/>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <style>
-        .forum-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .question-card {
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            padding: 20px;
-            margin-bottom: 20px;
-            background: var(--bg-light);
-        }
-        .question-header {
-            display: flex;
-            justify-content: space-between;
-            color: #6a737c;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
-        }
-        .question-title {
-            font-size: 1.2rem;
-            color: #0074cc;
-            text-decoration: none;
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: block;
-        }
-        .answer-box {
-            margin-left: 30px;
-            border-left: 2px solid var(--border-color);
-            padding-left: 15px;
-            margin-top: 15px;
-        }
-        .answer {
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .new-post-form {
-            background: #fdf7e2;
-            border: 1px solid #e6dbaf;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 30px;
-        }
-        [data-theme="dark"] .new-post-form {
-            background: #3e3b2e;
-            border-color: #5c553d;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 3px;
-            background: var(--bg-light);
-            color: var(--text-light);
-        }
-    </style>
 </head>
 <body>
     <nav>
@@ -107,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label>Categoria</label>
-                <select id="post-category" style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 3px; background: var(--bg-light); color: var(--text-light);">
+                <select id="post-category">
                     <option value="Dúvida Técnica">Dúvida Técnica</option>
                     <option value="Dica / Tutorial">Dica / Tutorial</option>
                     <option value="Carreira">Carreira</option>
