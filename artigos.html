@@ -28,6 +28,11 @@
     <div class="container">
         <aside class="sidebar">
             <h3>Navegação</h3>
+            <div class="mobile-nav-select">
+                <select id="article-select" onchange="showArticle(this.value)">
+                    <option value="">Selecione um artigo...</option>
+                </select>
+            </div>
             <ul id="article-list">
                 <!-- Articles load here -->
             </ul>

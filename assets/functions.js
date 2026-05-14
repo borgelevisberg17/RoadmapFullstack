@@ -32,6 +32,11 @@ function loadRoadmap(id) {
         });
     }
 
+    const roadmapSelect = document.getElementById('roadmap-select');
+    if (roadmapSelect) {
+        roadmapSelect.value = id;
+    }
+
     const titleEl = document.getElementById('roadmap-title');
     if (titleEl) titleEl.textContent = roadmap.title;
 
@@ -60,16 +65,20 @@ function loadRoadmap(id) {
                 step.items.forEach(item => {
                     const isChecked = getProgress(id, item);
                     const count = getLearningCount(item);
+                    const hasVoted = localStorage.getItem(`voted_${item}`) === 'true';
                     itemsHtml += `
-                        <div class="tech-tag-container" style="display: flex; align-items: center; gap: 5px; margin-bottom: 5px;">
-                            <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleProgress('${id}', '${item}', this.checked)">
-                            <a href="javascript:void(0)" class="tech-tag" onclick="showResources('${item}')">
+                        <div class="tech-tag-container" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; padding: 4px; border-bottom: 1px solid var(--border-color);">
+                            <div class="vote-controls" style="display: flex; flex-direction: column; align-items: center; min-width: 30px;">
+                                <i class='bx bxs-upvote vote-icon'
+                                   onclick="incrementLearning('${item}', this)"
+                                   style="cursor: ${hasVoted ? 'default' : 'pointer'}; color: ${hasVoted ? 'var(--primary-color)' : '#6a737c'}; font-size: 1.2rem;"
+                                   title="${hasVoted ? 'Você já marcou que está estudando' : 'Estou aprendendo isso!'}"></i>
+                                <span class="learning-count" id="count-${item.replace(/[^a-zA-Z0-9]/g, '')}" style="font-size: 0.75rem; font-weight: bold; color: #6a737c;">${count}</span>
+                            </div>
+                            <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleProgress('${id}', '${item}', this.checked)" style="width: 18px; height: 18px; cursor: pointer;">
+                            <a href="javascript:void(0)" class="tech-tag" onclick="showResources('${item}')" style="flex-grow: 1; font-size: 0.9rem;">
                                 ${item}
                             </a>
-                            <button class="btn btn-outline" style="padding: 2px 5px; font-size: 0.6rem;" onclick="incrementLearning('${item}')">
-                                <i class='bx bx-user-plus'></i> Estou aprendendo
-                            </button>
-                            <span class="learning-count" id="count-${item.replace(/[^a-zA-Z0-9]/g, '')}">${count} estudando</span>
                         </div>
                     `;
                 });
@@ -98,16 +107,20 @@ function loadRoadmap(id) {
             step.items.forEach(item => {
                 const isChecked = getProgress(id, item);
                 const count = getLearningCount(item);
+                const hasVoted = localStorage.getItem(`voted_${item}`) === 'true';
                 itemsHtml += `
-                    <div class="tech-tag-container" style="display: flex; align-items: center; gap: 5px; margin-bottom: 5px;">
-                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleProgress('${id}', '${item}', this.checked)">
-                        <a href="javascript:void(0)" class="tech-tag" onclick="showResources('${item}')">
+                    <div class="tech-tag-container" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; padding: 4px; border-bottom: 1px solid var(--border-color);">
+                        <div class="vote-controls" style="display: flex; flex-direction: column; align-items: center; min-width: 30px;">
+                            <i class='bx bxs-upvote vote-icon'
+                               onclick="incrementLearning('${item}', this)"
+                               style="cursor: ${hasVoted ? 'default' : 'pointer'}; color: ${hasVoted ? 'var(--primary-color)' : '#6a737c'}; font-size: 1.2rem;"
+                               title="${hasVoted ? 'Você já marcou que está estudando' : 'Estou aprendendo isso!'}"></i>
+                            <span class="learning-count" id="count-${item.replace(/[^a-zA-Z0-9]/g, '')}" style="font-size: 0.75rem; font-weight: bold; color: #6a737c;">${count}</span>
+                        </div>
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleProgress('${id}', '${item}', this.checked)" style="width: 18px; height: 18px; cursor: pointer;">
+                        <a href="javascript:void(0)" class="tech-tag" onclick="showResources('${item}')" style="flex-grow: 1; font-size: 0.9rem;">
                             ${item}
                         </a>
-                        <button class="btn btn-outline" style="padding: 2px 5px; font-size: 0.6rem;" onclick="incrementLearning('${item}')">
-                            <i class='bx bx-user-plus'></i> Estou aprendendo
-                        </button>
-                        <span class="learning-count" id="count-${item.replace(/[^a-zA-Z0-9]/g, '')}">${count} estudando</span>
                     </div>
                 `;
             });
@@ -168,13 +181,23 @@ function getLearningCount(item) {
     return counts[item];
 }
 
-function incrementLearning(item) {
+function incrementLearning(item, element) {
+    if (localStorage.getItem(`voted_${item}`) === 'true') return;
+
     const counts = JSON.parse(localStorage.getItem('learningCounts') || '{}');
     counts[item] = (counts[item] || 0) + 1;
     localStorage.setItem('learningCounts', JSON.stringify(counts));
+    localStorage.setItem(`voted_${item}`, 'true');
+
     const elementId = `count-${item.replace(/[^a-zA-Z0-9]/g, '')}`;
     const el = document.getElementById(elementId);
-    if (el) el.textContent = `${counts[item]} estudando`;
+    if (el) el.textContent = counts[item];
+
+    if (element) {
+        element.style.color = 'var(--primary-color)';
+        element.style.cursor = 'default';
+        element.title = 'Você já marcou que está estudando';
+    }
 }
 
 // Modals
