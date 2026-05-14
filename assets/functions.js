@@ -185,14 +185,26 @@ function showResources(tech) {
 
     if (resource) {
         details.innerHTML = `
-            <p><strong>Documentação:</strong> <a href="${resource.docs}" target="_blank">${resource.docs}</a></p>
+            <p><strong>Documentação Oficial:</strong> <a href="${resource.docs}" target="_blank">${resource.docs}</a></p>
+
+            <div style="margin-top: 15px;">
+                <strong>Canais do YouTube:</strong>
+                <p style="font-size: 0.9rem;">${resource.youtube ? resource.youtube.join(', ') : 'Em breve'}</p>
+            </div>
+
+            <div style="margin-top: 15px;">
+                <strong>Sugestões de Livros:</strong>
+                <ul style="font-size: 0.9rem;">${resource.books ? resource.books.map(b => `<li>${b}</li>`).join('') : '<li>Em breve</li>'}</ul>
+            </div>
+
             <div style="margin-top: 15px;">
                 <strong>Cursos Recomendados:</strong>
-                <ul>${resource.courses.map(c => `<li><a href="${c}" target="_blank">${c}</a></li>`).join('')}</ul>
+                <ul style="font-size: 0.9rem;">${resource.courses.map(c => `<li><a href="${c}" target="_blank">${c}</a></li>`).join('')}</ul>
             </div>
+
             <div style="margin-top: 15px;">
                 <strong>Projetos Práticos:</strong>
-                <ul>${resource.projects.map(p => `<li>${p}</li>`).join('')}</ul>
+                <ul style="font-size: 0.9rem;">${resource.projects.map(p => `<li>${p}</li>`).join('')}</ul>
             </div>
         `;
     } else {

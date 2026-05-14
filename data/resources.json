@@ -1,32 +1,51 @@
 {
   "HTML5": {
     "docs": "https://developer.mozilla.org/pt-BR/docs/Web/HTML",
+    "youtube": ["Kevin Powell", "Curso em Vídeo"],
+    "books": ["HTML5 e CSS3: Domine a web moderna - Terry Felke-Morris"],
     "courses": ["https://www.freecodecamp.org/portuguese/learn/2022/responsive-web-design/"],
     "projects": ["Crie uma página de portfólio pessoal"]
   },
   "CSS3": {
     "docs": "https://developer.mozilla.org/pt-BR/docs/Web/CSS",
+    "youtube": ["Kevin Powell", "Codando TV"],
+    "books": ["CSS Secrets - Lea Verou"],
     "courses": ["https://web.dev/learn/css/"],
     "projects": ["Recrie a interface do Google"]
   },
   "JavaScript": {
     "docs": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript",
+    "youtube": ["Filipe Deschamps", "Rocketseat", "The Net Ninja"],
+    "books": ["Eloquent JavaScript - Marijn Haverbeke", "You Don't Know JS - Kyle Simpson"],
     "courses": ["https://javascript.info/"],
     "projects": ["Todo List", "Calculadora"]
   },
   "React.js": {
     "docs": "https://react.dev/",
+    "youtube": ["PedroTech", "Jack Herrington", "Web Dev Simplified"],
+    "books": ["The Road to React - Robin Wieruch"],
     "courses": ["https://egghead.io/courses/the-beginner-s-guide-to-react"],
     "projects": ["Dashboard de Finanças", "Clone do Twitter"]
   },
   "Node.js": {
     "docs": "https://nodejs.org/en/docs/",
+    "youtube": ["The Net Ninja", "Traversy Media"],
+    "books": ["Node.js Design Patterns - Mario Casciaro"],
     "courses": ["https://www.udemy.com/course/the-complete-nodejs-developer-course-2/"],
     "projects": ["API REST para E-commerce"]
   },
   "Python": {
     "docs": "https://docs.python.org/3/",
+    "youtube": ["Corey Schafer", "Programming with Mosh"],
+    "books": ["Python Fluente - Luciano Ramalho"],
     "courses": ["https://www.coursera.org/specializations/python"],
     "projects": ["Web Scraper", "Automação de Tarefas"]
+  },
+  "TypeScript": {
+      "docs": "https://www.typescriptlang.org/docs/",
+      "youtube": ["Matt Pocock", "Rocketseat"],
+      "books": ["Effective TypeScript - Dan Vanderkam"],
+      "courses": ["https://www.totaltypescript.com/"],
+      "projects": ["Refatore um projeto JS para TS"]
   }
 }

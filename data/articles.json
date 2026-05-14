@@ -1,0 +1,36 @@
+[
+  {
+    "id": "js-moderno",
+    "title": "Fundamentos do JavaScript Moderno (ES6+)",
+    "author": "Equipe RoadmapFullstack",
+    "date": "20 de Maio, 2024",
+    "content": "O JavaScript mudou muito desde o ES6. Hoje, entender conceitos como Arrow Functions, Destructuring e Template Literals é essencial para qualquer desenvolvedor.\n\n### Arrow Functions\nAs arrow functions permitem uma sintaxe mais curta e não possuem seu próprio `this`.\n\n```javascript\n// Antigamente\nvar soma = function(a, b) {\n  return a + b;\n};\n\n// Hoje\nconst soma = (a, b) => a + b;\n```\n\n### Destructuring\nExtrair dados de arrays ou objetos ficou muito mais simples.\n\n```javascript\nconst usuario = { nome: 'João', idade: 25 };\nconst { nome } = usuario;\nconsole.log(nome); // João\n```",
+    "sources": ["MDN Web Docs", "JavaScript.info"],
+    "links": [
+      { "text": "MDN JavaScript Guide", "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide" }
+    ]
+  },
+  {
+    "id": "escolha-backend",
+    "title": "Como escolher sua primeira linguagem de Backend",
+    "author": "Senior Dev",
+    "date": "21 de Maio, 2024",
+    "content": "A escolha do backend depende muito do seu objetivo. Node.js é ótimo para quem já sabe JS, enquanto Python brilha em ciência de dados e rapidez de desenvolvimento.\n\n### Node.js\nIdeal para aplicações em tempo real e se você quer manter tudo em uma única linguagem.\n\n### Python (Django/Flask)\nExcelente legibilidade e uma biblioteca padrão gigantesca. Muito usado em IA e automação.",
+    "sources": ["Blog do Deschamps", "Stack Overflow Insights"],
+    "links": [
+      { "text": "Node.js Official Docs", "url": "https://nodejs.org/en/docs/" },
+      { "text": "Python Docs", "url": "https://docs.python.org/3/" }
+    ]
+  },
+  {
+    "id": "seguranca-web",
+    "title": "Segurança Básica para Web: O que todo Junior deve saber",
+    "author": "Security Team",
+    "date": "22 de Maio, 2024",
+    "content": "Segurança não é opcional. Começar com o básico pode salvar sua aplicação de ataques simples.\n\n### 1. Nunca confie no input do usuário\nSempre sanitize os dados que vêm do frontend antes de salvar no banco.\n\n### 2. HTTPS em tudo\nUse certificados SSL para garantir que a comunicação entre o cliente e o servidor seja criptografada.\n\n```bash\n# Exemplo de comando para gerar certificado (auto-assinado para teste)\nopenssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365\n```",
+    "sources": ["OWASP Top 10", "Mozilla Observatory"],
+    "links": [
+      { "text": "OWASP Official Website", "url": "https://owasp.org/" }
+    ]
+  }
+]
