@@ -47,12 +47,54 @@ function loadRoadmap(id) {
     if (!contentArea) return;
     contentArea.innerHTML = '';
 
+    // Calculate total progress
+    let totalItems = 0;
+    let completedItems = 0;
+    if (roadmap.levels) {
+        for (const l in roadmap.levels) {
+            roadmap.levels[l].steps.forEach(s => {
+                totalItems += s.items.length;
+                s.items.forEach(i => {
+                    if (getProgress(id, i)) completedItems++;
+                });
+            });
+        }
+    }
+    const progressPercent = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
+
+    // Create Progress Bar
+    const progressContainer = document.createElement('div');
+    progressContainer.className = 'progress-container-global';
+    progressContainer.innerHTML = `
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; font-weight: bold;">
+            <span>Seu Progresso: ${progressPercent}%</span>
+            <span>${completedItems}/${totalItems} tópicos</span>
+        </div>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: ${progressPercent}%"></div>
+        </div>
+    `;
+    contentArea.appendChild(progressContainer);
+
     if (roadmap.levels) {
         for (const levelKey in roadmap.levels) {
             const level = roadmap.levels[levelKey];
             const levelSection = document.createElement('div');
             levelSection.className = 'level-section';
-            levelSection.innerHTML = `<h2 style="margin: 20px 0; border-bottom: 2px solid var(--primary-color); padding-bottom: 5px;">${level.title}</h2>`;
+
+            let levelHeaderHtml = `
+                <div class="level-header">
+                    <div class="level-info">
+                        <h2>${level.title}</h2>
+                        <div class="level-meta">
+                            <span><i class='bx bx-time'></i> ${level.estimated_time || 'N/A'}</span>
+                            <span class="difficulty-badge ${level.difficulty?.toLowerCase()}">${level.difficulty || 'N/A'}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            levelSection.innerHTML = levelHeaderHtml;
 
             const levelGrid = document.createElement('div');
             levelGrid.className = 'roadmap-grid';
@@ -67,16 +109,16 @@ function loadRoadmap(id) {
                     const count = getLearningCount(item);
                     const hasVoted = localStorage.getItem(`voted_${item}`) === 'true';
                     itemsHtml += `
-                        <div class="tech-tag-container" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; padding: 4px; border-bottom: 1px solid var(--border-color);">
-                            <div class="vote-controls" style="display: flex; flex-direction: column; align-items: center; min-width: 30px;">
+                        <div class="tech-tag-container">
+                            <div class="vote-controls">
                                 <i class='bx bxs-upvote vote-icon'
                                    onclick="incrementLearning('${item}', this)"
-                                   style="cursor: ${hasVoted ? 'default' : 'pointer'}; color: ${hasVoted ? 'var(--primary-color)' : '#6a737c'}; font-size: 1.2rem;"
+                                   style="cursor: ${hasVoted ? 'default' : 'pointer'}; color: ${hasVoted ? 'var(--primary-color)' : '#6a737c'};"
                                    title="${hasVoted ? 'Você já marcou que está estudando' : 'Estou aprendendo isso!'}"></i>
-                                <span class="learning-count" id="count-${item.replace(/[^a-zA-Z0-9]/g, '')}" style="font-size: 0.75rem; font-weight: bold; color: #6a737c;">${count}</span>
+                                <span class="learning-count" id="count-${item.replace(/[^a-zA-Z0-9]/g, '')}">${count}</span>
                             </div>
-                            <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleProgress('${id}', '${item}', this.checked)" style="width: 18px; height: 18px; cursor: pointer;">
-                            <a href="javascript:void(0)" class="tech-tag" onclick="showResources('${item}')" style="flex-grow: 1; font-size: 0.9rem;">
+                            <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleProgress('${id}', '${item}', this.checked); loadRoadmap('${id}')">
+                            <a href="javascript:void(0)" class="tech-tag" onclick="showResources('${item}')">
                                 ${item}
                             </a>
                         </div>
@@ -84,13 +126,17 @@ function loadRoadmap(id) {
                 });
 
                 card.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="card-header">
                         <h3>${step.category}</h3>
-                        ${step.project ? `<i class='bx bx-briefcase' title="Projeto Sugerido" style="color: var(--primary-color); cursor: help;" onclick="alert('Projeto Sugerido: ${step.project}')"></i>` : ''}
                     </div>
-                    <div class="tech-items" style="flex-direction: column; align-items: flex-start;">
+                    <div class="tech-items">
                         ${itemsHtml}
                     </div>
+                    ${step.project ? `
+                    <div class="suggested-project">
+                        <div class="project-title"><i class='bx bx-briefcase'></i> Projeto Sugerido</div>
+                        <p>${step.project}</p>
+                    </div>` : ''}
                 `;
                 levelGrid.appendChild(card);
             });
