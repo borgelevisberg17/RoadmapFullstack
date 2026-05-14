@@ -25,61 +25,107 @@
         </button>
     </nav>
 
-    <div class="forum-container">
-        <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-            <h1>Fórum de Dúvidas (Anônimo)</h1>
-            <button class="btn" onclick="togglePostForm()">Fazer uma Pergunta</button>
-        </header>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Menu</h3>
+            <ul id="forum-menu">
+                <li class="active"><a href="forum.html" style="text-decoration: none; color: inherit;"><i class='bx bx-question-mark'></i> Perguntas</a></li>
+                <li><a href="artigos.html" style="text-decoration: none; color: inherit;"><i class='bx bx-news'></i> Artigos</a></li>
+                <li><a href="glossario.html" style="text-decoration: none; color: inherit;"><i class='bx bx-book'></i> Glossário</a></li>
+            </ul>
+        </aside>
 
-        <div class="forum-filters" style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
-            <span>Filtrar por:</span>
-            <div class="custom-select-wrapper" style="max-width: 200px;">
-                <select id="filter-category" onchange="loadPosts()" style="display: none;">
-                    <option value="Tudo">Todas as Categorias</option>
-                    <option value="Dúvida Técnica">Dúvida Técnica</option>
-                    <option value="Dica / Tutorial">Dica / Tutorial</option>
-                    <option value="Carreira">Carreira</option>
-                    <option value="Outros">Outros</option>
-                </select>
-                <div class="custom-select">
-                    <div class="custom-select-trigger">Todas as Categorias</div>
-                    <div class="custom-options"></div>
-                </div>
-            </div>
-        </div>
+        <main class="forum-container">
+            <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h1 id="forum-title">Todas as Perguntas</h1>
+                <button class="btn" onclick="togglePostForm()">Fazer uma Pergunta</button>
+            </header>
 
-        <div id="post-form" class="new-post-form" style="display: none;">
-            <h3>Nova Pergunta</h3>
-            <div class="form-group">
-                <label>Assunto / Título</label>
-                <input type="text" id="post-title" placeholder="Ex: Como centralizar uma div?">
-            </div>
-            <div class="form-group">
-                <label>Categoria</label>
-                <div class="custom-select-wrapper">
-                    <select id="post-category" style="display: none;">
-                        <option value="Dúvida Técnica">Dúvida Técnica</option>
-                        <option value="Dica / Tutorial">Dica / Tutorial</option>
-                        <option value="Carreira">Carreira</option>
-                        <option value="Outros">Outros</option>
-                    </select>
-                    <div class="custom-select">
-                        <div class="custom-select-trigger">Dúvida Técnica</div>
-                        <div class="custom-options"></div>
+            <div class="forum-filters" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+                <div id="questions-count" style="font-size: 1.1rem; color: #232629;">0 perguntas</div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <div class="custom-select-wrapper" style="width: 180px;">
+                        <select id="filter-category" onchange="loadPosts()" style="display: none;">
+                            <option value="Tudo">Todas as Categorias</option>
+                            <option value="Dúvida Técnica">Dúvida Técnica</option>
+                            <option value="Dica / Tutorial">Dica / Tutorial</option>
+                            <option value="Carreira">Carreira</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                        <div class="custom-select">
+                            <div class="custom-select-trigger">Todas as Categorias</div>
+                            <div class="custom-options"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label>Sua dúvida em detalhes</label>
-                <textarea id="post-content" rows="5"></textarea>
-            </div>
-            <button class="btn" onclick="submitPost()">Publicar Anônimo</button>
-            <button class="btn btn-outline" onclick="togglePostForm()">Cancelar</button>
-        </div>
 
-        <div id="forum-posts">
-            <!-- Posts load here -->
-        </div>
+            <div id="post-form" class="new-post-form" style="display: none; border: 1px solid #e3e6e8; background: #fff; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);">
+                <h3 style="margin-bottom: 20px; font-weight: 400;">Sua Pergunta</h3>
+                <div class="form-group">
+                    <label style="font-size: 0.9rem;">Título</label>
+                    <p style="font-size: 0.75rem; color: #6a737c; margin-bottom: 5px;">Seja específico e imagine que você está fazendo uma pergunta para outra pessoa.</p>
+                    <input type="text" id="post-title" placeholder="Ex: Como usar o useEffect no React para chamadas de API?">
+                </div>
+                <div class="form-group">
+                    <label style="font-size: 0.9rem;">Categoria</label>
+                    <div class="custom-select-wrapper">
+                        <select id="post-category" style="display: none;">
+                            <option value="Dúvida Técnica">Dúvida Técnica</option>
+                            <option value="Dica / Tutorial">Dica / Tutorial</option>
+                            <option value="Carreira">Carreira</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                        <div class="custom-select">
+                            <div class="custom-select-trigger">Dúvida Técnica</div>
+                            <div class="custom-options"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label style="font-size: 0.9rem;">Corpo da Pergunta</label>
+                    <p style="font-size: 0.75rem; color: #6a737c; margin-bottom: 5px;">Inclua todas as informações que alguém precisaria para responder à sua pergunta.</p>
+                    <textarea id="post-content" rows="10"></textarea>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="btn" onclick="submitPost()">Publicar Pergunta</button>
+                    <button class="btn btn-outline" onclick="togglePostForm()" style="background: transparent; border: none; color: #c22e32;">Descartar</button>
+                </div>
+            </div>
+
+            <div id="forum-posts">
+                <!-- Posts load here -->
+            </div>
+
+            <div id="question-view" style="display: none;">
+                <button class="btn btn-outline" onclick="backToForum()" style="margin-bottom: 20px; border: none; background: transparent; padding: 0; color: var(--link-color);">
+                    <i class='bx bx-left-arrow-alt'></i> Voltar para a lista
+                </button>
+                <div id="single-post-container">
+                    <!-- Single post content loads here -->
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="s-widget">
+                <div class="s-widget-header">Dicas de Comunidade</div>
+                <div class="s-widget-content">
+                    <ul style="font-size: 0.8rem; color: #3b4045;">
+                        <li style="display: flex; gap: 8px;"><i class='bx bx-pencil' style="color: var(--primary-color);"></i> Como fazer uma boa pergunta?</li>
+                        <li style="display: flex; gap: 8px;"><i class='bx bx-check-shield' style="color: var(--primary-color);"></i> Mantenha o respeito e a ética.</li>
+                        <li style="display: flex; gap: 8px;"><i class='bx bx-code-alt' style="color: var(--primary-color);"></i> Use blocos de código para melhor leitura.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="s-widget">
+                <div class="s-widget-header">Estatísticas do Fórum</div>
+                <div class="s-widget-content" id="forum-stats">
+                    <p style="font-size: 0.85rem; color: #6a737c;">Carregando dados...</p>
+                </div>
+            </div>
+        </aside>
     </div>
 
     <script src="assets/functions.js"></script>

@@ -141,11 +141,11 @@ function toggleTheme() {
     const icon = document.querySelector('.theme-toggle i');
     if (body.getAttribute('data-theme') === 'dark') {
         body.removeAttribute('data-theme');
-        icon.className = 'bx bx-moon';
+        if (icon) icon.className = 'bx bx-moon';
         localStorage.setItem('theme', 'light');
     } else {
         body.setAttribute('data-theme', 'dark');
-        icon.className = 'bx bx-sun';
+        if (icon) icon.className = 'bx bx-sun';
         localStorage.setItem('theme', 'dark');
     }
 }
