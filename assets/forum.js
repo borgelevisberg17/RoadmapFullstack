@@ -21,18 +21,27 @@ function loadPosts() {
         card.className = 'question-card';
 
         let answersHtml = '';
-        post.answers.forEach(answer => {
+        post.answers.forEach((answer, aIndex) => {
             answersHtml += `
                 <div class="answer">
-                    <p>${escapeHTML(answer.content)}</p>
-                    <small style="opacity: 0.6;">Respondido anonimamente em ${escapeHTML(answer.date)}</small>
+                    <div style="display: flex; gap: 10px; align-items: flex-start;">
+                        <div style="display: flex; flex-direction: column; align-items: center; min-width: 30px;">
+                            <i class='bx bx-chevron-up' style="cursor: pointer; font-size: 1.5rem;" onclick="voteAnswer(${postIndex}, ${aIndex}, 1)"></i>
+                            <span>${answer.votes || 0}</span>
+                            <i class='bx bx-chevron-down' style="cursor: pointer; font-size: 1.5rem;" onclick="voteAnswer(${postIndex}, ${aIndex}, -1)"></i>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <p>${escapeHTML(answer.content)}</p>
+                            <small style="opacity: 0.6;">Respondido anonimamente em ${escapeHTML(answer.date)}</small>
+                        </div>
+                    </div>
                 </div>
             `;
         });
 
         card.innerHTML = `
             <div class="question-header">
-                <span>Postado anonimamente</span>
+                <span><i class='bx bx-tag-alt'></i> ${escapeHTML(post.category || 'Geral')}</span>
                 <span>${escapeHTML(post.date)}</span>
             </div>
             <a href="javascript:void(0)" class="question-title">${escapeHTML(post.title)}</a>
@@ -60,6 +69,7 @@ function togglePostForm() {
 function submitPost() {
     const title = document.getElementById('post-title').value;
     const content = document.getElementById('post-content').value;
+    const category = document.getElementById('post-category').value;
 
     if (!title || !content) {
         alert("Preencha todos os campos!");
@@ -70,6 +80,7 @@ function submitPost() {
     posts.push({
         title,
         content,
+        category,
         date: new Date().toLocaleDateString(),
         answers: []
     });
@@ -92,11 +103,20 @@ function submitReply(postIndex) {
     const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
     posts[postIndex].answers.push({
         content,
+        votes: 0,
         date: new Date().toLocaleDateString()
     });
 
     localStorage.setItem('forumPosts', JSON.stringify(posts));
     input.value = '';
+    loadPosts();
+}
+
+function voteAnswer(postIndex, answerIndex, delta) {
+    const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
+    const answer = posts[postIndex].answers[answerIndex];
+    answer.votes = (answer.votes || 0) + delta;
+    localStorage.setItem('forumPosts', JSON.stringify(posts));
     loadPosts();
 }
 

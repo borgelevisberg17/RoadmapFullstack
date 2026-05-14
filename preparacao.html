@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparação para o Mercado - RoadmapFullstack</title>
+    <link href="assets/style.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        .prep-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .prep-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .prep-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            background: var(--bg-light);
+        }
+        .prep-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .prep-card h3 {
+            margin-bottom: 15px;
+        }
+        .prep-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .prep-card li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+        .prep-card li i {
+            font-size: 1rem;
+            margin-bottom: 0;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <i class='bx bx-map-alt'></i> RoadmapFullstack
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Roadmaps</a>
+            <a href="forum.html">Fórum</a>
+            <a href="preparacao.html">Preparação</a>
+            <a href="glossario.html">Glossário</a>
+            <a href="contribuir.html">Contribuir</a>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <i class='bx bx-moon'></i>
+        </button>
+    </nav>
+
+    <div class="prep-container">
+        <header style="text-align: center; margin-bottom: 50px;">
+            <h1>Pronto para o Mercado?</h1>
+            <p>Dicas essenciais de um Dev Sénior para quem está começando.</p>
+        </header>
+
+        <div class="prep-grid">
+            <div class="prep-card">
+                <i class='bx bxl-linkedin-square'></i>
+                <h3>LinkedIn de Impacto</h3>
+                <ul>
+                    <li><i class='bx bx-check-circle'></i> <strong>Título Objetivo:</strong> Coloque a stack que você domina (ex: Frontend Developer | React | TS).</li>
+                    <li><i class='bx bx-check-circle'></i> <strong>Sobre Mim:</strong> Conte sua história, o que você resolve e o que está aprendendo.</li>
+                    <li><i class='bx bx-check-circle'></i> <strong>Competências:</strong> Peça recomendações de colegas de curso ou projetos.</li>
+                </ul>
+            </div>
+
+            <div class="prep-card">
+                <i class='bx bxl-github'></i>
+                <h3>GitHub Portfólio</h3>
+                <ul>
+                    <li><i class='bx bx-check-circle'></i> <strong>README.md:</strong> Cada projeto deve ter um README explicando o que é, tecnologias e como rodar.</li>
+                    <li><i class='bx bx-check-circle'></i> <strong>Pinned Repos:</strong> Fixe seus 4 melhores projetos no topo do perfil.</li>
+                    <li><i class='bx bx-check-circle'></i> <strong>Consistência:</strong> Commits regulares mostram que você está praticando sempre.</li>
+                </ul>
+            </div>
+
+            <div class="prep-card">
+                <i class='bx bx-file'></i>
+                <h3>Currículo (CV)</h3>
+                <ul>
+                    <li><i class='bx bx-check-circle'></i> <strong>Uma Página:</strong> Se você é junior, seu currículo não deve passar de 1 página.</li>
+                    <li><i class='bx bx-check-circle'></i> <strong>Projetos Reais:</strong> Foque em descrever os problemas que resolveu nos projetos.</li>
+                    <li><i class='bx bx-check-circle'></i> <strong>Stack Técnica:</strong> Liste as tecnologias que você realmente consegue usar.</li>
+                </ul>
+            </div>
+
+            <div class="prep-card">
+                <i class='bx bx-chat'></i>
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li><i class='bx bx-check-circle'></i> <strong>Comunicação:</strong> Aprenda a explicar termos técnicos de forma simples.</li>
+                    <li><i class='bx bx-check-circle'></i> <strong>Trabalho em Equipe:</strong> Mostre que você é aberto a feedbacks e code reviews.</li>
+                    <li><i class='bx bx-check-circle'></i> <strong>Curiosidade:</strong> Nunca pare de perguntar "por que isso funciona assim?".</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/functions.js"></script>
+    <script src="assets/tips.js"></script>
+</body>
+</html>

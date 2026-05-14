@@ -1,0 +1,14 @@
+{
+  "API": "Application Programming Interface - Um conjunto de regras que permite que diferentes softwares se comuniquem.",
+  "Frontend": "A parte de um site ou aplicação que o utilizador vê e interage.",
+  "Backend": "A parte de um site que lida com dados, servidores e lógica de negócio.",
+  "Framework": "Uma estrutura de código pré-pronta que ajuda a construir aplicações mais rápido.",
+  "Git": "Um sistema de controle de versão para rastrear mudanças no código.",
+  "Responsive Design": "Web design que faz as páginas renderizarem bem em vários dispositivos e tamanhos de tela.",
+  "Fullstack": "Desenvolvedor que trabalha tanto no Frontend quanto no Backend.",
+  "DOM": "Document Object Model - Uma representação da estrutura de uma página web.",
+  "Junior Dev": "Desenvolvedor em início de carreira, focado em aprender e resolver tarefas simples.",
+  "Senior Dev": "Desenvolvedor experiente que projeta sistemas complexos e mentora outros devs.",
+  "CRUD": "Create, Read, Update, Delete - As quatro operações básicas de um banco de dados.",
+  "Docker": "Uma plataforma que permite empacotar uma aplicação com todas as suas dependências em um container."
+}

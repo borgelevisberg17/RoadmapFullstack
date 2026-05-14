@@ -42,36 +42,85 @@ function loadRoadmap(id) {
     if (!contentArea) return;
     contentArea.innerHTML = '';
 
-    roadmap.steps.forEach(step => {
-        const card = document.createElement('div');
-        card.className = 'category-card';
+    if (roadmap.levels) {
+        for (const levelKey in roadmap.levels) {
+            const level = roadmap.levels[levelKey];
+            const levelSection = document.createElement('div');
+            levelSection.className = 'level-section';
+            levelSection.innerHTML = `<h2 style="margin: 20px 0; border-bottom: 2px solid var(--primary-color); padding-bottom: 5px;">${level.title}</h2>`;
 
-        let itemsHtml = '';
-        step.items.forEach(item => {
-            const isChecked = getProgress(id, item);
-            const count = getLearningCount(item);
-            itemsHtml += `
-                <div class="tech-tag-container" style="display: flex; align-items: center; gap: 5px; margin-bottom: 5px;">
-                    <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleProgress('${id}', '${item}', this.checked)">
-                    <a href="javascript:void(0)" class="tech-tag" onclick="showResources('${item}')">
-                        ${item}
-                    </a>
-                    <button class="btn btn-outline" style="padding: 2px 5px; font-size: 0.6rem;" onclick="incrementLearning('${item}')">
-                        <i class='bx bx-user-plus'></i> Estou aprendendo
-                    </button>
-                    <span class="learning-count" id="count-${item.replace(/[^a-zA-Z0-9]/g, '')}">${count} estudando</span>
+            const levelGrid = document.createElement('div');
+            levelGrid.className = 'roadmap-grid';
+
+            level.steps.forEach(step => {
+                const card = document.createElement('div');
+                card.className = 'category-card';
+
+                let itemsHtml = '';
+                step.items.forEach(item => {
+                    const isChecked = getProgress(id, item);
+                    const count = getLearningCount(item);
+                    itemsHtml += `
+                        <div class="tech-tag-container" style="display: flex; align-items: center; gap: 5px; margin-bottom: 5px;">
+                            <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleProgress('${id}', '${item}', this.checked)">
+                            <a href="javascript:void(0)" class="tech-tag" onclick="showResources('${item}')">
+                                ${item}
+                            </a>
+                            <button class="btn btn-outline" style="padding: 2px 5px; font-size: 0.6rem;" onclick="incrementLearning('${item}')">
+                                <i class='bx bx-user-plus'></i> Estou aprendendo
+                            </button>
+                            <span class="learning-count" id="count-${item.replace(/[^a-zA-Z0-9]/g, '')}">${count} estudando</span>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3>${step.category}</h3>
+                        ${step.project ? `<i class='bx bx-briefcase' title="Projeto Sugerido" style="color: var(--primary-color); cursor: help;" onclick="alert('Projeto Sugerido: ${step.project}')"></i>` : ''}
+                    </div>
+                    <div class="tech-items" style="flex-direction: column; align-items: flex-start;">
+                        ${itemsHtml}
+                    </div>
+                `;
+                levelGrid.appendChild(card);
+            });
+            levelSection.appendChild(levelGrid);
+            contentArea.appendChild(levelSection);
+        }
+    } else if (roadmap.steps) {
+        // Fallback for old format
+        roadmap.steps.forEach(step => {
+            const card = document.createElement('div');
+            card.className = 'category-card';
+
+            let itemsHtml = '';
+            step.items.forEach(item => {
+                const isChecked = getProgress(id, item);
+                const count = getLearningCount(item);
+                itemsHtml += `
+                    <div class="tech-tag-container" style="display: flex; align-items: center; gap: 5px; margin-bottom: 5px;">
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleProgress('${id}', '${item}', this.checked)">
+                        <a href="javascript:void(0)" class="tech-tag" onclick="showResources('${item}')">
+                            ${item}
+                        </a>
+                        <button class="btn btn-outline" style="padding: 2px 5px; font-size: 0.6rem;" onclick="incrementLearning('${item}')">
+                            <i class='bx bx-user-plus'></i> Estou aprendendo
+                        </button>
+                        <span class="learning-count" id="count-${item.replace(/[^a-zA-Z0-9]/g, '')}">${count} estudando</span>
+                    </div>
+                `;
+            });
+
+            card.innerHTML = `
+                <h3>${step.category}</h3>
+                <div class="tech-items" style="flex-direction: column; align-items: flex-start;">
+                    ${itemsHtml}
                 </div>
             `;
+            contentArea.appendChild(card);
         });
-
-        card.innerHTML = `
-            <h3>${step.category}</h3>
-            <div class="tech-items" style="flex-direction: column; align-items: flex-start;">
-                ${itemsHtml}
-            </div>
-        `;
-        contentArea.appendChild(card);
-    });
+    }
 }
 
 function toggleTheme() {

@@ -83,6 +83,9 @@
         <div class="nav-links">
             <a href="index.html">Roadmaps</a>
             <a href="forum.html">Fórum</a>
+            <a href="preparacao.html">Preparação</a>
+            <a href="glossario.html">Glossário</a>
+            <a href="contribuir.html">Contribuir</a>
         </div>
         <button class="theme-toggle" onclick="toggleTheme()">
             <i class='bx bx-moon'></i>
@@ -102,6 +105,15 @@
                 <input type="text" id="post-title" placeholder="Ex: Como centralizar uma div?">
             </div>
             <div class="form-group">
+                <label>Categoria</label>
+                <select id="post-category" style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 3px; background: var(--bg-light); color: var(--text-light);">
+                    <option value="Dúvida Técnica">Dúvida Técnica</option>
+                    <option value="Dica / Tutorial">Dica / Tutorial</option>
+                    <option value="Carreira">Carreira</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label>Sua dúvida em detalhes</label>
                 <textarea id="post-content" rows="5"></textarea>
             </div>
@@ -116,5 +128,6 @@
 
     <script src="assets/functions.js"></script>
     <script src="assets/forum.js"></script>
+    <script src="assets/tips.js"></script>
 </body>
 </html>

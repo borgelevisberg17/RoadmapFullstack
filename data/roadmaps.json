@@ -2,109 +2,110 @@
   "fullstack": {
     "title": "Fullstack Developer",
     "description": "Domine tanto o frontend quanto o backend.",
-    "steps": [
-      {
-        "category": "Frontend Fundamentos",
-        "items": ["HTML5", "CSS3", "JavaScript"]
+    "levels": {
+      "junior": {
+        "title": "Junior level",
+        "steps": [
+          {
+            "category": "Frontend Fundamentos",
+            "items": ["HTML5", "CSS3", "JavaScript"],
+            "project": "Crie um portfólio pessoal estático."
+          },
+          {
+            "category": "Backend Básico",
+            "items": ["Node.js", "Express", "SQL Básico"],
+            "project": "Crie uma API de lista de tarefas (CRUD)."
+          }
+        ]
       },
-      {
-        "category": "Frontend Avançado",
-        "items": ["React.js", "Vue.js", "State Management"]
+      "middle": {
+        "title": "Middle level",
+        "steps": [
+          {
+            "category": "Frontend Frameworks",
+            "items": ["React.js", "State Management", "Tailwind CSS"],
+            "project": "Crie um Dashboard de Finanças consumindo sua própria API."
+          },
+          {
+            "category": "Arquitetura & Bancos",
+            "items": ["PostgreSQL Avançado", "Auth JWT", "REST APIs"],
+            "project": "Sistema de autenticação completo com login social."
+          }
+        ]
       },
-      {
-        "category": "Backend Fundamentos",
-        "items": ["Node.js", "Express", "PostgreSQL"]
-      },
-      {
-        "category": "DevOps",
-        "items": ["Docker", "CI/CD", "AWS"]
+      "senior": {
+        "title": "Senior level",
+        "steps": [
+          {
+            "category": "Escalabilidade & DevOps",
+            "items": ["Docker", "Kubernetes", "CI/CD Pipelines", "AWS/GCP"],
+            "project": "Deploy escalável de uma aplicação microservices."
+          },
+          {
+            "category": "Qualidade & Soft Skills",
+            "items": ["Testes Unitários/E2E", "Arquitetura Clean", "Liderança Técnica"],
+            "project": "Refatore um sistema legado para Clean Architecture."
+          }
+        ]
       }
-    ]
+    }
   },
   "frontend": {
     "title": "Frontend Developer",
     "description": "Foque na interface e experiência do usuário.",
-    "steps": [
-      {
-        "category": "Básico",
-        "items": ["HTML", "CSS", "JavaScript"]
+    "levels": {
+      "junior": {
+        "title": "Junior level",
+        "steps": [
+          {
+            "category": "Fundamentos",
+            "items": ["HTML", "CSS", "JavaScript Moderno"],
+            "project": "Recrie a landing page de um serviço popular."
+          }
+        ]
       },
-      {
-        "category": "Estilização",
-        "items": ["SASS", "Tailwind CSS", "Bootstrap"]
-      },
-      {
-        "category": "Frameworks",
-        "items": ["React", "Vue", "Angular"]
+      "middle": {
+        "title": "Middle level",
+        "steps": [
+          {
+            "category": "Frameworks & Tooling",
+            "items": ["React", "TypeScript", "Vite", "SASS"],
+            "project": "Desenvolva um E-commerce funcional (Carrinho, Filtros)."
+          }
+        ]
       }
-    ]
+    }
   },
   "backend": {
     "title": "Backend Developer",
-    "description": "Foque na lógica, banco de dados e APIs.",
-    "steps": [
-      {
-        "category": "Linguagens",
-        "items": ["Node.js", "Python", "Go", "Java"]
-      },
-      {
-        "category": "Bancos de Dados",
-        "items": ["PostgreSQL", "MongoDB", "Redis"]
-      },
-      {
-        "category": "APIs",
-        "items": ["REST", "GraphQL", "gRPC"]
+    "description": "Lógica, banco de dados e APIs robustas.",
+    "levels": {
+      "junior": {
+        "title": "Junior level",
+        "steps": [
+          {
+            "category": "Linguagens",
+            "items": ["Node.js", "Python", "SQL"],
+            "project": "Sistema de Blog com comentários."
+          }
+        ]
       }
-    ]
+    }
   },
   "mobile": {
     "title": "Mobile Developer",
-    "description": "Desenvolva aplicativos para Android e iOS.",
-    "steps": [
-      {
-        "category": "Cross-Platform",
-        "items": ["React Native", "Flutter"]
-      },
-      {
-        "category": "Nativo",
-        "items": ["Swift (iOS)", "Kotlin (Android)"]
+    "description": "Apps nativos e cross-platform.",
+    "levels": {
+      "junior": {
+        "title": "Junior level",
+        "steps": [
+          {
+            "category": "Frameworks",
+            "items": ["React Native", "Flutter"],
+            "project": "App de previsão do tempo."
+          }
+        ]
       }
-    ]
-  },
-  "cybersecurity": {
-    "title": "Cybersecurity",
-    "description": "Proteja sistemas e redes contra ataques.",
-    "steps": [
-      {
-        "category": "Fundamentos",
-        "items": ["Redes de Computadores", "Sistemas Operacionais", "Criptografia"]
-      },
-      {
-        "category": "Segurança Ofensiva",
-        "items": ["Pentesting", "Web Hacking", "Exploitation"]
-      },
-      {
-        "category": "Segurança Defensiva",
-        "items": ["SOC", "Incident Response", "Forensics"]
-      }
-    ]
-  },
-  "datascience": {
-    "title": "Data Science",
-    "description": "Analise dados e extraia conhecimento.",
-    "steps": [
-      {
-        "category": "Matemática & Estatística",
-        "items": ["Álgebra Linear", "Cálculo", "Probabilidade"]
-      },
-      {
-        "category": "Programação",
-        "items": ["Python", "R", "SQL"]
-      },
-      {
-        "category": "Machine Learning",
-        "items": ["Scikit-Learn", "TensorFlow", "Pandas"]
-      }
-    ]
+    }
   }
 }
