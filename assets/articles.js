@@ -24,14 +24,22 @@ async function loadArticles() {
     }
 }
 
+function calculateReadingTime(text) {
+    const wordsPerMinute = 200;
+    const noOfWords = text.split(/\s/g).length;
+    const minutes = noOfWords / wordsPerMinute;
+    const readTime = Math.ceil(minutes);
+    return `${readTime} min de leitura`;
+}
+
 function renderArticles() {
-    const grid = document.getElementById('article-grid');
+    const list = document.getElementById('article-list');
     const controls = document.getElementById('pagination-controls');
     const searchInput = document.getElementById('article-search');
     const displayArea = document.getElementById('article-display-area');
     const viewArea = document.getElementById('article-view');
 
-    if (!grid) return;
+    if (!list) return;
 
     displayArea.style.display = 'block';
     viewArea.style.display = 'none';
@@ -47,29 +55,39 @@ function renderArticles() {
     const paginated = filtered.slice(startIndex, startIndex + articlesPerPage);
     const totalPages = Math.ceil(filtered.length / articlesPerPage);
 
-    grid.innerHTML = '';
+    list.innerHTML = '';
     if (paginated.length === 0) {
-        grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; opacity: 0.6; padding: 40px;">Nenhum artigo encontrado.</p>';
+        list.innerHTML = '<p style="text-align: center; opacity: 0.6; padding: 40px;">Nenhum artigo encontrado.</p>';
     } else {
         paginated.forEach(article => {
-            const card = document.createElement('div');
-            card.className = 'category-card';
-            card.style.cursor = 'pointer';
-            card.innerHTML = `
-                <h3 style="color: var(--primary-color);">${article.title}</h3>
-                <p style="font-size: 0.85rem; margin-top: 10px; opacity: 0.7;">
-                    ${article.content.substring(0, 120).replace(/[#*`]/g, '')}...
-                </p>
-                <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; opacity: 0.6;">
-                    <span>Por ${article.author}</span>
-                    <span>${article.date}</span>
+            const readingTime = calculateReadingTime(article.content);
+            const excerpt = article.content.substring(0, 180).replace(/[#*`]/g, '') + '...';
+
+            const item = document.createElement('div');
+            item.className = 'question-summary';
+            item.style.cursor = 'pointer';
+            item.innerHTML = `
+                <div class="question-content-summary" style="padding-left: 0;">
+                    <a href="?id=${article.id}" class="question-summary-title" onclick="event.preventDefault(); showArticle('${article.id}')">${article.title}</a>
+                    <div class="question-summary-excerpt">${excerpt}</div>
+                    <div class="question-summary-meta">
+                        <div class="question-tags">
+                            ${(article.tags || ['Artigo']).map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="user-card">
+                            <span class="username">Por ${article.author}</span>
+                            <span class="date">${article.date} • ${readingTime}</span>
+                        </div>
+                    </div>
                 </div>
             `;
-            card.onclick = () => {
-                showArticle(article.id);
-                window.scrollTo(0, 0);
+            item.onclick = (e) => {
+                if (e.target.tagName !== 'A') {
+                    showArticle(article.id);
+                    window.scrollTo(0, 0);
+                }
             };
-            grid.appendChild(card);
+            list.appendChild(item);
         });
     }
 
@@ -101,7 +119,12 @@ function parseMarkdown(text) {
     const codeBlocks = [];
     html = html.replace(/```(javascript|typescript|bash|css|html|sql|php|python|json|yaml|dockerfile)\n([\s\S]*?)\n```/g, (match, lang, code) => {
         const placeholder = `__CODE_BLOCK_${codeBlocks.length}__`;
-        codeBlocks.push(`<pre><code class="language-${lang}">${code}</code></pre>`);
+        codeBlocks.push(`
+            <div class="code-container" style="position: relative;">
+                <button onclick="copyCode(this)" style="position: absolute; right: 10px; top: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 3px; cursor: pointer; font-size: 0.7rem; padding: 2px 5px;">Copiar</button>
+                <pre><code class="language-${lang}">${code}</code></pre>
+            </div>
+        `);
         return placeholder;
     });
 
@@ -151,52 +174,36 @@ function showArticle(id) {
     viewArea.style.display = 'block';
 
     let formattedContent = parseMarkdown(article.content);
-
-    const otherArticles = articlesData.filter(a => a.id !== id).slice(0, 3);
-    let suggestionsHtml = '';
-    if (otherArticles.length > 0) {
-        suggestionsHtml = `
-            <div style="margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--primary-color);">
-                <h3>Leia também:</h3>
-                <div class="roadmap-grid" style="margin-top: 20px;">
-                    ${otherArticles.map(a => `
-                        <div class="category-card" style="cursor: pointer;" onclick="showArticle('${a.id}'); window.scrollTo(0,0);">
-                            <h4>${a.title}</h4>
-                            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.8;">${a.author}</p>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-    }
+    const readingTime = calculateReadingTime(article.content);
 
     content.innerHTML = `
         <article class="article-body">
-            <header class="hero-section">
-                <h1>${article.title}</h1>
-                <p style="font-size: 0.9rem; opacity: 0.7;">Por ${article.author} em ${article.date}</p>
+            <header style="margin-bottom: 30px;">
+                <h1 style="font-size: 2.5rem; line-height: 1.2; margin-bottom: 15px;">${article.title}</h1>
+                <div style="display: flex; align-items: center; gap: 15px; color: #6a737c; font-size: 0.9rem;">
+                    <span style="display: flex; align-items: center; gap: 5px;"><i class='bx bx-user'></i> ${article.author}</span>
+                    <span style="display: flex; align-items: center; gap: 5px;"><i class='bx bx-calendar'></i> ${article.date}</span>
+                    <span style="display: flex; align-items: center; gap: 5px;"><i class='bx bx-time-five'></i> ${readingTime}</span>
+                </div>
             </header>
 
             <div style="margin-top: 30px;">
                 ${formattedContent}
             </div>
 
-            <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color);">
-                <h4>Fontes e Referências:</h4>
-                <ul>
+            <div style="margin-top: 50px; padding: 25px; background: #fdf7e2; border: 1px solid #f1e5bc; border-radius: 3px;">
+                <h4 style="margin-bottom: 15px; display: flex; align-items: center; gap: 8px;"><i class='bx bx-link-external'></i> Referências e Links</h4>
+                <ul style="font-size: 0.9rem; margin-bottom: 20px;">
                     ${article.sources.map(s => `<li>${s}</li>`).join('')}
                 </ul>
-                <div style="margin-top: 20px;">
-                    <h4>Links Úteis:</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                        ${article.links.map(l => `<a href="${l.url}" target="_blank" class="btn btn-outline">${l.text}</a>`).join('')}
-                    </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    ${article.links.map(l => `<a href="${l.url}" target="_blank" class="btn btn-outline" style="background: #fff;">${l.text}</a>`).join('')}
                 </div>
             </div>
-
-            ${suggestionsHtml}
         </article>
     `;
+
+    loadRelatedQuestions(article.tags || []);
 }
 
 function backToList() {
@@ -204,6 +211,38 @@ function backToList() {
     url.searchParams.delete('id');
     window.history.pushState({}, '', url);
     renderArticles();
+    document.getElementById('related-questions-widget').style.display = 'none';
+}
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling.innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = 'Copiado!';
+        setTimeout(() => btn.innerText = originalText, 2000);
+    });
+}
+
+function loadRelatedQuestions(tags) {
+    const forumPosts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
+    const related = forumPosts.filter(p =>
+        p.tags.some(t => tags.includes(t))
+    ).slice(0, 5);
+
+    const widget = document.getElementById('related-questions-widget');
+    const list = document.getElementById('related-questions-list');
+
+    if (related.length > 0) {
+        widget.style.display = 'block';
+        list.innerHTML = related.map(p => `
+            <li style="margin-bottom: 12px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 8px;">
+                <a href="forum.html?post=${p.id}" style="text-decoration: none; color: var(--link-color); display: block; margin-bottom: 3px;">${p.title}</a>
+                <div style="font-size: 0.75rem; color: #6a737c;">${p.answers.length} respostas • ${p.votes} votos</div>
+            </li>
+        `).join('');
+    } else {
+        widget.style.display = 'none';
+    }
 }
 
 window.addEventListener('DOMContentLoaded', loadArticles);

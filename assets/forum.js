@@ -6,32 +6,63 @@ function escapeHTML(str) {
 
 const seedPosts = [
     {
+        id: 'p1',
         title: "Como começar com React em 2024?",
-        content: "Tenho uma base boa de HTML/CSS e JS básico. Qual o melhor caminho para aprender React agora?",
+        content: "Tenho uma base boa de HTML/CSS e JS básico. Qual o melhor caminho para aprender React agora? Devo ir direto para Next.js ou focar no React puro primeiro?",
         category: "Dúvida Técnica",
-        date: "20/05/2024",
+        tags: ["react", "frontend", "iniciante"],
+        author: "DevAnon",
+        reputation: 42,
+        date: "2024-05-20T10:00:00Z",
+        votes: 15,
+        views: 245,
         answers: [
-            { content: "Comece pela documentação oficial (react.dev). É excelente e muito moderna!", votes: 5, date: "21/05/2024" },
-            { content: "Pratique criando pequenos componentes antes de ir para frameworks como Next.js.", votes: 3, date: "22/05/2024" }
+            { id: 'a1', content: "Comece pela documentação oficial (react.dev). É excelente e muito moderna! Foque nos hooks básicos antes de pular para frameworks.", votes: 5, date: "2024-05-21T09:30:00Z", accepted: true, author: "CodeMaster", reputation: 1250 },
+            { id: 'a2', content: "Pratique criando pequenos componentes antes de ir para frameworks como Next.js. O entendimento da renderização é fundamental.", votes: 3, date: "2024-05-22T14:20:00Z", accepted: false, author: "ReactNinja", reputation: 85 }
         ]
     },
     {
+        id: 'p2',
         title: "Dica: Extensões essenciais para VS Code",
-        content: "Minhas favoritas são: Prettier, ESLint, GitLens e Auto Rename Tag. Ajudam muito na produtividade!",
+        content: "Minhas favoritas são: Prettier, ESLint, GitLens e Auto Rename Tag. Ajudam muito na produtividade! Esqueci de alguma essencial?",
         category: "Dica / Tutorial",
-        date: "22/05/2024",
+        tags: ["vscode", "produtividade", "ferramentas"],
+        author: "ToolSmith",
+        reputation: 156,
+        date: "2024-05-22T16:45:00Z",
+        votes: 8,
+        views: 112,
         answers: []
     },
     {
+        id: 'p3',
         title: "Vale a pena fazer faculdade de TI?",
-        content: "Estou na dúvida se foco em cursos online ou se entro em uma graduação. O que acham?",
+        content: "Estou na dúvida se foco em cursos online ou se entro em uma graduação. O que acham do mercado atual em relação a diploma?",
         category: "Carreira",
-        date: "24/05/2024",
+        tags: ["carreira", "faculdade", "mercado"],
+        author: "FutureDev",
+        reputation: 12,
+        date: "2024-05-24T11:20:00Z",
+        votes: 22,
+        views: 560,
         answers: [
-            { content: "A faculdade ajuda muito no networking e estágio. Os cursos dão a base técnica rápida.", votes: 12, date: "24/05/2024" }
+            { id: 'a3', content: "A faculdade ajuda muito no networking e estágio. Os cursos dão a base técnica rápida. Se tiver tempo e recurso, faça os dois.", votes: 12, date: "2024-05-24T15:00:00Z", accepted: false, author: "SeniorEng", reputation: 3400 }
         ]
     }
 ];
+
+function getRelativeTime(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffInSeconds = Math.floor((now - date) / 1000);
+
+    if (diffInSeconds < 60) return 'agora há pouco';
+    if (diffInSeconds < 3600) return `há ${Math.floor(diffInSeconds / 60)} min`;
+    if (diffInSeconds < 86400) return `há ${Math.floor(diffInSeconds / 3600)} horas`;
+    if (diffInSeconds < 2592000) return `há ${Math.floor(diffInSeconds / 86400)} dias`;
+
+    return date.toLocaleDateString();
+}
 
 function loadPosts() {
     let posts = JSON.parse(localStorage.getItem('forumPosts'));
@@ -43,68 +74,195 @@ function loadPosts() {
 
     const filterCategory = document.getElementById('filter-category')?.value || 'Tudo';
     const container = document.getElementById('forum-posts');
+    const questionsCountEl = document.getElementById('questions-count');
+    const questionView = document.getElementById('question-view');
+
     if (!container) return;
-    container.innerHTML = '';
+
+    // Switch view if ID in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('post');
+
+    if (postId) {
+        showPost(postId);
+        return;
+    }
+
+    container.style.display = 'block';
+    questionView.style.display = 'none';
+    document.getElementById('forum-title').textContent = 'Todas as Perguntas';
 
     const filteredPosts = posts.filter(post =>
         filterCategory === 'Tudo' || post.category === filterCategory
     );
 
+    if (questionsCountEl) {
+        questionsCountEl.textContent = `${filteredPosts.length} pergunta${filteredPosts.length !== 1 ? 's' : ''}`;
+    }
+
+    container.innerHTML = '';
+
     if (filteredPosts.length === 0) {
-        container.innerHTML = '<p style="text-align: center; opacity: 0.6;">Nenhuma pergunta encontrada nesta categoria.</p>';
+        container.innerHTML = '<p style="text-align: center; opacity: 0.6; padding: 40px;">Nenhuma pergunta encontrada nesta categoria.</p>';
         return;
     }
 
     [...filteredPosts].reverse().forEach((post) => {
-        // Find original index for voting/replies to work
-        const originalIndex = posts.findIndex(p => p.title === post.title && p.date === post.date);
-        const card = document.createElement('div');
-        card.className = 'question-card';
-
-        let answersHtml = '';
-        post.answers.forEach((answer, aIndex) => {
-            answersHtml += `
-                <div class="answer">
-                    <div style="display: flex; gap: 10px; align-items: flex-start;">
-                        <div style="display: flex; flex-direction: column; align-items: center; min-width: 30px;">
-                            <i class='bx bx-chevron-up' style="cursor: pointer; font-size: 1.5rem;" onclick="voteAnswer(${originalIndex}, ${aIndex}, 1)"></i>
-                            <span>${answer.votes || 0}</span>
-                            <i class='bx bx-chevron-down' style="cursor: pointer; font-size: 1.5rem;" onclick="voteAnswer(${originalIndex}, ${aIndex}, -1)"></i>
-                        </div>
-                        <div style="flex-grow: 1;">
-                            <p>${escapeHTML(answer.content)}</p>
-                            <small style="opacity: 0.6;">Respondido anonimamente em ${escapeHTML(answer.date)}</small>
-                        </div>
-                    </div>
+        const hasAccepted = post.answers.some(a => a.accepted);
+        const statsHtml = `
+            <div class="question-stats">
+                <div class="stat-votes"><span class="stat-count">${post.votes || 0}</span> votos</div>
+                <div class="stat-answers ${post.answers.length > 0 ? 'has-answers' : ''} ${hasAccepted ? 'is-accepted' : ''}">
+                    <span class="stat-count">${post.answers.length}</span> respostas
                 </div>
-            `;
-        });
-
-        card.innerHTML = `
-            <div class="question-header">
-                <span><i class='bx bx-tag-alt'></i> ${escapeHTML(post.category || 'Geral')}</span>
-                <span>${escapeHTML(post.date)}</span>
+                <div class="stat-views">${post.views || 0} visualizações</div>
             </div>
-            <a href="javascript:void(0)" class="question-title">${escapeHTML(post.title)}</a>
-            <p>${escapeHTML(post.content)}</p>
+        `;
 
-            <div class="answer-box">
-                <div id="answers-${originalIndex}">
-                    ${answersHtml}
-                </div>
-                <div class="form-group" style="margin-top: 15px; display: flex; gap: 10px;">
-                    <input type="text" id="reply-input-${originalIndex}" placeholder="Escreva uma resposta anônima..." style="flex-grow: 1;">
-                    <button class="btn" onclick="submitReply(${originalIndex})" style="padding: 5px 15px;">Responder</button>
+        const tagsHtml = (post.tags || []).map(tag => `<span class="tech-tag">${tag}</span>`).join('');
+
+        const card = document.createElement('div');
+        card.className = 'question-summary';
+        card.innerHTML = `
+            ${statsHtml}
+            <div class="question-content-summary">
+                <a href="?post=${post.id}" class="question-summary-title" onclick="event.preventDefault(); showPost('${post.id}')">${escapeHTML(post.title)}</a>
+                <div class="question-summary-excerpt">${escapeHTML(post.content)}</div>
+                <div class="question-summary-meta">
+                    <div class="question-tags">${tagsHtml}</div>
+                    <div class="user-card">
+                        <span class="username">${escapeHTML(post.author || 'Anônimo')}</span>
+                        <span class="reputation">${post.reputation || 1}</span>
+                        <span class="date">perguntou ${getRelativeTime(post.date)}</span>
+                    </div>
                 </div>
             </div>
         `;
         container.appendChild(card);
     });
+
+    updateForumStats(posts);
+}
+
+function showPost(id) {
+    const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
+    const post = posts.find(p => p.id === id);
+    if (!post) {
+        backToForum();
+        return;
+    }
+
+    // Increment views
+    post.views = (post.views || 0) + 1;
+    localStorage.setItem('forumPosts', JSON.stringify(posts));
+
+    // Update URL
+    const url = new URL(window.location);
+    url.searchParams.set('post', id);
+    window.history.pushState({}, '', url);
+
+    const container = document.getElementById('forum-posts');
+    const questionView = document.getElementById('question-view');
+    const content = document.getElementById('single-post-container');
+    const titleEl = document.getElementById('forum-title');
+
+    container.style.display = 'none';
+    questionView.style.display = 'block';
+    titleEl.textContent = post.title;
+
+    let answersHtml = '';
+    post.answers.sort((a, b) => (b.votes || 0) - (a.votes || 0)).forEach(answer => {
+        answersHtml += `
+            <div class="answer-item">
+                <div class="post-layout">
+                    <div class="voter">
+                        <i class='bx bxs-up-arrow' onclick="voteAnswer('${post.id}', '${answer.id}', 1)"></i>
+                        <span class="vote-count">${answer.votes || 0}</span>
+                        <i class='bx bxs-down-arrow' onclick="voteAnswer('${post.id}', '${answer.id}', -1)"></i>
+                        ${answer.accepted ? "<i class='bx bxs-check-circle' style='color: #5eba7d; font-size: 2rem; margin-top: 10px;'></i>" : ""}
+                    </div>
+                    <div class="post-text">
+                        <p>${escapeHTML(answer.content)}</p>
+                        <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+                            <div class="user-card" style="background: #e1ecf4; padding: 10px; border-radius: 3px;">
+                                <div>
+                                    <span style="font-size: 0.7rem; display: block; margin-bottom: 3px;">respondido ${getRelativeTime(answer.date)}</span>
+                                    <span class="username">${escapeHTML(answer.author || 'Anônimo')}</span>
+                                    <span class="reputation">${answer.reputation || 1}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    content.innerHTML = `
+        <div class="post-view">
+            <div style="font-size: 0.85rem; color: #6a737c; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; display: flex; gap: 15px;">
+                <span>Perguntado <strong>${getRelativeTime(post.date)}</strong></span>
+                <span>Visualizada <strong>${post.views} vezes</strong></span>
+            </div>
+
+            <div class="post-layout" style="border-bottom: 1px solid var(--border-color); padding-bottom: 30px;">
+                <div class="voter">
+                    <i class='bx bxs-up-arrow' onclick="votePost('${post.id}', 1)"></i>
+                    <span class="vote-count">${post.votes || 0}</span>
+                    <i class='bx bxs-down-arrow' onclick="votePost('${post.id}', -1)"></i>
+                </div>
+                <div class="post-text">
+                    <p>${escapeHTML(post.content)}</p>
+                    <div class="question-tags" style="margin-top: 20px;">
+                        ${(post.tags || []).map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+                        <div class="user-card" style="background: #e1ecf4; padding: 10px; border-radius: 3px;">
+                            <div>
+                                <span style="font-size: 0.7rem; display: block; margin-bottom: 3px;">perguntado ${getRelativeTime(post.date)}</span>
+                                <span class="username">${escapeHTML(post.author || 'Anônimo')}</span>
+                                <span class="reputation">${post.reputation || 1}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h3 style="margin-bottom: 20px; font-weight: 400; font-size: 1.3rem;">${post.answers.length} Resposta${post.answers.length !== 1 ? 's' : ''}</h3>
+                ${answersHtml}
+            </div>
+
+            <div style="margin-top: 40px;">
+                <h3 style="margin-bottom: 15px; font-weight: 400;">Sua Resposta</h3>
+                <textarea id="reply-content" rows="8" style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 3px;"></textarea>
+                <button class="btn" style="margin-top: 15px;" onclick="submitReply('${post.id}')">Publicar sua resposta</button>
+            </div>
+        </div>
+    `;
+}
+
+function backToForum() {
+    const url = new URL(window.location);
+    url.searchParams.delete('post');
+    window.history.pushState({}, '', url);
+    loadPosts();
 }
 
 function togglePostForm() {
     const form = document.getElementById('post-form');
-    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    const postsList = document.getElementById('forum-posts');
+    const stats = document.querySelector('.forum-filters');
+
+    if (form.style.display === 'none') {
+        form.style.display = 'block';
+        postsList.style.display = 'none';
+        stats.style.display = 'none';
+    } else {
+        form.style.display = 'none';
+        postsList.style.display = 'block';
+        stats.style.display = 'flex';
+    }
 }
 
 function submitPost() {
@@ -113,52 +271,106 @@ function submitPost() {
     const category = document.getElementById('post-category').value;
 
     if (!title || !content) {
-        alert("Preencha todos os campos!");
+        alert("Preencha o título e o conteúdo!");
         return;
     }
 
     const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
-    posts.push({
+    const newPost = {
+        id: 'p' + Date.now(),
         title,
         content,
         category,
-        date: new Date().toLocaleDateString(),
+        tags: [category.toLowerCase()],
+        author: "DevAnon",
+        reputation: 1,
+        date: new Date().toISOString(),
+        votes: 0,
+        views: 0,
         answers: []
-    });
+    };
 
+    posts.push(newPost);
     localStorage.setItem('forumPosts', JSON.stringify(posts));
 
-    // Clear and hide
+    // Clear
     document.getElementById('post-title').value = '';
     document.getElementById('post-content').value = '';
+
     togglePostForm();
     loadPosts();
 }
 
-function submitReply(postIndex) {
-    const input = document.getElementById(`reply-input-${postIndex}`);
-    const content = input.value;
-
+function submitReply(postId) {
+    const content = document.getElementById('reply-content').value;
     if (!content) return;
 
     const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
+    const postIndex = posts.findIndex(p => p.id === postId);
+
+    if (postIndex === -1) return;
+
     posts[postIndex].answers.push({
+        id: 'a' + Date.now(),
         content,
         votes: 0,
-        date: new Date().toLocaleDateString()
+        date: new Date().toISOString(),
+        author: "RespondedorAnon",
+        reputation: 1,
+        accepted: false
     });
 
     localStorage.setItem('forumPosts', JSON.stringify(posts));
-    input.value = '';
-    loadPosts();
+    showPost(postId);
 }
 
-function voteAnswer(postIndex, answerIndex, delta) {
+function votePost(postId, delta) {
     const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
-    const answer = posts[postIndex].answers[answerIndex];
-    answer.votes = (answer.votes || 0) + delta;
-    localStorage.setItem('forumPosts', JSON.stringify(posts));
-    loadPosts();
+    const post = posts.find(p => p.id === postId);
+    if (post) {
+        post.votes = (post.votes || 0) + delta;
+        localStorage.setItem('forumPosts', JSON.stringify(posts));
+        showPost(postId);
+    }
+}
+
+function voteAnswer(postId, answerId, delta) {
+    const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
+    const post = posts.find(p => p.id === postId);
+    if (post) {
+        const answer = post.answers.find(a => a.id === answerId);
+        if (answer) {
+            answer.votes = (answer.votes || 0) + delta;
+            localStorage.setItem('forumPosts', JSON.stringify(posts));
+            showPost(postId);
+        }
+    }
+}
+
+function updateForumStats(posts) {
+    const statsContainer = document.getElementById('forum-stats');
+    if (!statsContainer) return;
+
+    const totalQuestions = posts.length;
+    const totalAnswers = posts.reduce((sum, p) => sum + p.answers.length, 0);
+    const resolvedCount = posts.filter(p => p.answers.some(a => a.accepted)).length;
+
+    statsContainer.innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                <span>Total de Perguntas:</span>
+                <strong>${totalQuestions}</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                <span>Total de Respostas:</span>
+                <strong>${totalAnswers}</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                <span>Resolvidas:</span>
+                <strong style="color: #5eba7d;">${resolvedCount}</strong>
+            </div>
+        </div>
+    `;
 }
 
 window.addEventListener('DOMContentLoaded', () => {

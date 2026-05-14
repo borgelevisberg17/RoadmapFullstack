@@ -25,34 +25,69 @@
         </button>
     </nav>
 
-    <div class="container" style="display: block; max-width: 1000px;">
-        <header style="text-align: center; margin-bottom: 30px; padding: 24px 0;">
-            <section class="hero-section" style="border: none; padding: 0;">
-                <h1>Publicações e Artigos</h1>
-                <p>Explore conhecimentos sobre IA, Computação Quântica, Desenvolvimento e Carreira.</p>
-            </section>
-            <div style="margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                <input type="text" id="article-search" placeholder="Pesquisar artigos..." style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 5px; background: var(--bg-light); color: var(--text-light);">
-            </div>
-        </header>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Navegação</h3>
+            <ul>
+                <li><a href="index.html" style="text-decoration: none; color: inherit;"><i class='bx bx-map'></i> Roadmaps</a></li>
+                <li class="active"><a href="artigos.html" style="text-decoration: none; color: inherit;"><i class='bx bx-news'></i> Artigos</a></li>
+                <li><a href="forum.html" style="text-decoration: none; color: inherit;"><i class='bx bx-question-mark'></i> Fórum</a></li>
+            </ul>
+        </aside>
 
-        <div id="article-display-area">
-            <div id="article-grid" class="roadmap-grid">
-                <!-- Article cards load here -->
-            </div>
-            <div id="pagination-controls" style="margin-top: 30px; display: flex; justify-content: center; gap: 10px; padding-bottom: 40px;">
-                <!-- Pagination buttons load here -->
-            </div>
-        </div>
+        <main class="content-area" style="border-left: 1px solid var(--border-color); max-width: 100%;">
+            <header class="hero-section" style="border: none; padding-bottom: 0;">
+                <h1>Artigos e Publicações</h1>
+                <p style="color: #6a737c;">Conhecimento aprofundado para sua carreira tech.</p>
 
-        <div id="article-view" style="display: none; padding: 0 20px;">
-            <button class="btn btn-outline" onclick="backToList()" style="margin-bottom: 20px; display: flex; align-items: center; gap: 5px;">
-                <i class='bx bx-left-arrow-alt'></i> Voltar para a lista
-            </button>
-            <div id="article-content">
-                <!-- Full article content loads here -->
+                <div style="margin-top: 20px; position: relative;">
+                    <i class='bx bx-search' style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #6a737c;"></i>
+                    <input type="text" id="article-search" placeholder="Pesquisar por título, autor ou conteúdo..." style="width: 100%; padding: 10px 10px 10px 35px; border: 1px solid var(--border-color); border-radius: 3px;">
+                </div>
+            </header>
+
+            <div id="article-display-area">
+                <div id="article-list" style="margin-top: 30px;">
+                    <!-- Articles load here as a list -->
+                </div>
+                <div id="pagination-controls" style="margin-top: 30px; display: flex; justify-content: center; gap: 10px; padding-bottom: 40px;">
+                    <!-- Pagination buttons -->
+                </div>
             </div>
-        </div>
+
+            <div id="article-view" style="display: none;">
+                <button class="btn btn-outline" onclick="backToList()" style="margin-bottom: 20px; border: none; background: transparent; padding: 0; color: var(--link-color); display: flex; align-items: center; gap: 5px;">
+                    <i class='bx bx-left-arrow-alt'></i> Voltar para a lista
+                </button>
+                <div id="article-content">
+                    <!-- Full article content -->
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="s-widget">
+                <div class="s-widget-header">Top Categorias</div>
+                <div class="s-widget-content">
+                    <div id="article-categories" class="question-tags">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Carreira</span>
+                        <span class="tech-tag">IA</span>
+                        <span class="tech-tag">Arquitetura</span>
+                        <span class="tech-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="related-questions-widget" class="s-widget" style="display: none;">
+                <div class="s-widget-header">Perguntas Relacionadas</div>
+                <div class="s-widget-content">
+                    <ul id="related-questions-list" style="font-size: 0.85rem;">
+                        <!-- Related questions from forum -->
+                    </ul>
+                </div>
+            </div>
+        </aside>
     </div>
 
     <script src="assets/functions.js"></script>
