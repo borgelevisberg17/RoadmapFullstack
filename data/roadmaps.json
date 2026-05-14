@@ -1,108 +1,270 @@
 {
   "fullstack": {
-    "title": "Fullstack Developer",
-    "description": "Domine tanto o frontend quanto o backend.",
+    "title": "Desenvolvedor Full Stack",
+    "description": "Domine tanto o frontend quanto o backend, do design à infraestrutura.",
     "levels": {
       "junior": {
-        "title": "Junior level",
+        "title": "Nível Junior",
+        "estimated_time": "6-12 meses",
+        "difficulty": "Iniciante",
         "steps": [
           {
-            "category": "Frontend Fundamentos",
-            "items": ["HTML5", "CSS3", "JavaScript"],
-            "project": "Crie um portfólio pessoal estático."
+            "category": "Fundamentos da Web",
+            "items": ["HTML5", "CSS3", "JavaScript Moderno (ES6+)"],
+            "project": "Portfólio Pessoal responsivo com formulário de contato."
           },
           {
-            "category": "Backend Básico",
-            "items": ["Node.js", "Express", "SQL Básico"],
-            "project": "Crie uma API de lista de tarefas (CRUD)."
+            "category": "Versionamento & Terminal",
+            "items": ["Git", "GitHub/GitLab", "Comandos Básicos Linux/Bash"],
+            "project": "Suba seu portfólio no GitHub Pages ou Vercel."
+          },
+          {
+            "category": "Backend Inicial",
+            "items": ["Node.js", "Express", "SQL Básico (PostgreSQL/MySQL)"],
+            "project": "API REST de uma Lista de Tarefas com persistência."
           }
         ]
       },
       "middle": {
-        "title": "Middle level",
+        "title": "Nível Pleno",
+        "estimated_time": "1-2 anos",
+        "difficulty": "Intermediário",
         "steps": [
           {
-            "category": "Frontend Frameworks",
-            "items": ["React.js", "State Management", "Tailwind CSS"],
-            "project": "Crie um Dashboard de Finanças consumindo sua própria API."
+            "category": "Frontend Avançado",
+            "items": ["React.js", "TypeScript", "Tailwind CSS", "Gerenciamento de Estado (Redux/Zustand)"],
+            "project": "Dashboard de Finanças Pessoais integrado com uma API."
           },
           {
-            "category": "Arquitetura & Bancos",
-            "items": ["PostgreSQL Avançado", "Auth JWT", "REST APIs"],
-            "project": "Sistema de autenticação completo com login social."
+            "category": "Backend & Arquitetura",
+            "items": ["Autenticação JWT", "Prismas ORM / Sequelize", "Arquitetura MVC", "Testes Unitários"],
+            "project": "Sistema de E-commerce simples com autenticação e carrinho."
+          },
+          {
+            "category": "Bancos de Dados & Cache",
+            "items": ["Redis", "MongoDB (NoSQL)", "Modelagem de Dados Avançada"],
+            "project": "Implemente cache em uma API existente para melhorar performance."
           }
         ]
       },
       "senior": {
-        "title": "Senior level",
+        "title": "Nível Sênior",
+        "estimated_time": "3+ anos",
+        "difficulty": "Avançado",
         "steps": [
           {
-            "category": "Escalabilidade & DevOps",
-            "items": ["Docker", "Kubernetes", "CI/CD Pipelines", "AWS/GCP"],
-            "project": "Deploy escalável de uma aplicação microservices."
+            "category": "Escalabilidade & Cloud",
+            "items": ["AWS (S3, EC2, RDS)", "Docker", "Kubernetes", "CI/CD Pipelines"],
+            "project": "Deploy escalável de microserviços com Docker e GitHub Actions."
           },
           {
-            "category": "Qualidade & Soft Skills",
-            "items": ["Testes Unitários/E2E", "Arquitetura Clean", "Liderança Técnica"],
-            "project": "Refatore um sistema legado para Clean Architecture."
+            "category": "Padrões & Liderança",
+            "items": ["Clean Architecture", "Design Patterns", "Microserviços", "Observabilidade (New Relic/Grafana)"],
+            "project": "Refatore um monolito para uma arquitetura de microserviços."
           }
         ]
       }
     }
   },
   "frontend": {
-    "title": "Frontend Developer",
-    "description": "Foque na interface e experiência do usuário.",
+    "title": "Desenvolvedor Frontend",
+    "description": "Foque na interface, experiência do usuário e performance no navegador.",
     "levels": {
       "junior": {
-        "title": "Junior level",
+        "title": "Nível Junior",
+        "estimated_time": "4-8 meses",
+        "difficulty": "Iniciante",
         "steps": [
           {
-            "category": "Fundamentos",
-            "items": ["HTML", "CSS", "JavaScript Moderno"],
-            "project": "Recrie a landing page de um serviço popular."
+            "category": "Essenciais",
+            "items": ["HTML Semântico", "CSS Avançado (Flexbox/Grid)", "Lógica de Programação com JS"],
+            "project": "Clone da interface de um serviço de streaming (Netflix/Spotify)."
+          },
+          {
+            "category": "Ferramentas",
+            "items": ["NPM/Yarn", "Vite", "SASS/PostCSS"],
+            "project": "Landing Page otimizada com pré-processador CSS."
           }
         ]
       },
       "middle": {
-        "title": "Middle level",
+        "title": "Nível Pleno",
+        "estimated_time": "1-2 anos",
+        "difficulty": "Intermediário",
         "steps": [
           {
-            "category": "Frameworks & Tooling",
-            "items": ["React", "TypeScript", "Vite", "SASS"],
-            "project": "Desenvolva um E-commerce funcional (Carrinho, Filtros)."
+            "category": "Frameworks",
+            "items": ["React", "Vue.js ou Angular", "Next.js (SSR/SSG)", "TypeScript"],
+            "project": "Blog com Next.js consumindo uma API Headless CMS."
+          },
+          {
+            "category": "Ecossistema",
+            "items": ["React Testing Library", "Storybook", "Styled Components"],
+            "project": "Crie uma biblioteca de componentes documentada."
+          }
+        ]
+      },
+      "senior": {
+        "title": "Nível Sênior",
+        "estimated_time": "3+ anos",
+        "difficulty": "Avançado",
+        "steps": [
+          {
+            "category": "Performance & Qualidade",
+            "items": ["Web Vitals Optimization", "Arquitetura de Micro-frontends", "Design Systems"],
+            "project": "Otimize o LCP e TBT de uma aplicação complexa para nota 90+ no Lighthouse."
           }
         ]
       }
     }
   },
   "backend": {
-    "title": "Backend Developer",
-    "description": "Lógica, banco de dados e APIs robustas.",
+    "title": "Desenvolvedor Backend",
+    "description": "Lógica de negócios, segurança, bancos de dados e APIs robustas.",
     "levels": {
       "junior": {
-        "title": "Junior level",
+        "title": "Nível Junior",
+        "estimated_time": "6-9 meses",
+        "difficulty": "Iniciante",
         "steps": [
           {
-            "category": "Linguagens",
-            "items": ["Node.js", "Python", "SQL"],
-            "project": "Sistema de Blog com comentários."
+            "category": "Linguagem Base",
+            "items": ["Node.js", "Python ou Java", "Conceitos de HTTP/REST"],
+            "project": "API de encurtador de URLs."
+          },
+          {
+            "category": "Persistência",
+            "items": ["SQL (PostgreSQL)", "Migrations", "Operações CRUD"],
+            "project": "Sistema de gerenciamento de biblioteca (API)."
+          }
+        ]
+      },
+      "middle": {
+        "title": "Nível Pleno",
+        "estimated_time": "1-2 anos",
+        "difficulty": "Intermediário",
+        "steps": [
+          {
+            "category": "Especialização",
+            "items": ["NestJS", "Spring Boot ou Django", "Websockets", "Message Brokers (RabbitMQ)"],
+            "project": "Chat em tempo real com salas e histórico."
+          },
+          {
+            "category": "Infra & Segurança",
+            "items": ["Docker Basics", "OAuth2 / OpenID Connect", "API Gateways"],
+            "project": "Implemente um servidor de autenticação centralizado."
+          }
+        ]
+      },
+      "senior": {
+        "title": "Nível Sênior",
+        "estimated_time": "3+ anos",
+        "difficulty": "Avançado",
+        "steps": [
+          {
+            "category": "Arquitetura de Sistemas",
+            "items": ["Event Driven Design", "Domain Driven Design (DDD)", "Serverless"],
+            "project": "Desenhe e implemente um sistema distribuído de alta disponibilidade."
           }
         ]
       }
     }
   },
   "mobile": {
-    "title": "Mobile Developer",
-    "description": "Apps nativos e cross-platform.",
+    "title": "Desenvolvedor Mobile",
+    "description": "Crie aplicativos incríveis para iOS e Android.",
     "levels": {
       "junior": {
-        "title": "Junior level",
+        "title": "Nível Junior",
+        "estimated_time": "6-10 meses",
+        "difficulty": "Iniciante",
         "steps": [
           {
-            "category": "Frameworks",
-            "items": ["React Native", "Flutter"],
-            "project": "App de previsão do tempo."
+            "category": "Cross-Platform",
+            "items": ["React Native", "Flutter Basics", "UI/UX para Mobile"],
+            "project": "App de lista de compras com armazenamento local."
+          }
+        ]
+      },
+      "middle": {
+        "title": "Nível Pleno",
+        "estimated_time": "1-2 anos",
+        "difficulty": "Intermediário",
+        "steps": [
+          {
+            "category": "Avançado Mobile",
+            "items": ["Gerenciamento de Estado Global", "Consumo de APIs Nativas", "Animações"],
+            "project": "App de fitness com integração de mapas e sensores."
+          }
+        ]
+      }
+    }
+  },
+  "cybersecurity": {
+    "title": "Especialista em Cybersecurity",
+    "description": "Proteja sistemas, redes e dados contra ameaças digitais.",
+    "levels": {
+      "junior": {
+        "title": "Nível Junior",
+        "estimated_time": "8-12 meses",
+        "difficulty": "Iniciante",
+        "steps": [
+          {
+            "category": "Fundamentos",
+            "items": ["Redes de Computadores (TCP/IP)", "Linux para Segurança", "Criptografia Básica"],
+            "project": "Configure uma rede local segura com firewall e IDS."
+          },
+          {
+            "category": "Segurança Web",
+            "items": ["OWASP Top 10", "Burp Suite Basics", "SQL Injection & XSS"],
+            "project": "Realize um pentest em um ambiente controlado (Damn Vulnerable Web App)."
+          }
+        ]
+      },
+      "middle": {
+        "title": "Nível Pleno",
+        "estimated_time": "2-3 anos",
+        "difficulty": "Intermediário",
+        "steps": [
+          {
+            "category": "Defesa & Resposta",
+            "items": ["SIEM (Splunk/ELK)", "Análise de Malware", "Forense Digital"],
+            "project": "Monte um laboratório de análise de logs e detecção de invasão."
+          }
+        ]
+      }
+    }
+  },
+  "datascience": {
+    "title": "Cientista de Dados",
+    "description": "Transforme dados brutos em insights e modelos preditivos.",
+    "levels": {
+      "junior": {
+        "title": "Nível Junior",
+        "estimated_time": "10-14 meses",
+        "difficulty": "Iniciante",
+        "steps": [
+          {
+            "category": "Matemática & Python",
+            "items": ["Estatística Básica", "Python (Pandas/Numpy)", "Visualização (Matplotlib/Seaborn)"],
+            "project": "Análise exploratória de dados de um dataset do Kaggle."
+          },
+          {
+            "category": "Bancos de Dados",
+            "items": ["SQL para Dados", "ETL Processos", "NoSQL para Big Data"],
+            "project": "Crie um pipeline que extrai dados de uma API e salva em um DW."
+          }
+        ]
+      },
+      "middle": {
+        "title": "Nível Pleno",
+        "estimated_time": "2-3 anos",
+        "difficulty": "Intermediário",
+        "steps": [
+          {
+            "category": "Machine Learning",
+            "items": ["Scikit-Learn", "Regressão & Classificação", "Feature Engineering"],
+            "project": "Desenvolva um modelo para prever preços de imóveis ou churn de clientes."
           }
         ]
       }

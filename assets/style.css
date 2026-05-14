@@ -223,53 +223,202 @@ main.content-area {
 .roadmap-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
+    gap: 20px;
+    margin-top: 15px;
 }
 
 .category-card {
     border: 1px solid var(--border-color);
-    border-radius: 3px;
-    padding: 24px;
+    border-radius: 5px;
+    padding: 20px;
     background: var(--bg-light);
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    transition: box-shadow 0.2s;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
 }
 
 .category-card:hover {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .category-card h3 {
     margin-bottom: 12px;
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: var(--link-color);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-light);
 }
 
 [data-theme="dark"] .category-card h3 {
-    color: #379fef;
+    color: var(--text-dark);
+}
+
+.tech-tag-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 6px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.tech-tag-container:hover {
+    background: rgba(0,0,0,0.02);
+}
+
+[data-theme="dark"] .tech-tag-container:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.vote-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 30px;
+}
+
+.vote-icon {
+    font-size: 1.2rem;
+    color: #6a737c;
+    transition: transform 0.1s;
+}
+
+.vote-icon:active {
+    transform: scale(1.2);
+}
+
+.learning-count {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #6a737c;
+}
+
+.tech-tag-container input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
 }
 
 .tech-tag {
     background: var(--tag-bg);
     color: var(--tag-color);
-    padding: 5px 6px;
+    padding: 4px 8px;
     border-radius: 3px;
-    font-size: 12px;
+    font-size: 0.85rem;
     cursor: pointer;
     text-decoration: none;
-    transition: background 0.2s;
-    display: inline-block;
-    margin: 2px;
-    line-height: 1;
-    white-space: nowrap;
+    transition: all 0.2s;
+    flex-grow: 1;
 }
 
 .tech-tag:hover {
     background: var(--tag-hover-bg);
-    color: #2c5777;
+    color: var(--link-color);
+}
+
+.tech-items {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.suggested-project {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.project-title {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.suggested-project p {
+    font-size: 0.85rem;
+    color: #6a737c;
+    line-height: 1.4;
+}
+
+[data-theme="dark"] .suggested-project p {
+    color: #bcbbbb;
+}
+
+/* Level Styles */
+.level-section {
+    margin-top: 40px;
+}
+
+.level-header {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.level-info h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.level-meta {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #6a737c;
+}
+
+.difficulty-badge {
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.difficulty-badge.iniciante { background: #e1f5fe; color: #0288d1; }
+.difficulty-badge.intermediário { background: #fff3e0; color: #ef6c00; }
+.difficulty-badge.avançado { background: #fbe9e7; color: #d84315; }
+
+/* Global Progress */
+.progress-container-global {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    position: sticky;
+    top: 60px;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.progress-bar-bg {
+    height: 10px;
+    background: #e3e6e8;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .progress-bar-bg {
+    background: #3d4952;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), #ffb347);
+    transition: width 0.5s ease-out;
 }
 
 /* Articles & Code Formatting */
@@ -618,73 +767,111 @@ pre code {
 }
 
 /* Preparação Specific */
-.prep-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 30px 20px;
+.qa-section {
+    margin-bottom: 40px;
 }
-
-.career-stage {
-    margin-bottom: 50px;
+.qa-item {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+}
+.qa-item:hover {
+    transform: translateX(5px);
+    border-left: 4px solid var(--primary-color);
+}
+.qa-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+.qa-item p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #3b4045;
+}
+[data-theme="dark"] .qa-item p {
+    color: #bcbbbb;
+}
+.qa-item ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+.qa-item li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+.career-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 60px;
+    background: var(--bg-light);
+    padding: 15px 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+.career-nav a {
+    text-decoration: none;
+    color: #6a737c;
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+.career-nav a:hover, .career-nav a.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
 }
 
 .stage-title {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+    font-size: 1.7rem;
+    margin-bottom: 25px;
     padding-bottom: 10px;
-    border-bottom: 2px solid var(--border-color);
-    font-weight: 400;
+    border-bottom: 3px solid var(--border-color);
+    font-weight: 500;
 }
+.stage-title.junior { border-color: #4CAF50; color: #4CAF50; }
+.stage-title.middle { border-color: #2196F3; color: #2196F3; }
+.stage-title.senior { border-color: #f48024; color: #f48024; }
+.stage-title.tips { border-color: #9c27b0; color: #9c27b0; }
 
-.stage-title.junior { border-color: #4CAF50; }
-.stage-title.middle { border-color: #2196F3; }
-.stage-title.senior { border-color: #f48024; }
-.stage-title.tips { border-color: #9c27b0; }
-
-.prep-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 20px;
+.checklist-card {
+    background: #fdf7e2;
+    border: 1px solid #e6dbaf;
+    padding: 20px;
+    border-radius: 5px;
     margin-top: 20px;
 }
-
-.prep-card {
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 24px;
-    background: var(--bg-light);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
+[data-theme="dark"] .checklist-card {
+    background: #3e3b2e;
+    border-color: #5c553d;
 }
-
-.prep-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.prep-card i {
-    font-size: 2.5rem;
-    color: var(--primary-color);
+.checklist-card h4 {
     margin-bottom: 15px;
-}
-
-.prep-card ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.prep-card li {
-    margin-bottom: 10px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
+}
+.checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
     font-size: 0.9rem;
 }
-
-.prep-card li i {
-    font-size: 1rem;
-    margin-bottom: 0;
-    margin-top: 3px;
+.checklist-item i {
+    color: #5eba7d;
 }
 
 /* Sidebar widget */
