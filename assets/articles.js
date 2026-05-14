@@ -14,18 +14,33 @@ async function loadArticles() {
 
 function renderArticleList() {
     const list = document.getElementById('article-list');
-    list.innerHTML = '';
+    const select = document.getElementById('article-select');
+
+    if (list) list.innerHTML = '';
+    if (select) {
+        select.innerHTML = '<option value="">Selecione um artigo...</option>';
+    }
+
     articlesData.forEach(article => {
-        const li = document.createElement('li');
-        li.textContent = article.title;
-        li.onclick = () => {
-            showArticle(article.id);
-            // Update URL without refresh
-            const url = new URL(window.location);
-            url.searchParams.set('id', article.id);
-            window.history.pushState({}, '', url);
-        };
-        list.appendChild(li);
+        if (list) {
+            const li = document.createElement('li');
+            li.textContent = article.title;
+            li.onclick = () => {
+                showArticle(article.id);
+                // Update URL without refresh
+                const url = new URL(window.location);
+                url.searchParams.set('id', article.id);
+                window.history.pushState({}, '', url);
+            };
+            list.appendChild(li);
+        }
+
+        if (select) {
+            const option = document.createElement('option');
+            option.value = article.id;
+            option.textContent = article.title;
+            select.appendChild(option);
+        }
     });
 }
 
@@ -94,6 +109,7 @@ function parseMarkdown(text) {
 }
 
 function showArticle(id) {
+    if (!id) return;
     const article = articlesData.find(a => a.id === id);
     if (!article) return;
 
@@ -103,8 +119,30 @@ function showArticle(id) {
         if (li.textContent === article.title) li.classList.add('active');
     });
 
+    // Update select if exists
+    const select = document.getElementById('article-select');
+    if (select) select.value = id;
+
     const content = document.getElementById('article-content');
     let formattedContent = parseMarkdown(article.content);
+
+    const otherArticles = articlesData.filter(a => a.id !== id).slice(0, 3);
+    let suggestionsHtml = '';
+    if (otherArticles.length > 0) {
+        suggestionsHtml = `
+            <div style="margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--primary-color);">
+                <h3>Leia também:</h3>
+                <div class="roadmap-grid" style="margin-top: 20px;">
+                    ${otherArticles.map(a => `
+                        <div class="category-card" style="cursor: pointer;" onclick="showArticle('${a.id}'); window.scrollTo(0,0);">
+                            <h4>${a.title}</h4>
+                            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.8;">${a.author}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
 
     content.innerHTML = `
         <article class="article-body">
@@ -129,6 +167,8 @@ function showArticle(id) {
                     </div>
                 </div>
             </div>
+
+            ${suggestionsHtml}
         </article>
     `;
 }

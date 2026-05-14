@@ -30,6 +30,16 @@
     <div class="container">
         <aside class="sidebar">
             <h3>Áreas</h3>
+            <div class="mobile-nav-select">
+                <select id="roadmap-select" onchange="loadRoadmap(this.value)">
+                    <option value="fullstack">Fullstack</option>
+                    <option value="frontend">Frontend</option>
+                    <option value="backend">Backend</option>
+                    <option value="mobile">Mobile</option>
+                    <option value="cybersecurity">Cybersecurity</option>
+                    <option value="datascience">Data Science</option>
+                </select>
+            </div>
             <ul id="roadmap-list">
                 <li onclick="loadRoadmap('fullstack')" class="active">Fullstack</li>
                 <li onclick="loadRoadmap('frontend')">Frontend</li>
