@@ -2,6 +2,13 @@ let roadmapsData = {};
 let resourcesData = {};
 let currentRoadmap = 'fullstack';
 
+function escapeHTML(str) {
+    if (!str) return "";
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
 async function fetchData() {
     try {
         const [roadmapsRes, resourcesRes] = await Promise.all([
@@ -200,8 +207,28 @@ function loadTheme() {
     const theme = localStorage.getItem('theme');
     if (theme === 'dark') {
         document.body.setAttribute('data-theme', 'dark');
-        document.querySelector('.theme-toggle i').className = 'bx bx-sun';
+        const icon = document.querySelector('.theme-toggle i');
+        if (icon) icon.className = 'bx bx-sun';
     }
+}
+
+function updateLatestActivityWidget() {
+    const widget = document.getElementById('latest-activity-list');
+    if (!widget) return;
+
+    const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
+    if (posts.length === 0) {
+        widget.innerHTML = '<li>Nenhuma atividade recente.</li>';
+        return;
+    }
+
+    const latest = [...posts].reverse().slice(0, 5);
+    widget.innerHTML = latest.map(p => `
+        <li style="margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+            <a href="forum.html?post=${p.id}" style="text-decoration: none; color: var(--link-color); font-size: 0.85rem; display: block; margin-bottom: 3px;">${escapeHTML(p.title)}</a>
+            <div style="font-size: 0.7rem; color: #6a737c;">${p.answers.length} respostas • ${escapeHTML(p.category)}</div>
+        </li>
+    `).join('');
 }
 
 // Progress Management
@@ -385,6 +412,7 @@ function initCustomSelects() {
 window.addEventListener('DOMContentLoaded', () => {
     loadTheme();
     initCustomSelects();
+    updateLatestActivityWidget();
     const urlParams = new URLSearchParams(window.location.search);
     const roadmapParam = urlParams.get('roadmap');
     if (roadmapParam) currentRoadmap = roadmapParam;

@@ -41,6 +41,11 @@
                 <button class="btn" onclick="togglePostForm()">Fazer uma Pergunta</button>
             </header>
 
+            <div style="margin-bottom: 20px; position: relative;">
+                <i class='bx bx-search' style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #6a737c;"></i>
+                <input type="text" id="forum-search" oninput="loadPosts()" placeholder="Pesquisar perguntas..." style="width: 100%; padding: 10px 10px 10px 35px; border: 1px solid var(--border-color); border-radius: 3px;">
+            </div>
+
             <div class="forum-filters" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
                 <div id="questions-count" style="font-size: 1.1rem; color: #232629;">0 perguntas</div>
                 <div style="display: flex; gap: 10px; align-items: center;">
