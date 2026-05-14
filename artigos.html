@@ -25,30 +25,34 @@
         </button>
     </nav>
 
-    <div class="container">
-        <aside class="sidebar">
-            <h3>Navegação</h3>
-            <div class="mobile-nav-select">
-                <select id="article-select" onchange="showArticle(this.value)">
-                    <option value="">Selecione um artigo...</option>
-                </select>
+    <div class="container" style="display: block; max-width: 1000px;">
+        <header style="text-align: center; margin-bottom: 30px; padding: 24px 0;">
+            <section class="hero-section" style="border: none; padding: 0;">
+                <h1>Publicações e Artigos</h1>
+                <p>Explore conhecimentos sobre IA, Computação Quântica, Desenvolvimento e Carreira.</p>
+            </section>
+            <div style="margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <input type="text" id="article-search" placeholder="Pesquisar artigos..." style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 5px; background: var(--bg-light); color: var(--text-light);">
             </div>
-            <ul id="article-list">
-                <!-- Articles load here -->
-            </ul>
-        </aside>
+        </header>
 
-        <main class="content-area">
-            <div id="article-content">
-                <section class="hero-section">
-                    <h1>Artigos Técnicos</h1>
-                    <p>Conhecimento profundo partilhado pela comunidade.</p>
-                </section>
-                <div id="article-placeholder">
-                    <p>Selecione um artigo na barra lateral para começar a leitura.</p>
-                </div>
+        <div id="article-display-area">
+            <div id="article-grid" class="roadmap-grid">
+                <!-- Article cards load here -->
             </div>
-        </main>
+            <div id="pagination-controls" style="margin-top: 30px; display: flex; justify-content: center; gap: 10px; padding-bottom: 40px;">
+                <!-- Pagination buttons load here -->
+            </div>
+        </div>
+
+        <div id="article-view" style="display: none; padding: 0 20px;">
+            <button class="btn btn-outline" onclick="backToList()" style="margin-bottom: 20px; display: flex; align-items: center; gap: 5px;">
+                <i class='bx bx-left-arrow-alt'></i> Voltar para a lista
+            </button>
+            <div id="article-content">
+                <!-- Full article content loads here -->
+            </div>
+        </div>
     </div>
 
     <script src="assets/functions.js"></script>

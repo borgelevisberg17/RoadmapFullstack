@@ -10,5 +10,20 @@
   "Junior Dev": "Desenvolvedor em início de carreira, focado em aprender e resolver tarefas simples.",
   "Senior Dev": "Desenvolvedor experiente que projeta sistemas complexos e mentora outros devs.",
   "CRUD": "Create, Read, Update, Delete - As quatro operações básicas de um banco de dados.",
-  "Docker": "Uma plataforma que permite empacotar uma aplicação com todas as suas dependências em um container."
+  "Docker": "Uma plataforma que permite empacotar uma aplicação com todas as suas dependências em um container.",
+  "REST": "Representational State Transfer - Um estilo de arquitetura para sistemas distribuídos, comumente usado em APIs web.",
+  "JSON": "JavaScript Object Notation - Um formato leve para troca de dados, fácil de ler para humanos e máquinas.",
+  "SQL": "Structured Query Language - A linguagem padrão para gerenciar bancos de dados relacionais.",
+  "CI/CD": "Continuous Integration e Continuous Deployment - Práticas de automação para testar e publicar código com frequência.",
+  "Middleware": "Software que atua como uma ponte entre diferentes aplicações, ferramentas ou bancos de dados.",
+  "SPA": "Single Page Application - Uma aplicação web que carrega uma única página HTML e atualiza o conteúdo dinamicamente.",
+  "JWT": "JSON Web Token - Um método seguro para transmitir informações entre partes como um objeto JSON.",
+  "OAuth2": "Um protocolo padrão de autorização que permite que aplicações obtenham acesso limitado a contas de utilizadores.",
+  "Kubernetes": "Uma plataforma de código aberto para automatizar a implementação, o dimensionamento e a gestão de containers.",
+  "Microservices": "Uma abordagem de arquitetura onde uma aplicação é construída como um conjunto de pequenos serviços independentes.",
+  "NoSQL": "Bancos de dados não relacionais, projetados para modelos de dados específicos e escalas flexíveis.",
+  "TypeScript": "Um superconjunto de JavaScript que adiciona tipagem estática opcional à linguagem.",
+  "DevOps": "Uma cultura e conjunto de práticas que unifica o desenvolvimento de software (Dev) e a operação de software (Ops).",
+  "MVP": "Minimum Viable Product - A versão mais simples de um produto que pode ser lançada para teste.",
+  "Soft Skills": "Habilidades interpessoais e comportamentais, como comunicação, trabalho em equipe e empatia."
 }

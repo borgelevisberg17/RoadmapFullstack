@@ -4,19 +4,60 @@ function escapeHTML(str) {
     return div.innerHTML;
 }
 
+const seedPosts = [
+    {
+        title: "Como começar com React em 2024?",
+        content: "Tenho uma base boa de HTML/CSS e JS básico. Qual o melhor caminho para aprender React agora?",
+        category: "Dúvida Técnica",
+        date: "20/05/2024",
+        answers: [
+            { content: "Comece pela documentação oficial (react.dev). É excelente e muito moderna!", votes: 5, date: "21/05/2024" },
+            { content: "Pratique criando pequenos componentes antes de ir para frameworks como Next.js.", votes: 3, date: "22/05/2024" }
+        ]
+    },
+    {
+        title: "Dica: Extensões essenciais para VS Code",
+        content: "Minhas favoritas são: Prettier, ESLint, GitLens e Auto Rename Tag. Ajudam muito na produtividade!",
+        category: "Dica / Tutorial",
+        date: "22/05/2024",
+        answers: []
+    },
+    {
+        title: "Vale a pena fazer faculdade de TI?",
+        content: "Estou na dúvida se foco em cursos online ou se entro em uma graduação. O que acham?",
+        category: "Carreira",
+        date: "24/05/2024",
+        answers: [
+            { content: "A faculdade ajuda muito no networking e estágio. Os cursos dão a base técnica rápida.", votes: 12, date: "24/05/2024" }
+        ]
+    }
+];
+
 function loadPosts() {
-    const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
+    let posts = JSON.parse(localStorage.getItem('forumPosts'));
+
+    if (!posts || posts.length === 0) {
+        posts = seedPosts;
+        localStorage.setItem('forumPosts', JSON.stringify(posts));
+    }
+
+    const filterCategory = document.getElementById('filter-category')?.value || 'Tudo';
     const container = document.getElementById('forum-posts');
     if (!container) return;
     container.innerHTML = '';
 
-    if (posts.length === 0) {
-        container.innerHTML = '<p style="text-align: center; opacity: 0.6;">Nenhuma pergunta ainda. Seja o primeiro!</p>';
+    const filteredPosts = posts.filter(post =>
+        filterCategory === 'Tudo' || post.category === filterCategory
+    );
+
+    if (filteredPosts.length === 0) {
+        container.innerHTML = '<p style="text-align: center; opacity: 0.6;">Nenhuma pergunta encontrada nesta categoria.</p>';
         return;
     }
 
-    posts.reverse().forEach((post, index) => {
-        const postIndex = posts.length - 1 - index;
+    [...filteredPosts].reverse().forEach((post) => {
+        // Find original index for voting/replies to work
+        const originalIndex = posts.findIndex(p => p.title === post.title && p.date === post.date);
         const card = document.createElement('div');
         card.className = 'question-card';
 
@@ -26,9 +67,9 @@ function loadPosts() {
                 <div class="answer">
                     <div style="display: flex; gap: 10px; align-items: flex-start;">
                         <div style="display: flex; flex-direction: column; align-items: center; min-width: 30px;">
-                            <i class='bx bx-chevron-up' style="cursor: pointer; font-size: 1.5rem;" onclick="voteAnswer(${postIndex}, ${aIndex}, 1)"></i>
+                            <i class='bx bx-chevron-up' style="cursor: pointer; font-size: 1.5rem;" onclick="voteAnswer(${originalIndex}, ${aIndex}, 1)"></i>
                             <span>${answer.votes || 0}</span>
-                            <i class='bx bx-chevron-down' style="cursor: pointer; font-size: 1.5rem;" onclick="voteAnswer(${postIndex}, ${aIndex}, -1)"></i>
+                            <i class='bx bx-chevron-down' style="cursor: pointer; font-size: 1.5rem;" onclick="voteAnswer(${originalIndex}, ${aIndex}, -1)"></i>
                         </div>
                         <div style="flex-grow: 1;">
                             <p>${escapeHTML(answer.content)}</p>
@@ -48,12 +89,12 @@ function loadPosts() {
             <p>${escapeHTML(post.content)}</p>
 
             <div class="answer-box">
-                <div id="answers-${postIndex}">
+                <div id="answers-${originalIndex}">
                     ${answersHtml}
                 </div>
                 <div class="form-group" style="margin-top: 15px; display: flex; gap: 10px;">
-                    <input type="text" id="reply-input-${postIndex}" placeholder="Escreva uma resposta anônima..." style="flex-grow: 1;">
-                    <button class="btn" onclick="submitReply(${postIndex})" style="padding: 5px 15px;">Responder</button>
+                    <input type="text" id="reply-input-${originalIndex}" placeholder="Escreva uma resposta anônima..." style="flex-grow: 1;">
+                    <button class="btn" onclick="submitReply(${originalIndex})" style="padding: 5px 15px;">Responder</button>
                 </div>
             </div>
         `;

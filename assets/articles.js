@@ -1,58 +1,103 @@
 let articlesData = [];
+let currentPage = 1;
+const articlesPerPage = 20;
 
 async function loadArticles() {
     const res = await fetch('data/articles.json');
     articlesData = await res.json();
-    renderArticleList();
 
     const urlParams = new URLSearchParams(window.location.search);
     const articleId = urlParams.get('id');
     if (articleId) {
         showArticle(articleId);
+    } else {
+        renderArticles();
+    }
+
+    // Setup Search
+    const searchInput = document.getElementById('article-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            currentPage = 1;
+            renderArticles();
+        });
     }
 }
 
-function renderArticleList() {
-    const list = document.getElementById('article-list');
-    const select = document.getElementById('article-select');
+function renderArticles() {
+    const grid = document.getElementById('article-grid');
+    const controls = document.getElementById('pagination-controls');
+    const searchInput = document.getElementById('article-search');
+    const displayArea = document.getElementById('article-display-area');
+    const viewArea = document.getElementById('article-view');
 
-    if (list) list.innerHTML = '';
-    if (select) {
-        select.innerHTML = '<option value="">Selecione um artigo...</option>';
+    if (!grid) return;
+
+    displayArea.style.display = 'block';
+    viewArea.style.display = 'none';
+
+    const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+    const filtered = articlesData.filter(a =>
+        a.title.toLowerCase().includes(searchTerm) ||
+        a.content.toLowerCase().includes(searchTerm) ||
+        a.author.toLowerCase().includes(searchTerm)
+    );
+
+    const startIndex = (currentPage - 1) * articlesPerPage;
+    const paginated = filtered.slice(startIndex, startIndex + articlesPerPage);
+    const totalPages = Math.ceil(filtered.length / articlesPerPage);
+
+    grid.innerHTML = '';
+    if (paginated.length === 0) {
+        grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; opacity: 0.6; padding: 40px;">Nenhum artigo encontrado.</p>';
+    } else {
+        paginated.forEach(article => {
+            const card = document.createElement('div');
+            card.className = 'category-card';
+            card.style.cursor = 'pointer';
+            card.innerHTML = `
+                <h3 style="color: var(--primary-color);">${article.title}</h3>
+                <p style="font-size: 0.85rem; margin-top: 10px; opacity: 0.7;">
+                    ${article.content.substring(0, 120).replace(/[#*`]/g, '')}...
+                </p>
+                <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; opacity: 0.6;">
+                    <span>Por ${article.author}</span>
+                    <span>${article.date}</span>
+                </div>
+            `;
+            card.onclick = () => {
+                showArticle(article.id);
+                window.scrollTo(0, 0);
+            };
+            grid.appendChild(card);
+        });
     }
 
-    articlesData.forEach(article => {
-        if (list) {
-            const li = document.createElement('li');
-            li.textContent = article.title;
-            li.onclick = () => {
-                showArticle(article.id);
-                // Update URL without refresh
-                const url = new URL(window.location);
-                url.searchParams.set('id', article.id);
-                window.history.pushState({}, '', url);
-            };
-            list.appendChild(li);
+    // Render Pagination
+    if (controls) {
+        controls.innerHTML = '';
+        if (totalPages > 1) {
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.className = `btn ${i === currentPage ? '' : 'btn-outline'}`;
+                btn.textContent = i;
+                btn.onclick = () => {
+                    currentPage = i;
+                    renderArticles();
+                    window.scrollTo(0, 0);
+                };
+                controls.appendChild(btn);
+            }
         }
-
-        if (select) {
-            const option = document.createElement('option');
-            option.value = article.id;
-            option.textContent = article.title;
-            select.appendChild(option);
-        }
-    });
+    }
 }
 
 function parseMarkdown(text) {
-    // Escapar HTML básico para segurança, mas mantendo o que vamos gerar
     let html = text
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
 
-    // Code blocks - handle before other replacements to avoid escaping issues
-    // Using a placeholder to protect code blocks from further processing
     const codeBlocks = [];
     html = html.replace(/```(javascript|typescript|bash|css|html|sql|php|python|json|yaml|dockerfile)\n([\s\S]*?)\n```/g, (match, lang, code) => {
         const placeholder = `__CODE_BLOCK_${codeBlocks.length}__`;
@@ -61,49 +106,29 @@ function parseMarkdown(text) {
     });
 
     html = html
-        // Headers
         .replace(/^### (.*$)/gm, '<h3>$1</h3>')
         .replace(/^## (.*$)/gm, '<h2>$1</h2>')
         .replace(/^# (.*$)/gm, '<h1>$1</h1>')
-
-        // Inline code
         .replace(/`([^`]+)`/g, '<code>$1</code>')
-
-        // Bold
         .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-
-        // Links: [text](url)
         .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
-
-        // Lists
         .replace(/^\s*[-*]\s+(.*)/gm, '<li>$1</li>');
 
-    // Wrap consecutive <li> groups in <ul>
     html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>\n$1</ul>\n');
 
-    // Paragraphs: Wrap blocks of text separated by double newlines that are NOT tags
     let lines = html.split(/\n\n+/);
     html = lines.map(line => {
         const trimmed = line.trim();
         if (!trimmed) return '';
-        // If it starts with a tag we handled, don't wrap in <p>
         if (/^<(h1|h2|h3|ul|li|pre|div|a|strong|code)/.test(trimmed)) {
             return trimmed;
         }
         return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
     }).join('\n');
 
-    // Restore code blocks
     codeBlocks.forEach((block, i) => {
         html = html.replace(`__CODE_BLOCK_${i}__`, block);
     });
-
-    // Unescape some things that might have been escaped by mistake in link URLs or similar
-    // but the regexes above should have handled it if used carefully.
-    // Actually, the initial escape is good, but our replacements used literal < and >.
-    // Let's fix the literal replacements in the regexes above:
-    // Actually, the replacement strings in .replace() are literals, so they are fine.
-    // The only issue is if the text content itself had < or > which we WANT to keep escaped.
 
     return html;
 }
@@ -113,17 +138,18 @@ function showArticle(id) {
     const article = articlesData.find(a => a.id === id);
     if (!article) return;
 
-    // Update sidebar active state
-    document.querySelectorAll('#article-list li').forEach(li => {
-        li.classList.remove('active');
-        if (li.textContent === article.title) li.classList.add('active');
-    });
+    // Update URL
+    const url = new URL(window.location);
+    url.searchParams.set('id', id);
+    window.history.pushState({}, '', url);
 
-    // Update select if exists
-    const select = document.getElementById('article-select');
-    if (select) select.value = id;
-
+    const displayArea = document.getElementById('article-display-area');
+    const viewArea = document.getElementById('article-view');
     const content = document.getElementById('article-content');
+
+    displayArea.style.display = 'none';
+    viewArea.style.display = 'block';
+
     let formattedContent = parseMarkdown(article.content);
 
     const otherArticles = articlesData.filter(a => a.id !== id).slice(0, 3);
@@ -171,6 +197,13 @@ function showArticle(id) {
             ${suggestionsHtml}
         </article>
     `;
+}
+
+function backToList() {
+    const url = new URL(window.location);
+    url.searchParams.delete('id');
+    window.history.pushState({}, '', url);
+    renderArticles();
 }
 
 window.addEventListener('DOMContentLoaded', loadArticles);

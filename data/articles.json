@@ -23,26 +23,124 @@
     ]
   },
   {
-    "id": "leitura-docs",
-    "title": "Como Ler Documentações sem se Sentir Burro",
+    "id": "clean-code-introducao",
+    "title": "Código Limpo: Por que a estética do seu código importa?",
     "author": "Borge Levisberg",
-    "date": "24 de Maio, 2024",
-    "content": "Documentações técnicas não são livros de romance. Você não as lê do início ao fim. Elas são manuais de consulta. \n\nO erro mais comum do iniciante é achar que precisa entender cada palavra da documentação do React antes de escrever `npm start`. Mentira.\n\n### O Guia de Sobrevivência\n\n- **Vá direto no 'Quick Start'**: Quase toda ferramenta moderna tem um tutorial de 5 minutos. Comece por lá.\n- **A barra de pesquisa é sua melhor amiga**: Precisa saber como usar o `map` no JavaScript? Busque por `Array map` na MDN.\n- **Exemplos de código são ouro**: Ignore o texto denso no início e procure pelos blocos de código. Veja como é usado na prática.\n\n```javascript\n// Exemplo de como a documentação mostra o uso\nconst numeros = [1, 2, 3];\nconst dobrados = numeros.map(n => n * 2);\nconsole.log(dobrados); // [2, 4, 6]\n```\n\nLembre-se: se a documentação é ruim, a culpa raramente é sua. Algumas bibliotecas são escritas de forma confusa mesmo. Não tenha medo de procurar por [tutoriais no YouTube](https://www.youtube.com/) se a doc oficial estiver muito densa.",
-    "sources": ["MDN Web Docs", "React Docs"],
+    "date": "25 de Maio, 2024",
+    "content": "Você já abriu um código que você mesmo escreveu há seis meses e pensou: 'Quem foi o maluco que fez isso?'. Se sim, você sentiu na pele a falta de **Clean Code**.\n\nEscrever código limpo não é sobre ser perfeccionista, é sobre ser empático com o 'você do futuro' e com seus colegas de equipe.\n\n### Princípios Básicos\n\n- **Nomes Significativos**: Em vez de `let d = 10;`, use `let diasParaVencimento = 10;`. O nome deve dizer o que a variável faz.\n- **Funções Pequenas**: Uma função deve fazer apenas uma coisa e fazê-la bem.\n- **Comentários Necessários**: O código deve ser autoexplicativo. Use comentários apenas para explicar o 'porquê' de uma decisão complexa, não o 'quê' o código está fazendo.\n\n```javascript\n// Ruim\nfunction c(a, b) {\n  return a + b;\n}\n\n// Bom\nfunction calcularTotalPedido(subtotal, frete) {\n  return subtotal + frete;\n}\n```\n\nLembre-se: 'Qualquer tolo consegue escrever código que um computador entenda. Bons programadores escrevem código que humanos entendam.' (Martin Fowler)",
+    "sources": ["Clean Code (Robert C. Martin)", "Refactoring (Martin Fowler)"],
     "links": [
-      { "text": "MDN - O que é documentação?", "url": "https://developer.mozilla.org/pt-BR/docs/Learn/Getting_started_with_the_web" }
+      { "text": "Clean Code JavaScript", "url": "https://github.com/ryanmcdermott/clean-code-javascript" }
     ]
   },
   {
-    "id": "laravel-para-iniciantes",
-    "title": "Por que Laravel é o framework favorito dos desenvolvedores PHP?",
+    "id": "arquitetura-mvc",
+    "title": "Entendendo o MVC: A base das aplicações modernas",
     "author": "Borge Levisberg",
     "date": "25 de Maio, 2024",
-    "content": "Se você está começando no backend e escolheu PHP, o Laravel é quase um destino obrigatório. Ele transforma tarefas complexas em algo elegante e simples.\n\n### O que torna o Laravel especial?\n\n- **Eloquent ORM**: Interaja com o banco de dados como se estivesse lidando com objetos simples.\n- **Blade Template Engine**: Uma forma limpa de misturar HTML e PHP sem aquela bagunça de tags abrindo e fechando.\n- **Artisan CLI**: Uma ferramenta de linha de comando que faz quase tudo por você, desde criar controllers até rodar migrations.\n\n```php\n// Exemplo de Eloquent ORM\n$user = User::find(1);\n$user->name = 'Borge';\n$user->save();\n```\n\n### Como começar?\n\nO melhor lugar é o [Laracasts](https://laracasts.com/). É como o 'Netflix para desenvolvedores'. Você aprende praticando e vendo como profissionais constroem sistemas reais.",
-    "sources": ["Laravel Docs", "Laracasts"],
+    "content": "O MVC (Model-View-Controller) é um dos padrões de arquitetura mais antigos e mais utilizados na web. Ele ajuda a separar as responsabilidades do seu código, tornando-o mais fácil de manter.\n\n### As Três Peças do Quebra-cabeça\n\n1. **Model (Modelo)**: Lida com os dados e a lógica de negócio. É onde você interage com o banco de dados.\n2. **View (Visão)**: É o que o usuário vê (o HTML/CSS). Ela não deve processar lógica complexa, apenas exibir informações.\n3. **Controller (Controlador)**: O intermediário. Ele recebe o pedido do usuário, pede os dados para o Model e envia para a View.\n\n### Por que usar?\n\nImagine que você quer mudar o visual do seu site de azul para vermelho. Se o seu código estiver misturado, você terá que mexer em tudo. No MVC, você altera apenas a **View**, mantendo o **Model** intacto.\n\n```php\n// Exemplo Simplista em PHP/Laravel\n// Controller\npublic function show(User $user) {\n    return view('profile', ['user' => $user]);\n}\n```\n\nEntender o MVC é o primeiro passo para dominar frameworks como Laravel, Django ou Spring Boot.",
+    "sources": ["Padrões de Arquitetura de Software", "Documentação Laravel"],
     "links": [
-      { "text": "Laravel Oficial", "url": "https://laravel.com/" },
-      { "text": "Laravel Daily (YouTube)", "url": "https://www.youtube.com/@LaravelDaily" }
+      { "text": "MDN - MVC Pattern", "url": "https://developer.mozilla.org/en-US/docs/Glossary/MVC" }
+    ]
+  },
+  {
+    "id": "soft-skills-dev",
+    "title": "Além do Código: Soft Skills que todo Dev precisa",
+    "author": "Borge Levisberg",
+    "date": "25 de Maio, 2024",
+    "content": "Você pode ser o melhor programador do mundo, mas se não souber se comunicar, sua carreira terá um teto. Programação é um esporte de equipe.\n\nAs **Soft Skills** são habilidades comportamentais que te ajudam a trabalhar melhor com outras pessoas e a lidar com os desafios do dia a dia.\n\n### As mais importantes\n\n- **Comunicação**: Saiba explicar problemas técnicos para pessoas que não são técnicas (clientes, gestores).\n- **Trabalho em Equipe**: Estar disposto a ajudar e a pedir ajuda quando necessário.\n- **Adaptabilidade**: O mundo da tecnologia muda rápido. Esteja aberto a aprender novas ferramentas e processos.\n- **Empatia**: Entenda que por trás de cada bug reportado, existe um usuário frustrado.\n\n### Como desenvolver?\n\nLeia livros sobre psicologia e liderança, participe de comunidades e, principalmente, pratique a escuta ativa em suas reuniões. Ser um 'dev gente boa' abre tantas portas quanto saber uma linguagem nova.",
+    "sources": ["The Pragmatic Programmer", "Experiência de Mercado"],
+    "links": [
+      { "text": "Soft Skills (Artigo)", "url": "https://www.freecodecamp.org/news/soft-skills-for-developers/" }
+    ]
+  },
+  {
+    "id": "ia-no-desenvolvimento",
+    "title": "A Era da IA: Como o Copilot e ChatGPT mudaram o jogo",
+    "author": "Borge Levisberg",
+    "date": "26 de Maio, 2024",
+    "content": "A Inteligência Artificial não vai substituir os programadores, mas os programadores que usam IA vão substituir os que não usam. \n\nFerramentas como GitHub Copilot, ChatGPT e Claude transformaram a forma como escrevemos código, automatizando tarefas repetitivas e ajudando a debugar problemas complexos em segundos.\n\n### O Novo Workflow\n\n- **Pair Programming com a IA**: Use a IA para gerar boilerplate, sugerir nomes de variáveis ou explicar blocos de código confusos.\n- **Prompt Engineering**: Aprenda a fazer as perguntas certas. Quanto mais específico o contexto, melhor o código gerado.\n- **Revisão Crítica**: Nunca confie cegamente na IA. Ela pode gerar alucinações ou código inseguro. Você é o piloto, a IA é o copiloto.\n\n```javascript\n// Exemplo de prompt: \"Gere uma função JS que valide um e-mail usando regex\"\nfunction validarEmail(email) {\n  const regex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  return regex.test(email);\n}\n```\n\nDomine essas ferramentas para aumentar sua produtividade e focar na arquitetura e na lógica de alto nível.",
+    "sources": ["GitHub Blog", "OpenAI Documentation"],
+    "links": [
+      { "text": "GitHub Copilot Docs", "url": "https://docs.github.com/en/copilot" }
+    ]
+  },
+  {
+    "id": "computacao-quantica-intro",
+    "title": "Computação Quântica: O que você precisa saber hoje",
+    "author": "Borge Levisberg",
+    "date": "26 de Maio, 2024",
+    "content": "Enquanto os computadores clássicos usam bits (0 ou 1), os computadores quânticos usam **qubits**. Graças à sobreposição e ao emaranhamento, eles podem processar informações de uma forma que deixaria o supercomputador mais rápido do mundo comendo poeira.\n\n### Por que isso importa?\n\n- **Criptografia**: Computadores quânticos poderão quebrar a maioria dos sistemas de segurança atuais. Daí a importância da criptografia pós-quântica.\n- **Simulação de Moléculas**: Revolucionará a medicina e a ciência dos materiais.\n- **Otimização Extrema**: Resolverá problemas logísticos complexos em segundos.\n\n### Como se preparar?\n\nAinda estamos no 'estágio das válvulas' da computação quântica. Mas você já pode experimentar com bibliotecas como **Qiskit** da IBM ou **Cirq** do Google usando Python.\n\n```python\n# Exemplo básico Qiskit\nfrom qiskit import QuantumCircuit\nqc = QuantumCircuit(2)\nqc.h(0) # Portão Hadamard (sobreposição)\nqc.cx(0, 1) # CNOT (emaranhamento)\n```\n\nÉ um campo fascinante que redefine o que é possível na computação.",
+    "sources": ["IBM Quantum", "Quanta Magazine"],
+    "links": [
+      { "text": "IBM Quantum Learning", "url": "https://learning.quantum.ibm.com/" }
+    ]
+  },
+  {
+    "id": "vibing-code-dx",
+    "title": "Vibing Code: Por que a Developer Experience (DX) é Vital",
+    "author": "Borge Levisberg",
+    "date": "26 de Maio, 2024",
+    "content": "Vibing Code é sobre o 'fluxo'. É quando as ferramentas, a documentação e a cultura da empresa trabalham juntas para que o desenvolvedor se sinta produtivo e feliz. Isso é **Developer Experience (DX)**.\n\nUma DX ruim (ferramentas lentas, processos burocráticos) mata a criatividade e gera burnout.\n\n### Pilares de uma boa DX\n\n- **Documentação Clara**: Você deve encontrar o que precisa em 2 cliques.\n- **Ferramental Rápido**: O build não deve demorar 15 minutos.\n- **Cultura de Feedback**: Processos de Code Review que ensinam em vez de apenas criticar.\n- **Autonomia**: Menos reuniões inúteis, mais tempo de foco.\n\nQuando o código 'vibra', o time entrega mais e com mais qualidade. DX não é luxo, é estratégia de retenção de talentos.",
+    "sources": ["DX Tips Blog", "Modern Software Engineering"],
+    "links": [
+      { "text": "DX.dev", "url": "https://dx.dev/" }
+    ]
+  },
+  {
+    "id": "web3-introducao",
+    "title": "Web3: A Internet da Propriedade e Descentralização",
+    "author": "Borge Levisberg",
+    "date": "27 de Maio, 2024",
+    "content": "A Web1 era leitura (estática). A Web2 é leitura e escrita (social). A Web3 é leitura, escrita e **propriedade**.\n\nUsando a tecnologia **Blockchain**, a Web3 visa tirar o poder das grandes empresas (Big Techs) e devolvê-lo aos usuários através de redes descentralizadas.\n\n### Componentes Chave\n\n- **Smart Contracts**: Contratos que se executam sozinhos quando as condições são atingidas (escritos em linguagens como Solidity).\n- **DAOs**: Organizações Autônomas Descentralizadas, onde as decisões são tomadas por votação da comunidade via tokens.\n- **Identidade Soberana**: Você é dono dos seus dados e decide quem pode acessá-los.\n\n```solidity\n// Exemplo de Smart Contract simples\ncontract OlaMundo {\n    string public saudacao = \"Ola Web3!\";\n}\n```\n\nAinda há muitos desafios (escalabilidade, UX), mas a proposta de uma internet mais justa é poderosa.",
+    "sources": ["Ethereum Foundation", "Web3 University"],
+    "links": [
+      { "text": "Ethereum.org", "url": "https://ethereum.org/" }
+    ]
+  },
+  {
+    "id": "edge-computing-futuro",
+    "title": "Edge Computing: Processando dados onde a ação acontece",
+    "author": "Borge Levisberg",
+    "date": "27 de Maio, 2024",
+    "content": "Por que enviar todos os dados de um carro autônomo para a nuvem se a decisão de frear precisa ser tomada em milissegundos? Isso é **Edge Computing**.\n\nEm vez de centralizar tudo em grandes Data Centers, processamos os dados o mais próximo possível da fonte (o 'borda' ou edge).\n\n### Vantagens Reais\n\n- **Baixa Latência**: Crucial para IoT, jogos online e cirurgias remotas.\n- **Economia de Banda**: Você não envia dados brutos inúteis, apenas os resultados processados.\n- **Privacidade**: Dados sensíveis podem ser processados localmente sem nunca sair do dispositivo.\n\nO futuro do desenvolvimento web passa por funções 'edge' (como Cloudflare Workers ou Vercel Edge Functions) que rodam código mais perto do usuário final.",
+    "sources": ["Cloudflare Learning", "AWS Edge Computing"],
+    "links": [
+      { "text": "O que é Edge Computing?", "url": "https://www.cloudflare.com/learning/serverless/glossary/what-is-edge-computing/" }
+    ]
+  },
+  {
+    "id": "seguranca-nuvem",
+    "title": "Segurança em Nuvem: O Modelo de Responsabilidade Compartilhada",
+    "author": "Borge Levisberg",
+    "date": "27 de Maio, 2024",
+    "content": "Muitas empresas acham que ao migrar para a AWS ou Azure, a segurança é problema deles. Errado. Existe o **Modelo de Responsabilidade Compartilhada**.\n\nA nuvem protege a infraestrutura física, mas você é responsável por proteger o que coloca lá dentro (configurações, dados, aplicações).\n\n### Melhores Práticas\n\n- **Princípio do Menor Privilégio**: Dê apenas as permissões necessárias para cada usuário ou serviço.\n- **Criptografia em Repouso e em Trânsito**: Nunca deixe dados sensíveis desprotegidos.\n- **Monitoramento e Logs**: Saiba quem acessou o quê e quando.\n- **Configurações de Rede (VPCs)**: Não deixe seu banco de dados exposto para a internet pública.\n\nSegurança não é um produto, é um processo contínuo de vigilância e melhoria.",
+    "sources": ["AWS Security Documentation", "OWASP Cloud Security"],
+    "links": [
+      { "text": "AWS Shared Responsibility Model", "url": "https://aws.amazon.com/compliance/shared-responsibility-model/" }
+    ]
+  },
+  {
+    "id": "evolucao-frontend",
+    "title": "O Futuro do Front-end: Além dos Frameworks",
+    "author": "Borge Levisberg",
+    "date": "28 de Maio, 2024",
+    "content": "Estamos saindo da era do 'SPA para tudo' e entrando em uma fase de **Rendering Híbrido**. Tecnologias como Server Components do React, Qwik (resumibilidade) e Astro (ilhas de interatividade) estão mudando as regras.\n\nO foco voltou a ser a performance e o envio de menos JavaScript para o cliente.\n\n### Tendências para observar\n\n- **WebAssembly (WASM)**: Rode código de alta performance (C++, Rust) no navegador.\n- **Container Queries**: Estilize elementos com base no tamanho do seu container, não apenas na largura da tela.\n- **CSS modernizado**: Grid, Flexbox e novas funções (como `clamp` e `has`) tornam o CSS quase uma linguagem de programação.\n\n```css\n/* Exemplo de Container Query */\n.card-container {\n  container-type: inline-size;\n}\n@container (min-width: 400px) {\n  .card { display: flex; }\n}\n```\n\nO front-end moderno é sobre entregar a melhor experiência com a menor carga possível.",
+    "sources": ["State of JS", "Web.dev"],
+    "links": [
+      { "text": "Web.dev - Modern Web", "url": "https://web.dev/" }
+    ]
+  },
+  {
+    "id": "deep-learning-iniciantes",
+    "title": "Deep Learning: O motor por trás da IA Moderna",
+    "author": "Borge Levisberg",
+    "date": "28 de Maio, 2024",
+    "content": "Deep Learning é um subcampo do Machine Learning que utiliza redes neurais artificiais com muitas camadas (daí o 'deep' ou profundo) para aprender padrões complexos em grandes volumes de dados.\n\nÉ a tecnologia por trás do reconhecimento facial, tradução automática e os LLMs (como o GPT-4).\n\n### Conceitos Fundamentais\n\n- **Neurônios Artificiais**: Unidades de processamento que recebem entradas, aplicam pesos e geram uma saída.\n- **Backpropagation**: O processo pelo qual a rede 'aprende' com seus erros, ajustando os pesos para melhorar a precisão.\n- **Bibliotecas Populares**: TensorFlow (Google) e PyTorch (Meta) são as ferramentas padrão da indústria.\n\n```python\n# Exemplo simplista com PyTorch\nimport torch.nn as nn\nmodel = nn.Sequential(\n    nn.Linear(784, 128),\n    nn.ReLU(),\n    nn.Linear(128, 10)\n)\n```\n\nNão é mágica, é matemática pesada (álgebra linear e cálculo) aplicada de forma brilhante.",
+    "sources": ["Deep Learning Book (Ian Goodfellow)", "Fast.ai"],
+    "links": [
+      { "text": "PyTorch Tutorials", "url": "https://pytorch.org/tutorials/" }
     ]
   }
 ]

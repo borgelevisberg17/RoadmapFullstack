@@ -262,8 +262,83 @@ function copyShareLink() {
     });
 }
 
+// Custom Select Logic
+function initCustomSelects() {
+    document.querySelectorAll('.custom-select-wrapper').forEach(wrapper => {
+        const select = wrapper.querySelector('select');
+        if (!select) return;
+
+        const trigger = wrapper.querySelector('.custom-select-trigger');
+        const optionsContainer = wrapper.querySelector('.custom-options');
+        const customSelect = wrapper.querySelector('.custom-select');
+
+        // Sync custom select with native select initial state
+        const updateTriggerText = () => {
+            const selectedOption = select.options[select.selectedIndex];
+            trigger.textContent = selectedOption ? selectedOption.textContent : 'Selecione...';
+
+            // Mark selected option in custom list
+            optionsContainer.querySelectorAll('.custom-option').forEach(opt => {
+                opt.classList.toggle('selected', opt.dataset.value === select.value);
+            });
+        };
+
+        // Create custom options based on native select
+        const renderCustomOptions = () => {
+            optionsContainer.innerHTML = '';
+            Array.from(select.options).forEach(option => {
+                const customOption = document.createElement('span');
+                customOption.className = 'custom-option';
+                customOption.dataset.value = option.value;
+                customOption.textContent = option.textContent;
+                if (option.selected) customOption.classList.add('selected');
+
+                customOption.addEventListener('click', () => {
+                    select.value = option.value;
+                    select.dispatchEvent(new Event('change'));
+                    updateTriggerText();
+                    customSelect.classList.remove('open');
+                });
+                optionsContainer.appendChild(customOption);
+            });
+            updateTriggerText();
+        };
+
+        renderCustomOptions();
+
+        // Toggle dropdown
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            // Close other open selects
+            document.querySelectorAll('.custom-select.open').forEach(openSelect => {
+                if (openSelect !== customSelect) openSelect.classList.remove('open');
+            });
+            customSelect.classList.toggle('open');
+        });
+
+        // Sync custom select with native select if changed externally
+        select.addEventListener('change', () => {
+            updateTriggerText();
+        });
+
+        // Re-render if native select changes externally (e.g. dynamic load)
+        const observer = new MutationObserver((mutations) => {
+            renderCustomOptions();
+        });
+        observer.observe(select, { childList: true, attributes: true, attributeFilter: ['value'] });
+    });
+
+    // Close select when clicking outside
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.custom-select.open').forEach(openSelect => {
+            openSelect.classList.remove('open');
+        });
+    });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     loadTheme();
+    initCustomSelects();
     const urlParams = new URLSearchParams(window.location.search);
     const roadmapParam = urlParams.get('roadmap');
     if (roadmapParam) currentRoadmap = roadmapParam;

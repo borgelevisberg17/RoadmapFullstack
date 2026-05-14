@@ -31,6 +31,23 @@
             <button class="btn" onclick="togglePostForm()">Fazer uma Pergunta</button>
         </header>
 
+        <div class="forum-filters" style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
+            <span>Filtrar por:</span>
+            <div class="custom-select-wrapper" style="max-width: 200px;">
+                <select id="filter-category" onchange="loadPosts()" style="display: none;">
+                    <option value="Tudo">Todas as Categorias</option>
+                    <option value="Dúvida Técnica">Dúvida Técnica</option>
+                    <option value="Dica / Tutorial">Dica / Tutorial</option>
+                    <option value="Carreira">Carreira</option>
+                    <option value="Outros">Outros</option>
+                </select>
+                <div class="custom-select">
+                    <div class="custom-select-trigger">Todas as Categorias</div>
+                    <div class="custom-options"></div>
+                </div>
+            </div>
+        </div>
+
         <div id="post-form" class="new-post-form" style="display: none;">
             <h3>Nova Pergunta</h3>
             <div class="form-group">
@@ -39,12 +56,18 @@
             </div>
             <div class="form-group">
                 <label>Categoria</label>
-                <select id="post-category">
-                    <option value="Dúvida Técnica">Dúvida Técnica</option>
-                    <option value="Dica / Tutorial">Dica / Tutorial</option>
-                    <option value="Carreira">Carreira</option>
-                    <option value="Outros">Outros</option>
-                </select>
+                <div class="custom-select-wrapper">
+                    <select id="post-category" style="display: none;">
+                        <option value="Dúvida Técnica">Dúvida Técnica</option>
+                        <option value="Dica / Tutorial">Dica / Tutorial</option>
+                        <option value="Carreira">Carreira</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                    <div class="custom-select">
+                        <div class="custom-select-trigger">Dúvida Técnica</div>
+                        <div class="custom-options"></div>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label>Sua dúvida em detalhes</label>
