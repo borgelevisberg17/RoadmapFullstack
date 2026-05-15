@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /data/
+Sitemap: https://roadmapfullstack.com/sitemap.xml
