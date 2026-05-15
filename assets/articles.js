@@ -95,17 +95,93 @@ function renderArticles() {
     if (controls) {
         controls.innerHTML = '';
         if (totalPages > 1) {
-            for (let i = 1; i <= totalPages; i++) {
+            const paginationWrapper = document.createElement('div');
+            paginationWrapper.className = 'modern-pagination';
+
+            // Previous Button
+            const prevBtn = document.createElement('button');
+            prevBtn.className = `page-nav-btn ${currentPage === 1 ? 'disabled' : ''}`;
+            prevBtn.innerHTML = "<i class='bx bx-chevron-left'></i> Anterior";
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.onclick = () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderArticles();
+                    window.scrollTo(0, 0);
+                }
+            };
+            paginationWrapper.appendChild(prevBtn);
+
+            // Page Numbers with Truncation
+            const pageNumbers = document.createElement('div');
+            pageNumbers.className = 'page-numbers';
+
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+            if (endPage - startPage + 1 < maxVisiblePages) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+
+            if (startPage > 1) {
+                const firstBtn = document.createElement('button');
+                firstBtn.className = 'page-num';
+                firstBtn.textContent = '1';
+                firstBtn.onclick = () => { currentPage = 1; renderArticles(); window.scrollTo(0, 0); };
+                pageNumbers.appendChild(firstBtn);
+
+                if (startPage > 2) {
+                    const dots = document.createElement('span');
+                    dots.className = 'pagination-dots';
+                    dots.textContent = '...';
+                    pageNumbers.appendChild(dots);
+                }
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
                 const btn = document.createElement('button');
-                btn.className = `btn ${i === currentPage ? '' : 'btn-outline'}`;
+                btn.className = `page-num ${i === currentPage ? 'active' : ''}`;
                 btn.textContent = i;
                 btn.onclick = () => {
                     currentPage = i;
                     renderArticles();
                     window.scrollTo(0, 0);
                 };
-                controls.appendChild(btn);
+                pageNumbers.appendChild(btn);
             }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    const dots = document.createElement('span');
+                    dots.className = 'pagination-dots';
+                    dots.textContent = '...';
+                    pageNumbers.appendChild(dots);
+                }
+
+                const lastBtn = document.createElement('button');
+                lastBtn.className = 'page-num';
+                lastBtn.textContent = totalPages;
+                lastBtn.onclick = () => { currentPage = totalPages; renderArticles(); window.scrollTo(0, 0); };
+                pageNumbers.appendChild(lastBtn);
+            }
+            paginationWrapper.appendChild(pageNumbers);
+
+            // Next Button
+            const nextBtn = document.createElement('button');
+            nextBtn.className = `page-nav-btn ${currentPage === totalPages ? 'disabled' : ''}`;
+            nextBtn.innerHTML = "Próximo <i class='bx bx-chevron-right'></i>";
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.onclick = () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderArticles();
+                    window.scrollTo(0, 0);
+                }
+            };
+            paginationWrapper.appendChild(nextBtn);
+
+            controls.appendChild(paginationWrapper);
         }
     }
 }

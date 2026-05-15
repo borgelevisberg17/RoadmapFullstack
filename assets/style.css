@@ -1,16 +1,16 @@
 :root {
     --primary-color: #4f46e5; /* Modern Indigo */
-    --secondary-color: #1e1b4b;
+    --secondary-color: #18181b;
     --bg-light: #ffffff;
-    --bg-dark: #0f172a;
+    --bg-dark: #09090b;
     --text-light: #1e293b;
     --text-dark: #f1f5f9;
     --border-color: #e2e8f0;
-    --border-color-dark: #334155;
+    --border-color-dark: #27272a;
     --link-color: #4f46e5;
     --link-hover: #4338ca;
     --code-bg: #f8fafc;
-    --code-bg-dark: #1e293b;
+    --code-bg-dark: #18181b;
     --tag-bg: #f1f5f9;
     --tag-color: #475569;
     --tag-hover-bg: #e2e8f0;
@@ -23,9 +23,9 @@
     --text-light: var(--text-dark);
     --border-color: var(--border-color-dark);
     --code-bg: var(--code-bg-dark);
-    --tag-bg: #3d4952;
-    --tag-color: #9cd1f7;
-    --tag-hover-bg: #4a5a66;
+    --tag-bg: #27272a;
+    --tag-color: #e2e8f0;
+    --tag-hover-bg: #3f3f46;
 }
 
 * {
@@ -1354,4 +1354,76 @@ pre code {
     border-color: var(--primary-color) !important;
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
     outline: none;
+}
+
+/* Modern Pagination */
+.modern-pagination {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    user-select: none;
+}
+
+.page-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-light);
+    color: var(--text-light);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.page-nav-btn:hover:not(.disabled) {
+    background: var(--tag-bg);
+    border-color: var(--primary-color);
+}
+
+.page-nav-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 5px;
+}
+
+.page-num {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    background: var(--bg-light);
+    color: var(--text-light);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.page-num:hover {
+    background: var(--tag-bg);
+}
+
+.page-num.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.pagination-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    color: var(--text-light);
+    opacity: 0.6;
 }
