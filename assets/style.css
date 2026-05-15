@@ -459,14 +459,42 @@ pre code {
     max-width: 100%;
 }
 
-.article-body h1 {
-    font-size: 2rem;
-    margin-bottom: 12px;
+.article-header {
+    margin-bottom: 30px;
+}
+
+.article-header h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #6a737c;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+}
+
+.article-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.article-content-wrapper {
+    margin-top: 30px;
 }
 
 @media (max-width: 640px) {
-    .article-body h1 {
-        font-size: 1.6rem;
+    .article-header h1 {
+        font-size: 1.75rem;
+    }
+    .article-meta {
+        gap: 10px;
     }
 }
 
@@ -599,6 +627,15 @@ pre code {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+    .question-summary-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 .question-tags {
@@ -643,6 +680,16 @@ pre code {
     flex-wrap: wrap;
 }
 
+#forum-title {
+    word-break: break-word;
+}
+
+@media (max-width: 640px) {
+    #forum-title {
+        font-size: 1.5rem !important;
+    }
+}
+
 .post-main-content {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 30px;
@@ -665,6 +712,7 @@ pre code {
     padding: 10px;
     border-radius: 3px;
     width: 200px;
+    max-width: 100%;
     flex-direction: column;
     align-items: flex-start;
 }
@@ -712,6 +760,12 @@ pre code {
 .voter i {
     font-size: 2.5rem;
     cursor: pointer;
+}
+
+@media (max-width: 640px) {
+    .voter i {
+        font-size: 1.8rem;
+    }
 }
 
 .voter i:hover {
@@ -838,13 +892,14 @@ pre code {
     font-size: 1.7rem;
     margin-bottom: 25px;
     padding-bottom: 10px;
-    border-bottom: 3px solid var(--border-color);
-    font-weight: 500;
+    border-bottom: 3px solid var(--primary-color);
+    font-weight: 600;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
-.stage-title.junior { border-color: #4CAF50; color: #4CAF50; }
-.stage-title.middle { border-color: #2196F3; color: #2196F3; }
-.stage-title.senior { border-color: #f48024; color: #f48024; }
-.stage-title.tips { border-color: #9c27b0; color: #9c27b0; }
 
 .checklist-card {
     background: #fdf7e2;
@@ -1043,11 +1098,12 @@ pre code {
         justify-content: flex-start;
         border-top: 1px solid var(--border-color);
         margin-top: 10px;
-        padding-top: 10px;
+        padding: 10px 0;
+        gap: 5px;
     }
     .nav-links a {
-        font-size: 0.8rem;
-        padding: 4px 10px;
+        font-size: 0.75rem;
+        padding: 5px 10px;
     }
     .hero-section {
         padding-bottom: 15px;

@@ -100,7 +100,7 @@ function loadPosts() {
     const postId = urlParams.get('post');
 
     if (postId) {
-        showPost(postId);
+        showPost(postId, false);
         return;
     }
 
@@ -163,7 +163,7 @@ function loadPosts() {
     updateForumStats(posts);
 }
 
-function showPost(id) {
+function showPost(id, shouldPushState = true) {
     const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
     const post = posts.find(p => p.id === id);
     if (!post) {
@@ -176,24 +176,28 @@ function showPost(id) {
     localStorage.setItem('forumPosts', JSON.stringify(posts));
 
     // Update URL
-    const url = new URL(window.location);
-    url.searchParams.set('post', id);
-    window.history.pushState({}, '', url);
+    if (shouldPushState) {
+        const url = new URL(window.location);
+        url.searchParams.set('post', id);
+        window.history.pushState({}, '', url);
+    }
 
     const container = document.getElementById('forum-posts');
     const questionView = document.getElementById('question-view');
     const content = document.getElementById('single-post-container');
     const titleEl = document.getElementById('forum-title');
+    const searchContainer = document.getElementById('forum-search-container');
 
     container.style.display = 'none';
     questionView.style.display = 'block';
     titleEl.textContent = post.title;
 
-    // Hide filters and "Ask" button for a cleaner view
+    // Hide filters, search and "Ask" button for a cleaner view
     const filters = document.querySelector('.forum-filters');
     const askBtn = document.querySelector('header .btn');
     if (filters) filters.style.display = 'none';
     if (askBtn) askBtn.style.display = 'none';
+    if (searchContainer) searchContainer.style.display = 'none';
 
     let answersHtml = '';
     post.answers.sort((a, b) => (b.votes || 0) - (a.votes || 0)).forEach(answer => {
@@ -208,10 +212,10 @@ function showPost(id) {
                     </div>
                     <div class="post-text">
                         <p>${escapeHTML(answer.content)}</p>
-                        <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
-                            <div class="user-card" style="background: #e1ecf4; padding: 10px; border-radius: 3px;">
+                        <div class="post-signature-container">
+                            <div class="user-card post-signature">
                                 <div>
-                                    <span style="font-size: 0.7rem; display: block; margin-bottom: 3px;">respondido ${getRelativeTime(answer.date)}</span>
+                                    <span class="date">respondido ${getRelativeTime(answer.date)}</span>
                                     <span class="username">${escapeHTML(answer.author || 'Anônimo')}</span>
                                     <span class="reputation">${answer.reputation || 1}</span>
                                 </div>
@@ -276,8 +280,11 @@ function backToForum() {
     const filters = document.querySelector('.forum-filters');
     const askBtn = document.querySelector('header .btn');
     const titleEl = document.getElementById('forum-title');
+    const searchContainer = document.getElementById('forum-search-container');
+
     if (filters) filters.style.display = 'flex';
     if (askBtn) askBtn.style.display = 'block';
+    if (searchContainer) searchContainer.style.display = 'block';
     if (titleEl) titleEl.textContent = 'Todas as Perguntas';
 
     loadPosts();

@@ -178,16 +178,16 @@ function showArticle(id) {
 
     content.innerHTML = `
         <article class="article-body">
-            <header style="margin-bottom: 30px;">
-                <h1 style="font-size: 2.5rem; line-height: 1.2; margin-bottom: 15px;">${article.title}</h1>
-                <div style="display: flex; align-items: center; gap: 15px; color: #6a737c; font-size: 0.9rem;">
-                    <span style="display: flex; align-items: center; gap: 5px;"><i class='bx bx-user'></i> ${article.author}</span>
-                    <span style="display: flex; align-items: center; gap: 5px;"><i class='bx bx-calendar'></i> ${article.date}</span>
-                    <span style="display: flex; align-items: center; gap: 5px;"><i class='bx bx-time-five'></i> ${readingTime}</span>
+            <header class="article-header">
+                <h1>${article.title}</h1>
+                <div class="article-meta">
+                    <span><i class='bx bx-user'></i> ${article.author}</span>
+                    <span><i class='bx bx-calendar'></i> ${article.date}</span>
+                    <span><i class='bx bx-time-five'></i> ${readingTime}</span>
                 </div>
             </header>
 
-            <div style="margin-top: 30px;">
+            <div class="article-content-wrapper">
                 ${formattedContent}
             </div>
 

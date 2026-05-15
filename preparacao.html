@@ -27,131 +27,128 @@
 
     <div class="container">
         <aside class="sidebar">
-            <h3>Estágios</h3>
+            <h3>Navegação</h3>
             <ul>
-                <li class="active"><a href="#junior" style="text-decoration: none; color: inherit;"><i class='bx bx-rocket'></i> Junior / Estágio</a></li>
+                <li class="active"><a href="#introducao" style="text-decoration: none; color: inherit;"><i class='bx bx-compass'></i> Comece Aqui</a></li>
+                <li><a href="#junior" style="text-decoration: none; color: inherit;"><i class='bx bx-rocket'></i> Junior / Estágio</a></li>
                 <li><a href="#pleno" style="text-decoration: none; color: inherit;"><i class='bx bx-trending-up'></i> Pleno / Middle</a></li>
                 <li><a href="#senior" style="text-decoration: none; color: inherit;"><i class='bx bx-crown'></i> Sênior / Lead</a></li>
-                <li><a href="#entrevistas" style="text-decoration: none; color: inherit;"><i class='bx bx-terminal'></i> Entrevistas</a></li>
-                <li><a href="#softskills" style="text-decoration: none; color: inherit;"><i class='bx bx-heart'></i> Soft Skills</a></li>
+                <li><a href="#duvidas" style="text-decoration: none; color: inherit;"><i class='bx bx-help-circle'></i> Dúvidas Comuns</a></li>
             </ul>
         </aside>
 
         <main class="content-area">
-            <header class="hero-section">
-                <h1>Jornada de Carreira Tech</h1>
-                <p>Estratégias humanizadas e diretas para cada etapa da sua evolução. O conteúdo abaixo foi construído com base na realidade do mercado, fugindo de clichês de IA.</p>
+            <header class="hero-section" id="introducao">
+                <h1>Preparação de Carreira</h1>
+                <p>Guia definitivo para se posicionar no mercado de tecnologia, focado em autonomia, resolução de problemas e crescimento contínuo.</p>
             </header>
 
             <section id="junior" class="qa-section">
-                <h2 class="stage-title junior"><i class='bx bx-rocket'></i> Nível Junior: A Primeira Grande Barreira</h2>
+                <h2 class="stage-title"><i class='bx bx-rocket'></i> A Primeira Oportunidade</h2>
+
+                <p>O nível Junior não é sobre saber tudo, mas sobre provar que você é capaz de aprender e entregar valor real sob orientação. O mercado saturou para quem só faz "clones de tutoriais".</p>
 
                 <div class="mentor-note">
                     <i class='bx bx-info-circle'></i>
-                    <span><strong>Nota do Mentor:</strong> No início, sua maior habilidade não é o código, é a capacidade de aprender rápido e não ter medo de perguntar. O mercado valoriza quem resolve, não quem decora.</span>
+                    <span><strong>Foco do Junior:</strong> Construa um portfólio que resolva problemas reais (ex: um sistema de estoque para o comércio do bairro) e domine o básico de Git e comunicação técnica.</span>
                 </div>
 
                 <div class="prep-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
-                    <div class="qa-item" style="height: 100%; display: flex; flex-direction: column;">
-                        <h3><i class='bx bx-folder-open'></i> Portfólio Real</h3>
-                        <p>Chega de Pokedex. O mercado quer ver se você resolve problemas de negócio. Um sistema de agendamento para uma barbearia vale mais que 10 projetos de curso.</p>
-                        <a href="artigos.html?id=guia-junior-real" class="btn btn-outline" style="margin-top: auto;">Ler Guia de Sobrevivência →</a>
+                    <div class="qa-item">
+                        <h3><i class='bx bx-file-find'></i> Como se destacar?</h3>
+                        <p>Vá além do código. Documente seu processo de decisão no README. Explique por que escolheu tal tecnologia e quais foram os desafios.</p>
+                        <a href="artigos.html?id=guia-junior-real" class="btn btn-outline" style="width: 100%; margin-top: 10px;">Guia de Sobrevivência Junior</a>
                     </div>
 
-                    <div class="checklist-card" data-checklist="junior-portfolio" style="margin-top: 0;">
-                        <h4>Checklist do Junior</h4>
-                        <div class="checklist-item" onclick="toggleCheck(this)"><i class='bx bx-circle'></i> 1 Projeto com CRUD completo e Auth</div>
-                        <div class="checklist-item" onclick="toggleCheck(this)"><i class='bx bx-circle'></i> README que explica o "PORQUÊ" das escolhas</div>
-                        <div class="checklist-item" onclick="toggleCheck(this)"><i class='bx bx-circle'></i> Perfil no LinkedIn "Otimizado para Busca"</div>
-                        <div class="checklist-item" onclick="toggleCheck(this)"><i class='bx bx-circle'></i> Primeiro Pull Request em Open Source</div>
+                    <div class="checklist-card" data-checklist="junior-core">
+                        <h4>Checklist de Entrada</h4>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><i class='bx bx-circle'></i> 1 Projeto real com CRUD e Autenticação</div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><i class='bx bx-circle'></i> Domínio de Git (Básico: push, pull, branch, merge)</div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><i class='bx bx-circle'></i> LinkedIn atualizado com projetos e tecnologias</div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><i class='bx bx-circle'></i> Noção básica de SQL e Bancos de Dados</div>
                     </div>
                 </div>
             </section>
 
             <section id="pleno" class="qa-section">
-                <h2 class="stage-title middle"><i class='bx bx-trending-up'></i> Nível Pleno: O Valor da Autonomia</h2>
+                <h2 class="stage-title"><i class='bx bx-trending-up'></i> Transição para Pleno</h2>
+
+                <p>O Pleno é o desenvolvedor que possui autonomia. Ele recebe uma tarefa e consegue arquitetar a solução, prever falhas e entregar código pronto para produção com testes.</p>
 
                 <div class="mentor-note">
                     <i class='bx bx-bulb'></i>
-                    <span><strong>Nota do Mentor:</strong> O Pleno é o motor da equipe. Sua missão é entregar soluções robustas e começar a pensar em como o sistema escala e falha.</span>
+                    <span><strong>Foco do Pleno:</strong> Pare de ser apenas um "executor de tickets". Entenda as regras de negócio, melhore a qualidade do código (Clean Code) e aprenda a debugar sistemas complexos.</span>
                 </div>
 
                 <div class="prep-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
-                    <div class="qa-item" style="height: 100%; display: flex; flex-direction: column;">
-                        <h3><i class='bx bx-code-alt'></i> Autonomia Técnica</h3>
-                        <p>Aprenda a debugar além do console.log. Entenda logs de servidor, monitoramento e como o banco de dados se comporta sob carga.</p>
-                        <a href="artigos.html?id=transicao-pleno" class="btn btn-outline" style="margin-top: auto;">Dominando a Autonomia →</a>
+                    <div class="qa-item">
+                        <h3><i class='bx bx-shield-quarter'></i> Qualidade e Manutenção</h3>
+                        <p>Aprenda sobre Testes Unitários e de Integração. Entenda que código bom é código que pode ser mantido por outra pessoa sem dor de cabeça.</p>
+                        <a href="artigos.html?id=clean-code-introducao" class="btn btn-outline" style="width: 100%; margin-top: 10px;">Dominando Clean Code</a>
                     </div>
-                    <div class="qa-item" style="height: 100%; display: flex; flex-direction: column;">
-                        <h3><i class='bx bx-check-shield'></i> Qualidade e Testes</h3>
-                        <p>Testes não são perda de tempo, são o que permite que você durma tranquilo após um deploy na sexta-feira.</p>
-                        <a href="artigos.html?id=clean-code-introducao" class="btn btn-outline" style="margin-top: auto;">Clean Code na Prática →</a>
+                    <div class="qa-item">
+                        <h3><i class='bx bx-network-chart'></i> Autonomia Técnica</h3>
+                        <p>Saiba investigar logs, monitorar performance e tomar decisões técnicas fundamentadas em trade-offs.</p>
+                        <a href="artigos.html?id=transicao-pleno" class="btn btn-outline" style="width: 100%; margin-top: 10px;">Caminho para o Pleno</a>
                     </div>
                 </div>
             </section>
 
             <section id="senior" class="qa-section">
-                <h2 class="stage-title senior"><i class='bx bx-crown'></i> Nível Sênior: Liderança Técnica</h2>
+                <h2 class="stage-title"><i class='bx bx-crown'></i> O Papel do Sênior</h2>
+
+                <p>Ser Sênior é sobre impacto e pessoas. É o profissional que guia o time, define arquiteturas escaláveis e foca no valor que a tecnologia traz para o negócio.</p>
 
                 <div class="mentor-note">
-                    <i class='bx bx-user-voice'></i>
-                    <span><strong>Nota do Mentor:</strong> Ser sênior é sobre pessoas tanto quanto sobre código. Se você é o único que sabe resolver tudo, você falhou como sênior.</span>
+                    <i class='bx bx-group'></i>
+                    <span><strong>Foco do Sênior:</strong> Mentoria, arquitetura de sistemas e visão estratégica. Um sênior que não ajuda o time a crescer é apenas um "Junior com muita experiência".</span>
                 </div>
 
                 <div class="prep-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
-                    <div class="qa-item" style="height: 100%; display: flex; flex-direction: column;">
+                    <div class="qa-item">
                         <h3><i class='bx bx-git-repo-forked'></i> Arquitetura e Decisão</h3>
-                        <p>Cada escolha técnica é um trade-off. Saiba explicar o porquê de cada decisão para o time e para o negócio.</p>
-                        <a href="artigos.html?id=senior-alem-syntax" class="btn btn-outline" style="margin-top: auto;">Além da Sintaxe →</a>
+                        <p>Escolher a ferramenta certa para o problema certo. Saiba dizer "não" para novas tecnologias quando elas não fazem sentido para o projeto.</p>
+                        <a href="artigos.html?id=senior-alem-syntax" class="btn btn-outline" style="width: 100%; margin-top: 10px;">Liderança e Impacto</a>
                     </div>
-                    <div class="qa-item" style="height: 100%; display: flex; flex-direction: column;">
-                        <h3><i class='bx bx-group'></i> Mentoria e Cultura</h3>
-                        <p>Como elevar o nível técnico de quem está ao seu redor e garantir uma cultura de excelência.</p>
-                        <a href="artigos.html?id=vibing-code-dx" class="btn btn-outline" style="margin-top: auto;">Cultura e DX →</a>
-                    </div>
-                </div>
-            </section>
-
-            <section id="entrevistas" class="qa-section">
-                <h2 class="stage-title junior" style="border-color: #f44336; color: #f44336;"><i class='bx bx-terminal'></i> Vencendo Entrevistas</h2>
-                <div class="qa-item">
-                    <h3><i class='bx bx-conversation'></i> A Arte de Pensar em Voz Alta</h3>
-                    <p>O entrevistador quer ver como você lida com o desconhecido. Não trave, comunique seu raciocínio.</p>
-                    <div style="margin-top: 15px;">
-                        <a href="artigos.html?id=guia-entrevistas-tech" class="btn">Manual de Entrevistas Técnicas</a>
+                    <div class="qa-item">
+                        <h3><i class='bx bx-conversation'></i> Soft Skills Avançadas</h3>
+                        <p>Comunicação com stakeholders, resolução de conflitos técnicos e disseminação de cultura de engenharia.</p>
+                        <a href="artigos.html?id=soft-skills-introvertidos" class="btn btn-outline" style="width: 100%; margin-top: 10px;">Networking Estratégico</a>
                     </div>
                 </div>
             </section>
 
-            <section id="softskills" class="qa-section">
-                <h2 class="stage-title tips"><i class='bx bx-heart'></i> Soft Skills: O Real Diferencial</h2>
+            <section id="duvidas" class="qa-section">
+                <h2 class="stage-title"><i class='bx bx-help-circle'></i> Dúvidas Comuns (FAQ)</h2>
+
                 <div class="qa-item">
-                    <h3><i class='bx bx-world'></i> Networking e Comunicação</h3>
-                    <p>Saber se vender e construir relacionamentos abre mais portas do que saber o framework da moda.</p>
-                    <div style="margin-top: 15px;">
-                        <a href="artigos.html?id=soft-skills-introvertidos" class="btn btn-outline">Networking para Introvertidos →</a>
-                    </div>
+                    <h3>Preciso de faculdade para ser um bom Dev?</h3>
+                    <p>Não é obrigatório, mas ajuda muito na base teórica e no networking. O mercado valoriza o que você entrega, mas o diploma ainda abre portas em empresas tradicionais e facilita vistos para o exterior.</p>
+                </div>
+
+                <div class="qa-item">
+                    <h3>Qual linguagem devo aprender primeiro?</h3>
+                    <p>Foque em aprender a lógica de programação. JavaScript, Python ou Java são ótimas portas de entrada. O segredo é dominar os fundamentos (variáveis, loops, funções, POO) antes de pular de framework em framework.</p>
+                </div>
+
+                <div class="qa-item">
+                    <h3>Como lidar com a Síndrome do Impostor?</h3>
+                    <p>Entenda que na tecnologia você sempre será um eterno aprendiz. Ninguém sabe tudo. Foque no seu progresso diário e compare-se apenas com quem você era ontem.</p>
+                </div>
+
+                <div class="qa-item">
+                    <h3>Vale a pena aprender Inglês?</h3>
+                    <p><strong>Sim, é o maior multiplicador de salário da carreira tech.</strong> A melhor documentação, os melhores cursos e as vagas remotas que pagam em dólar exigem inglês.</p>
                 </div>
             </section>
         </main>
 
         <aside class="right-sidebar">
             <div class="s-widget">
-                <div class="s-widget-header">Dicas Rápidas</div>
+                <div class="s-widget-header">Checklist de Evolução</div>
                 <div class="s-widget-content">
-                    <ul style="font-size: 0.85rem; color: #3b4045;">
-                        <li style="margin-bottom: 10px;"><i class='bx bx-check' style="color: var(--primary-color);"></i> Atualize seu LinkedIn semanalmente.</li>
-                        <li style="margin-bottom: 10px;"><i class='bx bx-check' style="color: var(--primary-color);"></i> Participe de comunidades no Discord/Slack.</li>
-                        <li style="margin-bottom: 10px;"><i class='bx bx-check' style="color: var(--primary-color);"></i> Estude fundamentos, não apenas frameworks.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="s-widget">
-                <div class="s-widget-header">Seu Progresso</div>
-                <div class="s-widget-content">
-                    <p style="font-size: 0.8rem; margin-bottom: 10px;">Complete as checklists para acompanhar sua evolução.</p>
-                    <div class="progress-bar-bg" style="height: 8px;">
+                    <p style="font-size: 0.8rem; margin-bottom: 10px;">Complete as etapas para monitorar seu crescimento profissional.</p>
+                    <div class="progress-bar-bg" style="height: 10px;">
                         <div id="prep-progress-bar" class="progress-bar-fill" style="width: 0%"></div>
                     </div>
                     <p id="prep-progress-text" style="font-size: 0.75rem; margin-top: 5px; text-align: right;">0% concluído</p>
@@ -159,12 +156,13 @@
             </div>
 
             <div class="s-widget">
-                <div class="s-widget-header">Dúvidas de Carreira</div>
+                <div class="s-widget-header">Artigos Recomendados</div>
                 <div class="s-widget-content">
-                    <ul id="latest-activity-list" style="list-style: none;">
-                        <!-- JS Loaded -->
+                    <ul style="list-style: none; font-size: 0.85rem;">
+                        <li style="margin-bottom: 8px;"><a href="artigos.html?id=guia-entrevistas-tech" style="color: var(--link-color); text-decoration: none;">Manual de Entrevistas Técnicas</a></li>
+                        <li style="margin-bottom: 8px;"><a href="artigos.html?id=soft-skills-dev" style="color: var(--link-color); text-decoration: none;">Soft Skills Essenciais</a></li>
+                        <li style="margin-bottom: 8px;"><a href="artigos.html?id=git-na-pratica" style="color: var(--link-color); text-decoration: none;">Git sem Medo</a></li>
                     </ul>
-                    <a href="forum.html?category=Carreira" style="font-size: 0.75rem; color: var(--link-color); text-decoration: none; margin-top: 10px; display: inline-block;">Ver mais no fórum →</a>
                 </div>
             </div>
         </aside>
@@ -229,7 +227,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             loadChecklist();
 
-            // Handle sidebar active state on scroll or click
+            // Handle sidebar active state on scroll
             const links = document.querySelectorAll('.sidebar li');
             links.forEach(li => {
                 li.addEventListener('click', () => {
