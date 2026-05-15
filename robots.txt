@@ -9,7 +9,9 @@ Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
+
 User-agent: *
 Allow: /
+
 Disallow: /data/
 Sitemap: https://roadmap-fullstack.vercel.app/sitemap.xml
