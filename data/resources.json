@@ -1,128 +1,128 @@
 {
   "HTML5": {
     "docs": "https://developer.mozilla.org/pt-BR/docs/Web/HTML",
-    "youtube": ["Kevin Powell", "Curso em Vídeo", "Código Fonte TV", "Traversy Media"],
-    "books": ["HTML5 e CSS3: Domine a web moderna - Terry Felke-Morris", "Learning Web Design - Jennifer Robbins"],
-    "courses": ["https://www.freecodecamp.org/portuguese/learn/2022/responsive-web-design/"],
-    "projects": ["Crie uma página de portfólio pessoal", "Clone da landing page do Instagram"]
+    "youtube": ["Kevin Powell", "Curso em Vídeo", "Código Fonte TV", "Traversy Media", "Fireship", "Web Dev Simplified"],
+    "books": ["HTML5 e CSS3: Domine a web moderna - Terry Felke-Morris", "Learning Web Design - Jennifer Robbins", "HTML and CSS: Design and Build Websites - Jon Duckett"],
+    "courses": ["https://www.freecodecamp.org/portuguese/learn/2022/responsive-web-design/", "https://web.dev/learn/html/"],
+    "projects": ["Crie uma página de portfólio pessoal", "Clone da landing page do Instagram", "Desenvolva um formulário de checkout acessível"]
   },
   "CSS3": {
     "docs": "https://developer.mozilla.org/pt-BR/docs/Web/CSS",
-    "youtube": ["Kevin Powell", "Codando TV", "DevSoutinho", "Online Tutorials", "Layout Land"],
-    "books": ["CSS Secrets - Lea Verou", "CSS: The Definitive Guide - Eric Meyer", "Resilient Web Design - Jeremy Keith"],
-    "courses": ["https://web.dev/learn/css/", "https://flexboxfroggy.com/", "https://cssgridgarden.com/"],
-    "projects": ["Recrie a interface do Google", "Crie um layout de Dashboard com Grid"]
+    "youtube": ["Kevin Powell", "Codando TV", "DevSoutinho", "Online Tutorials", "Layout Land", "Fireship"],
+    "books": ["CSS Secrets - Lea Verou", "CSS: The Definitive Guide - Eric Meyer", "Resilient Web Design - Jeremy Keith", "SMACSS - Jonathan Snook"],
+    "courses": ["https://web.dev/learn/css/", "https://flexboxfroggy.com/", "https://cssgridgarden.com/", "https://css-tricks.com/"],
+    "projects": ["Recrie a interface do Google", "Crie um layout de Dashboard com Grid", "Desenvolva um sistema de design básico (Design System)"]
   },
   "JavaScript": {
     "docs": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript",
-    "youtube": ["Filipe Deschamps", "Rocketseat", "The Net Ninja", "Fabio Akita", "Wes Bos"],
-    "books": ["Eloquent JavaScript - Marijn Haverbeke", "You Don't Know JS - Kyle Simpson", "Código Limpo - Robert C. Martin", "JavaScript: The Good Parts - Douglas Crockford"],
-    "courses": ["https://javascript.info/", "https://es6.io/", "https://scrimba.com/learn/learnjavascript"],
-    "projects": ["Todo List", "Calculadora", "Clone do Netflix (frontend)"]
+    "youtube": ["Filipe Deschamps", "Rocketseat", "The Net Ninja", "Fabio Akita", "Wes Bos", "Web Dev Simplified", "ColorCode"],
+    "books": ["Eloquent JavaScript - Marijn Haverbeke", "You Don't Know JS - Kyle Simpson", "Código Limpo - Robert C. Martin", "JavaScript: The Good Parts - Douglas Crockford", "Deep JavaScript - Axel Rauschmayer"],
+    "courses": ["https://javascript.info/", "https://es6.io/", "https://scrimba.com/learn/learnjavascript", "https://learnjavascript.online/"],
+    "projects": ["Todo List", "Calculadora", "Clone do Netflix (frontend)", "Desenvolva um motor de busca simples em JS puro"]
   },
   "React.js": {
     "docs": "https://react.dev/",
-    "youtube": ["PedroTech", "Jack Herrington", "Web Dev Simplified", "Rocketseat", "Kent C. Dodds"],
-    "books": ["The Road to React - Robin Wieruch", "React Key Concepts - Maximilian Schwarzmüller", "Learning React - Alex Banks"],
-    "courses": ["https://egghead.io/courses/the-beginner-s-guide-to-react", "https://fullstackopen.com/pt/", "https://scrimba.com/learn/learnreact"],
-    "projects": ["Dashboard de Finanças", "Clone do Twitter", "E-commerce simples"]
+    "youtube": ["PedroTech", "Jack Herrington", "Web Dev Simplified", "Rocketseat", "Kent C. Dodds", "Ben Awad"],
+    "books": ["The Road to React - Robin Wieruch", "React Key Concepts - Maximilian Schwarzmüller", "Learning React - Alex Banks", "React Design Patterns - Michele Bertoli"],
+    "courses": ["https://egghead.io/courses/the-beginner-s-guide-to-react", "https://fullstackopen.com/pt/", "https://scrimba.com/learn/learnreact", "https://epicreact.dev/"],
+    "projects": ["Dashboard de Finanças", "Clone do Twitter", "E-commerce simples", "Construa um editor de Markdown em tempo real"]
   },
   "Node.js": {
     "docs": "https://nodejs.org/en/docs/",
-    "youtube": ["The Net Ninja", "Traversy Media", "Erick Wendel", "Rodrigo Branas", "Lucas Montano"],
-    "books": ["Node.js Design Patterns - Mario Casciaro", "Web Development with Node and Express - Ethan Brown"],
-    "courses": ["https://www.udemy.com/course/the-complete-nodejs-developer-course-2/", "https://nodeschool.io/"],
-    "projects": ["API REST para E-commerce", "Chat em Tempo Real com Socket.io"]
+    "youtube": ["The Net Ninja", "Traversy Media", "Erick Wendel", "Rodrigo Branas", "Lucas Montano", "Hussein Nasser"],
+    "books": ["Node.js Design Patterns - Mario Casciaro", "Web Development with Node and Express - Ethan Brown", "Distributed Systems with Node.js - Thomas Hunter II"],
+    "courses": ["https://www.udemy.com/course/the-complete-nodejs-developer-course-2/", "https://nodeschool.io/", "https://github.com/goldbergyoni/nodebestpractices"],
+    "projects": ["API REST para E-commerce", "Chat em Tempo Real com Socket.io", "Sistema de autenticação multi-fator (MFA)"]
   },
   "Laravel": {
     "docs": "https://laravel.com/docs",
-    "youtube": ["Laravel Daily", "Laracasts", "Tiago Matos", "Pinguim do Laravel"],
-    "books": ["Laravel: Up & Running - Matt Stauffer"],
-    "courses": ["https://laracasts.com/", "https://laravel-news.com/category/laravel-tutorials"],
-    "projects": ["Sistema de Gestão de Inventário", "Blog com autenticação e filtros", "API para App de Delivery"]
+    "youtube": ["Laravel Daily", "Laracasts", "Tiago Matos", "Pinguim do Laravel", "Povilas Korop"],
+    "books": ["Laravel: Up & Running - Matt Stauffer", "Domain-Driven Design with Laravel - Jess Archer"],
+    "courses": ["https://laracasts.com/", "https://laravel-news.com/category/laravel-tutorials", "https://testdrivenlaravel.com/"],
+    "projects": ["Sistema de Gestão de Inventário", "Blog com autenticação e filtros", "API para App de Delivery", "Plataforma de agendamento de serviços"]
   },
   "Python": {
     "docs": "https://docs.python.org/3/",
-    "youtube": ["Corey Schafer", "Programming with Mosh", "Dunossauro", "Hashtag Programação", "Sentdex"],
-    "books": ["Python Fluente - Luciano Ramalho", "Pense em Python - Allen B. Downey", "Automate the Boring Stuff with Python - Al Sweigart"],
-    "courses": ["https://www.coursera.org/specializations/python", "https://www.learnpython.org/"],
-    "projects": ["Web Scraper", "Automação de Tarefas", "Bot para Telegram"]
+    "youtube": ["Corey Schafer", "Programming with Mosh", "Dunossauro", "Hashtag Programação", "Sentdex", "ArjanCodes"],
+    "books": ["Python Fluente - Luciano Ramalho", "Pense em Python - Allen B. Downey", "Automate the Boring Stuff with Python - Al Sweigart", "Serious Python - Julien Danjou"],
+    "courses": ["https://www.coursera.org/specializations/python", "https://www.learnpython.org/", "https://realpython.com/"],
+    "projects": ["Web Scraper", "Automação de Tarefas", "Bot para Telegram", "Análise preditiva de vendas com Scikit-learn"]
   },
   "TypeScript": {
       "docs": "https://www.typescriptlang.org/docs/",
-      "youtube": ["Matt Pocock", "Rocketseat", "Steve Griffith", "Michigan TypeScript"],
-      "books": ["Effective TypeScript - Dan Vanderkam", "Programming TypeScript - Boris Cherny"],
-      "courses": ["https://www.totaltypescript.com/", "https://www.typescriptlang.org/play"],
-      "projects": ["Refatore um projeto JS para TS", "Biblioteca de utilitários tipada"]
+      "youtube": ["Matt Pocock", "Rocketseat", "Steve Griffith", "Michigan TypeScript", "Basarat Ali Shah"],
+      "books": ["Effective TypeScript - Dan Vanderkam", "Programming TypeScript - Boris Cherny", "Tackling TypeScript - Axel Rauschmayer"],
+      "courses": ["https://www.totaltypescript.com/", "https://www.typescriptlang.org/play", "https://www.executeprogram.com/courses/typescript"],
+      "projects": ["Refatore um projeto JS para TS", "Biblioteca de utilitários tipada", "Crie um framework de validação de esquemas"]
   },
   "SQL Básico": {
     "docs": "https://www.w3schools.com/sql/",
-    "youtube": ["Curso em Vídeo", "Boson Treinamentos", "Hussein Nasser"],
-    "books": ["SQL: Guia Prático - Alice Zhao", "Learning SQL - Alan Beaulieu"],
-    "courses": ["https://www.khanacademy.org/computing/computer-programming/sql", "https://sqlbolt.com/"],
-    "projects": ["Modelagem de banco para uma livraria", "Relatórios complexos com JOINs"]
+    "youtube": ["Curso em Vídeo", "Boson Treinamentos", "Hussein Nasser", "Alex The Analyst"],
+    "books": ["SQL: Guia Prático - Alice Zhao", "Learning SQL - Alan Beaulieu", "SQL Performance Explained - Markus Winand"],
+    "courses": ["https://www.khanacademy.org/computing/computer-programming/sql", "https://sqlbolt.com/", "https://sqlzoo.net/"],
+    "projects": ["Modelagem de banco para uma livraria", "Relatórios complexos com JOINs", "Otimização de consultas em um banco de 1M de registros"]
   },
   "Express": {
     "docs": "https://expressjs.com/",
-    "youtube": ["Traversy Media", "Rocketseat", "Academind"],
-    "books": ["Express in Action - Evan Hahn"],
-    "courses": ["https://www.freecodecamp.org/learn/back-end-development-and-apis/"],
-    "projects": ["Microserviço de envio de emails"]
+    "youtube": ["Traversy Media", "Rocketseat", "Academind", "Programming with Mosh"],
+    "books": ["Express in Action - Evan Hahn", "Production Ready Express - LogRocket"],
+    "courses": ["https://www.freecodecamp.org/learn/back-end-development-and-apis/", "https://www.codecademy.com/learn/learn-express"],
+    "projects": ["Microserviço de envio de emails", "Gateway de pagamento simplificado"]
   },
   "Tailwind CSS": {
     "docs": "https://tailwindcss.com/docs",
-    "youtube": ["Tailwind Labs", "Laravel Daily", "Shruti Balasa"],
-    "books": ["Refactoring UI - Adam Wathan & Steve Schoger"],
-    "courses": ["https://tailwindui.com/components", "https://www.youtube.com/playlist?list=PL5f_mz_zU5eXWYDXHUDOLBE0scnuJofX0"],
-    "projects": ["Landing Page de Agência", "Dashboard StackOverflow-style"]
+    "youtube": ["Tailwind Labs", "Laravel Daily", "Shruti Balasa", "Simon Vrachliotis"],
+    "books": ["Refactoring UI - Adam Wathan & Steve Schoger", "Tailwind CSS: Up and Running - Alessandro Minoccheri"],
+    "courses": ["https://tailwindui.com/components", "https://www.youtube.com/playlist?list=PL5f_mz_zU5eXWYDXHUDOLBE0scnuJofX0", "https://egghead.io/courses/build-a-modern-landing-page-with-tailwind-css"],
+    "projects": ["Landing Page de Agência", "Dashboard StackOverflow-style", "Interface de Chat inspirada no Slack"]
   },
   "Docker": {
     "docs": "https://docs.docker.com/",
-    "youtube": ["LinuxTips", "FullCycle", "Jeff Geerling"],
-    "books": ["Docker: Up & Running - Sean P. Kane", "Docker Deep Dive - Nigel Poulton"],
-    "courses": ["https://www.docker.com/101-tutorial/", "https://training.play-with-docker.com/"],
-    "projects": ["Containerizar uma aplicação Fullstack", "Configurar CI/CD com Docker"]
+    "youtube": ["LinuxTips", "FullCycle", "Jeff Geerling", "TechWorld with Nana"],
+    "books": ["Docker: Up & Running - Sean P. Kane", "Docker Deep Dive - Nigel Poulton", "Docker in Practice - Ian Miell"],
+    "courses": ["https://www.docker.com/101-tutorial/", "https://training.play-with-docker.com/", "https://www.bretfisher.com/courses/"],
+    "projects": ["Containerizar uma aplicação Fullstack", "Configurar CI/CD com Docker", "Orquestração básica com Docker Compose para microserviços"]
   },
   "Redis": {
     "docs": "https://redis.io/docs/",
-    "youtube": ["Redis", "Hussein Nasser", "Traversy Media"],
-    "books": ["Redis in Action - Josiah Carlson"],
-    "courses": ["https://university.redis.com/"],
-    "projects": ["Implemente cache em uma API Node.js", "Sistema de ranking em tempo real"]
+    "youtube": ["Redis", "Hussein Nasser", "Traversy Media", "ByteByteGo"],
+    "books": ["Redis in Action - Josiah Carlson", "Redis Applied Design Patterns - Redis Labs"],
+    "courses": ["https://university.redis.com/", "https://redis.io/learn"],
+    "projects": ["Implemente cache em uma API Node.js", "Sistema de ranking em tempo real", "Implementação de um Rate Limiter distribuído"]
   },
   "MongoDB": {
     "docs": "https://www.mongodb.com/docs/",
-    "youtube": ["MongoDB", "Academind", "Web Dev Simplified"],
-    "books": ["MongoDB: The Definitive Guide - Shannon Bradshaw"],
-    "courses": ["https://university.mongodb.com/"],
-    "projects": ["Crie um blog com NoSQL", "Sistema de catálogo de produtos flexível"]
+    "youtube": ["MongoDB", "Academind", "Web Dev Simplified", "Net Ninja"],
+    "books": ["MongoDB: The Definitive Guide - Shannon Bradshaw", "MongoDB Applied Design Patterns - Rick Copeland"],
+    "courses": ["https://university.mongodb.com/", "https://www.mongodb.com/developer/languages/javascript/"],
+    "projects": ["Crie um blog com NoSQL", "Sistema de catálogo de produtos flexível", "Implementação de busca geoespacial"]
   },
   "AWS": {
     "docs": "https://docs.aws.amazon.com/",
-    "youtube": ["AWS", "Be A Better Dev", "Digital Cloud Training"],
-    "books": ["AWS Certified Solutions Architect Study Guide"],
-    "courses": ["https://explore.skillbuilder.aws/", "https://www.freecodecamp.org/news/aws-certified-cloud-practitioner-study-guide/"],
-    "projects": ["Hospede um site estático no S3", "Deploy de aplicação com Elastic Beanstalk"]
+    "youtube": ["AWS", "Be A Better Dev", "Digital Cloud Training", "Cloud Institute"],
+    "books": ["AWS Certified Solutions Architect Study Guide", "AWS in Action - Michael Wittig"],
+    "courses": ["https://explore.skillbuilder.aws/", "https://www.freecodecamp.org/news/aws-certified-cloud-practitioner-study-guide/", "https://www.cloudacademy.com/"],
+    "projects": ["Hospede um site estático no S3", "Deploy de aplicação com Elastic Beanstalk", "Pipeline de processamento de imagens serverless com Lambda"]
   },
   "Kubernetes": {
     "docs": "https://kubernetes.io/docs/home/",
-    "youtube": ["Nana Janashia", "Jeff Geerling", "LinuxTips"],
-    "books": ["Kubernetes up & running - Brendan Burns"],
-    "courses": ["https://kubernetes.io/docs/tutorials/", "https://www.edx.org/course/introduction-to-kubernetes"],
-    "projects": ["Orquestrar microserviços localmente com Minikube"]
+    "youtube": ["Nana Janashia", "Jeff Geerling", "LinuxTips", "TechWorld with Nana"],
+    "books": ["Kubernetes up & running - Brendan Burns", "Kubernetes Cookbook - Sébastien Goasguen"],
+    "courses": ["https://kubernetes.io/docs/tutorials/", "https://www.edx.org/course/introduction-to-kubernetes", "https://kube.academy/"],
+    "projects": ["Orquestrar microserviços localmente com Minikube", "Deploy de uma aplicação com Helm", "Configuração de Ingress Controller e TLS"]
   },
   "React Native": {
     "docs": "https://reactnative.dev/docs/getting-started",
-    "youtube": ["Rocketseat", "The Net Ninja", "Programming with Mosh"],
-    "books": ["React Native in Action - Andrew Code"],
-    "courses": ["https://reactnative.dev/docs/tutorial", "https://www.udemy.com/course/the-complete-react-native-and-redux-course/"],
-    "projects": ["App de Clima com Geolocalização", "Clone do layout do Uber"]
+    "youtube": ["Rocketseat", "The Net Ninja", "Programming with Mosh", "William Candillon"],
+    "books": ["React Native in Action - Andrew Code", "React Native Cookbook - Dan Ward"],
+    "courses": ["https://reactnative.dev/docs/tutorial", "https://www.udemy.com/course/the-complete-react-native-and-redux-course/", "https://expo.dev/learn"],
+    "projects": ["App de Clima com Geolocalização", "Clone do layout do Uber", "App de finanças com autenticação biométrica"]
   },
   "PostgreSQL": {
     "docs": "https://www.postgresql.org/docs/",
-    "youtube": ["Hussein Nasser", "PostgreSQL", "Rodrigo Branas"],
-    "books": ["Mastering PostgreSQL - Hans-Jürgen Schönig"],
-    "courses": ["https://www.postgresqltutorial.com/", "https://www.codecademy.com/learn/learn-postgresql"],
-    "projects": ["Modelagem de um banco para rede social", "Otimização de performance com índices"]
+    "youtube": ["Hussein Nasser", "PostgreSQL", "Rodrigo Branas", "The Art of PostgreSQL"],
+    "books": ["Mastering PostgreSQL - Hans-Jürgen Schönig", "PostgreSQL High Performance - Gregory Smith"],
+    "courses": ["https://www.postgresqltutorial.com/", "https://www.codecademy.com/learn/learn-postgresql", "https://postgresweekly.com/"],
+    "projects": ["Modelagem de um banco para rede social", "Otimização de performance com índices", "Implementação de Full-text Search avançada"]
   }
 }

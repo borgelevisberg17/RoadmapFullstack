@@ -115,6 +115,66 @@ const seedPosts = [
         votes: 14,
         views: 280,
         answers: []
+    },
+    {
+        id: 'p10',
+        title: "Como otimizar a performance de renderização em listas gigantes no React?",
+        content: "Estou trabalhando em um dashboard que exibe mais de 5.000 itens em uma única lista. Mesmo usando memoização, a interface fica lenta ao filtrar. Quais as melhores estratégias para lidar com esse volume de dados no DOM sem comprometer a UX?",
+        category: "Dúvidas Técnicas",
+        tags: ["react", "performance", "frontend"],
+        author: "FrontendWizard",
+        reputation: 340,
+        date: "2024-06-12T09:00:00Z",
+        votes: 32,
+        views: 890,
+        answers: [
+            { id: 'a10', content: "A solução definitiva para isso é a **Virtualização de Listas**. Bibliotecas como `react-window` ou `react-virtualized` renderizam apenas os itens que estão visíveis no viewport, mantendo o DOM leve. Além disso, verifique se você não está recriando funções de filtro a cada render usando `useMemo` e se os componentes de item estão de fato usando `React.memo` corretamente.", votes: 25, date: "2024-06-12T11:30:00Z", accepted: true, author: "ReactSenior", reputation: 5600 }
+        ]
+    },
+    {
+        id: 'p11',
+        title: "Microserviços: Quando usar mensageria (RabbitMQ/Kafka) em vez de REST?",
+        content: "Minha aplicação está crescendo e estou dividindo o monolito. Tenho dúvidas sobre quando devo usar comunicação assíncrona com RabbitMQ em vez de simples chamadas HTTP entre os serviços. Quais os trade-offs?",
+        category: "Dúvidas Técnicas",
+        tags: ["microserviços", "arquitetura", "backend"],
+        author: "ArchitectDev",
+        reputation: 210,
+        date: "2024-06-13T14:20:00Z",
+        votes: 45,
+        views: 1200,
+        answers: [
+            { id: 'a11', content: "Use mensageria quando precisar de **desacoplamento temporal** e **resiliência**. Se o serviço B estiver fora do ar, o serviço A ainda pode publicar a mensagem no broker. É ideal para tarefas pesadas que não precisam de resposta imediata (ex: processamento de vídeos, envio de emails em massa). Use REST quando precisar de uma resposta síncrona imediata. O trade-off é a complexidade adicional na infraestrutura e a consistência eventual dos dados.", votes: 38, date: "2024-06-13T16:00:00Z", accepted: true, author: "CloudExpert", reputation: 8900 }
+        ]
+    },
+    {
+        id: 'p12',
+        title: "Estratégias avançadas de indexação em PostgreSQL para milhões de registros",
+        content: "Tenho uma tabela de logs com 50 milhões de linhas. Consultas por data e categoria estão ficando lentas mesmo com índices simples. Índices parciais ou particionamento de tabelas seriam a melhor saída?",
+        category: "Dúvidas Técnicas",
+        tags: ["postgresql", "database", "bigdata"],
+        author: "DataMaster",
+        reputation: 560,
+        date: "2024-06-15T10:30:00Z",
+        votes: 28,
+        views: 750,
+        answers: [
+            { id: 'a12', content: "Com 50M de linhas, o **Particionamento Declarativo** por data (range partitioning) é extremamente eficaz, pois o Postgres pode ignorar partições inteiras que não atendem ao critério da query (partition pruning). Além disso, se você filtra muito por uma categoria específica que representa pouco da tabela, um **Índice Parcial** (`WHERE categoria = 'erro'`) será muito menor e mais rápido que um índice global.", votes: 22, date: "2024-06-15T13:45:00Z", accepted: true, author: "DBAGuru", reputation: 12000 }
+        ]
+    },
+    {
+        id: 'p13',
+        title: "Segurança em APIs Node.js: Como mitigar ataques de NoSQL Injection?",
+        content: "Sempre ouvi falar de SQL Injection, mas como isso funciona no MongoDB? Usar um ODM como Mongoose já me protege automaticamente ou preciso sanitizar os inputs manualmente?",
+        category: "Dúvidas Técnicas",
+        tags: ["security", "nodejs", "mongodb"],
+        author: "SecureCoder",
+        reputation: 150,
+        date: "2024-06-16T11:15:00Z",
+        votes: 19,
+        views: 430,
+        answers: [
+            { id: 'a13', content: "NoSQL Injection muitas vezes acontece via manipulação de operadores (ex: passar `{$gt: ''}` no campo de senha). O Mongoose ajuda ao tipar os campos, mas não é uma bala de prata. A melhor prática é usar bibliotecas como `mongo-sanitize` para remover chaves que começam com `$` dos inputs do usuário e sempre validar o schema com Joi ou Zod antes de enviar para o banco.", votes: 15, date: "2024-06-16T14:00:00Z", accepted: true, author: "SecurityAnalyst", reputation: 4500 }
+        ]
     }
 ];
 
@@ -145,7 +205,6 @@ function loadPosts() {
     const catParam = urlParams.get('category');
     const postId = urlParams.get('post');
 
-    const dashboardContainer = document.getElementById('forum-dashboard');
     const postsContainer = document.getElementById('forum-posts');
     const filtersContainer = document.querySelector('.forum-filters');
     const searchContainer = document.getElementById('forum-search-container');
@@ -156,7 +215,6 @@ function loadPosts() {
     if (!postsContainer) return;
 
     // Default visibility reset
-    if (dashboardContainer) dashboardContainer.style.display = 'none';
     postsContainer.style.display = 'none';
     if (filtersContainer) filtersContainer.style.display = 'none';
     if (searchContainer) searchContainer.style.display = 'none';
@@ -168,14 +226,7 @@ function loadPosts() {
         return;
     }
 
-    // 2. Dashboard View (Landing)
-    if (!catParam) {
-        renderForumDashboard(posts);
-        if (titleEl) titleEl.textContent = 'Fórum da Comunidade';
-        return;
-    }
-
-    // 3. Category List View
+    // 2. Category List View
     postsContainer.style.display = 'block';
     if (filtersContainer) filtersContainer.style.display = 'flex';
     if (searchContainer) searchContainer.style.display = 'block';
@@ -261,36 +312,6 @@ function loadPosts() {
     updateForumStats(posts);
 }
 
-function renderForumDashboard(posts) {
-    const dashboardContainer = document.getElementById('forum-dashboard');
-    if (!dashboardContainer) return;
-
-    dashboardContainer.style.display = 'block';
-
-    const categories = [
-        { name: 'Dúvidas Técnicas', icon: 'bx-code-alt', desc: 'Problemas com código, frameworks e ferramentas.' },
-        { name: 'Dicas de Estudo', icon: 'bx-book-reader', desc: 'Melhores práticas, caminhos de aprendizado e foco.' },
-        { name: 'Projetos em Grupo', icon: 'bx-group', desc: 'Encontre parceiros para codar e aprender juntos.' },
-        { name: 'Carreira', icon: 'bx-briefcase', desc: 'Dicas de mercado, currículo, entrevistas e soft skills.' },
-        { name: 'Dica / Tutorial', icon: 'bx-bulb', desc: 'Compartilhe conhecimento e tutoriais úteis.' }
-    ];
-
-    dashboardContainer.innerHTML = `
-        <div class="forum-dashboard-grid">
-            ${categories.map(cat => {
-                const count = posts.filter(p => p.category === cat.name).length;
-                return `
-                    <div class="forum-category-card" onclick="filterByCategory('${cat.name}')">
-                        <div class="category-icon"><i class='bx ${cat.icon}'></i></div>
-                        <h3>${cat.name}</h3>
-                        <p>${cat.desc}</p>
-                        <div class="category-stats">${count} tópicos</div>
-                    </div>
-                `;
-            }).join('')}
-        </div>
-    `;
-}
 
 function showPost(id, shouldPushState = true) {
     const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
@@ -312,13 +333,11 @@ function showPost(id, shouldPushState = true) {
     }
 
     const container = document.getElementById('forum-posts');
-    const dashboardContainer = document.getElementById('forum-dashboard');
     const questionView = document.getElementById('question-view');
     const content = document.getElementById('single-post-container');
     const titleEl = document.getElementById('forum-title');
     const searchContainer = document.getElementById('forum-search-container');
 
-    if (dashboardContainer) dashboardContainer.style.display = 'none';
     container.style.display = 'none';
     questionView.style.display = 'block';
     titleEl.textContent = post.title;
@@ -435,13 +454,10 @@ function filterByCategory(category) {
 function togglePostForm() {
     const form = document.getElementById('post-form');
     const postsList = document.getElementById('forum-posts');
-    const dashboard = document.getElementById('forum-dashboard');
     const stats = document.querySelector('.forum-filters');
-
     if (form.style.display === 'none') {
         form.style.display = 'block';
         postsList.style.display = 'none';
-        if (dashboard) dashboard.style.display = 'none';
         if (stats) stats.style.display = 'none';
     } else {
         form.style.display = 'none';
