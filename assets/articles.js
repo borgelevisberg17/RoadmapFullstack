@@ -279,7 +279,53 @@ function showArticle(id) {
         </article>
     `;
 
+    // Dynamic SEO
+    document.title = `${article.title} - RoadmapFullstack`;
+    if (typeof updateMetaTags === 'function') {
+        const excerpt = article.content.substring(0, 160).replace(/[#*`]/g, '');
+        updateMetaTags(article.title, excerpt, null, window.location.href);
+    }
+
+    // Schema Markup
+    injectArticleSchema(article);
+
     loadRelatedQuestions(article.tags || []);
+}
+
+function injectArticleSchema(article) {
+    // Remove existing article schema if any
+    const existingSchema = document.getElementById('article-schema');
+    if (existingSchema) existingSchema.remove();
+
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": article.title,
+        "author": {
+            "@type": "Person",
+            "name": article.author
+        },
+        "datePublished": article.date,
+        "description": article.content.substring(0, 160).replace(/[#*`]/g, ''),
+        "publisher": {
+            "@type": "Organization",
+            "name": "RoadmapFullstack",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://roadmapfullstack.com/assets/logo.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": window.location.href
+        }
+    };
+
+    const script = document.createElement('script');
+    script.id = 'article-schema';
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
 }
 
 function backToList() {
@@ -288,6 +334,12 @@ function backToList() {
     window.history.pushState({}, '', url);
     renderArticles();
     document.getElementById('related-questions-widget').style.display = 'none';
+
+    // Reset SEO
+    document.title = 'Artigos e Publicações - RoadmapFullstack';
+    if (typeof updateMetaTags === 'function') {
+        updateMetaTags('Artigos e Publicações', 'Conhecimento técnico aprofundado, dicas de carreira, tutoriais e tendências do mundo da tecnologia.', null, window.location.href);
+    }
 }
 
 function copyCode(btn) {

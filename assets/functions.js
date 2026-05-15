@@ -50,6 +50,9 @@ function loadRoadmap(id) {
     const descEl = document.getElementById('roadmap-description');
     if (descEl) descEl.textContent = roadmap.description;
 
+    // Dynamic SEO for Roadmaps
+    updateMetaTags(roadmap.title, roadmap.description, null, window.location.href);
+
     const contentArea = document.getElementById('roadmap-content');
     if (!contentArea) return;
     contentArea.innerHTML = '';
@@ -311,6 +314,46 @@ function showResources(tech) {
 
 function closeModal(id) {
     document.getElementById(id).style.display = 'none';
+}
+
+/**
+ * Updates SEO meta tags dynamically
+ * @param {string} title - Page title
+ * @param {string} description - Meta description
+ * @param {string} image - OG Image URL
+ * @param {string} url - Canonical URL
+ */
+function updateMetaTags(title, description, image, url) {
+    if (title) {
+        document.title = `${title} - RoadmapFullstack`;
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute('content', title);
+        const twTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twTitle) twTitle.setAttribute('content', title);
+    }
+
+    if (description) {
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', description);
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.setAttribute('content', description);
+        const twDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twDesc) twDesc.setAttribute('content', description);
+    }
+
+    if (image) {
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        if (ogImage) ogImage.setAttribute('content', image);
+        const twImage = document.querySelector('meta[name="twitter:image"]');
+        if (twImage) twImage.setAttribute('content', image);
+    }
+
+    if (url) {
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) ogUrl.setAttribute('content', url);
+        const twUrl = document.querySelector('meta[name="twitter:url"]');
+        if (twUrl) twUrl.setAttribute('content', url);
+    }
 }
 
 // Export

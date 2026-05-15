@@ -419,6 +419,50 @@ function showPost(id, shouldPushState = true) {
             </div>
         </div>
     `;
+
+    // Dynamic SEO
+    document.title = `${post.title} - Fórum RoadmapFullstack`;
+    if (typeof updateMetaTags === 'function') {
+        updateMetaTags(post.title, post.content.substring(0, 160), null, window.location.href);
+    }
+
+    // Schema Markup
+    injectQASchema(post);
+}
+
+function injectQASchema(post) {
+    const existingSchema = document.getElementById('qa-schema');
+    if (existingSchema) existingSchema.remove();
+
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "Question",
+        "name": post.title,
+        "text": post.content,
+        "answerCount": post.answers.length,
+        "upvoteCount": post.votes,
+        "datePublished": post.date,
+        "author": {
+            "@type": "Person",
+            "name": post.author || "Anônimo"
+        },
+        "suggestedAnswer": post.answers.map(a => ({
+            "@type": "Answer",
+            "text": a.content,
+            "datePublished": a.date,
+            "upvoteCount": a.votes,
+            "author": {
+                "@type": "Person",
+                "name": a.author || "Anônimo"
+            }
+        }))
+    };
+
+    const script = document.createElement('script');
+    script.id = 'qa-schema';
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
 }
 
 function backToForum() {
@@ -438,6 +482,12 @@ function backToForum() {
     if (titleEl) titleEl.textContent = 'Fórum da Comunidade';
 
     loadPosts();
+
+    // Reset SEO
+    document.title = 'Fórum da Comunidade - RoadmapFullstack';
+    if (typeof updateMetaTags === 'function') {
+        updateMetaTags('Fórum da Comunidade', 'Tire suas dúvidas, compartilhe conhecimento e conecte-se com outros desenvolvedores.', null, window.location.href);
+    }
 }
 
 function filterByCategory(category) {
