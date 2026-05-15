@@ -28,6 +28,19 @@
     <div class="container">
         <aside class="sidebar">
             <h3>Menu</h3>
+            <div class="mobile-nav-select">
+                <div class="custom-select-wrapper">
+                    <select id="forum-mobile-nav" onchange="window.location.href=this.value" style="display: none;">
+                        <option value="forum.html">Perguntas</option>
+                        <option value="artigos.html">Artigos</option>
+                        <option value="glossario.html">Glossário</option>
+                    </select>
+                    <div class="custom-select">
+                        <div class="custom-select-trigger">Perguntas</div>
+                        <div class="custom-options"></div>
+                    </div>
+                </div>
+            </div>
             <ul id="forum-menu">
                 <li class="active"><a href="forum.html" style="text-decoration: none; color: inherit;"><i class='bx bx-question-mark'></i> Perguntas</a></li>
                 <li><a href="artigos.html" style="text-decoration: none; color: inherit;"><i class='bx bx-news'></i> Artigos</a></li>

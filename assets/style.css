@@ -880,6 +880,38 @@ pre code {
     font-size: 1.2rem;
 }
 
+.mentor-note {
+    background: #e1ecf4;
+    border-left: 4px solid var(--link-color);
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    border-radius: 0 4px 4px 0;
+}
+
+.mentor-note i {
+    color: var(--link-color);
+    font-size: 1.4rem;
+    margin-top: 2px;
+}
+
+.mentor-note span {
+    font-size: 0.9rem;
+    color: #3b4045;
+    line-height: 1.5;
+}
+
+[data-theme="dark"] .mentor-note {
+    background: #2d3e4a;
+    border-color: #0074cc;
+}
+
+[data-theme="dark"] .mentor-note span {
+    color: #e3e6e8;
+}
+
 /* Sidebar widget */
 .s-widget {
     border: 1px solid #f1e5bc;

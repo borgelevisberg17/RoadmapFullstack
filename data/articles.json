@@ -142,5 +142,65 @@
     "links": [
       { "text": "PyTorch Tutorials", "url": "https://pytorch.org/tutorials/" }
     ]
+  },
+  {
+    "id": "guia-junior-real",
+    "title": "Manual de Sobrevivência do Junior: O que não te ensinam no curso",
+    "author": "Borge Levisberg",
+    "date": "29 de Maio, 2024",
+    "tags": ["Carreira", "Junior"],
+    "content": "Você conseguiu o primeiro emprego ou estágio. E agora? O pânico de abrir o repositório da empresa e ver 50.000 linhas de código é real. \n\n### 1. Pare de tentar entender tudo\n\nNinguém, nem o Sênior que está lá há 5 anos, entende 100% do código. Foque no **pequeno pedaço** que você precisa alterar. Siga o fluxo da execução, use o `console.log` (ou o debugger) e entenda o que entra e o que sai.\n\n### 2. A regra dos 30 minutos\n\nSe você está travado há 30 minutos, peça ajuda. Mas não chegue dizendo 'não funciona'. Chegue dizendo: 'Eu tentei X, Y e Z para resolver o problema W, mas o erro continua sendo este'. Isso mostra que você pensou antes de interromper.\n\n### 3. O Readme é seu melhor amigo\n\nAntes de perguntar 'como eu rodo o projeto?', leia o Readme. Se a informação não estiver lá, **adicione-a** depois que descobrir. Ser o Junior que melhora a documentação é um dos caminhos mais rápidos para ganhar respeito.\n\n### 4. Entregue valor, não perfeição\n\nCódigo perfeito não vai para produção. Código que resolve o problema e tem testes básicos sim. Não perca 3 dias discutindo se deve usar `forEach` ou `map` se o cliente está com um bug crítico.",
+    "sources": ["Experiência em Startups", "Mentoria de Desenvolvedores"],
+    "links": [
+      { "text": "The Junior Developer Survival Guide", "url": "https://www.freecodecamp.org/news/the-junior-developer-survival-guide/" }
+    ]
+  },
+  {
+    "id": "transicao-pleno",
+    "title": "A Ascensão para Pleno: Dominando a Autonomia",
+    "author": "Borge Levisberg",
+    "date": "29 de Maio, 2024",
+    "tags": ["Carreira", "Pleno"],
+    "content": "O que separa um Junior de um Pleno não é o tempo de carteira, mas a **autonomia**. Um Pleno recebe um problema ambíguo e consegue transformá-lo em uma solução técnica sem precisar de supervisão constante.\n\n### Deixando de ser um 'Resolvedor de Tickets'\n\nO Junior resolve o ticket. O Pleno pergunta: 'Por que este ticket existe?'. Se você está corrigindo o mesmo bug pela terceira vez, a solução não é mais código, é mudar a arquitetura ou o processo.\n\n### Domine as Ferramentas de Diagnóstico\n\nSaber codar é o básico. O Pleno sabe **debugar**. Ele domina os logs do servidor, sabe analisar o Network tab do browser e entende como o banco de dados está performando. \n\n### O Código é da Equipe\n\nComece a se preocupar com a manutenibilidade. Escreva códigos que outros consigam entender sem precisar te chamar no Slack. Faça Code Reviews construtivos, não apenas procurando vírgulas faltando, mas sugerindo melhorias de lógica.\n\n### Mentoria Reversa\n\nAjude os Juniors. Explicar um conceito para alguém é a melhor forma de garantir que você realmente o domina.",
+    "sources": ["Carreira em Big Techs", "Livro: The Staff Engineer's Path"],
+    "links": [
+      { "text": "What makes a Mid-level developer?", "url": "https://medium.com/swlh/what-makes-a-mid-level-developer-742930d66664" }
+    ]
+  },
+  {
+    "id": "senior-alem-syntax",
+    "title": "Sênior além da Syntax: Arquitetura e Impacto",
+    "author": "Borge Levisberg",
+    "date": "30 de Maio, 2024",
+    "tags": ["Carreira", "Sênior"],
+    "content": "Ser Sênior é sobre **decisões**. Muitas vezes, a decisão sênior é *não escrever código*. \n\n### Arquitetura é sobre Compromissos (Trade-offs)\n\nNão existe solução perfeita, existe a solução que melhor se adapta às restrições de tempo, custo e performance do projeto atual. O Sênior sabe explicar por que escolheu SQL em vez de NoSQL para aquele caso específico.\n\n### Liderança Técnica e Mentoria\n\nO sucesso de um Sênior é medido pelo sucesso do seu time. Se você é o único que sabe resolver os problemas, você é um gargalo, não um líder. Distribua o conhecimento.\n\n### Visão de Negócio\n\nEntenda como a empresa ganha dinheiro. Um código tecnicamente brilhante que não traz retorno para o negócio é um desperdício de recursos. Aprenda a falar a língua dos stakeholders.\n\n### O Multiplicador\n\nUm Sênior deve ser um multiplicador de talentos. Ele cria processos, escolhe ferramentas e define padrões que tornam todos os outros desenvolvedores mais produtivos.",
+    "sources": ["Liderança Técnica em Projetos Open Source", "Clean Architecture"],
+    "links": [
+      { "text": "Seniority is not about skill", "url": "https://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/" }
+    ]
+  },
+  {
+    "id": "guia-entrevistas-tech",
+    "title": "Vencendo Entrevistas: Pense em voz alta",
+    "author": "Borge Levisberg",
+    "date": "30 de Maio, 2024",
+    "tags": ["Carreira", "Entrevistas"],
+    "content": "Muitos desenvolvedores excelentes travam em entrevistas técnicas. O segredo não é saber a resposta de cor, mas sim **como você chega nela**.\n\n### O Protocolo 'Think Aloud'\n\nOs entrevistadores querem ver seu raciocínio. Se você ficar mudo por 10 minutos, eles não sabem se você está perto da solução ou totalmente perdido. Fale o que está pensando: 'Vou começar usando um loop simples, mas sei que isso tem complexidade O(n^2), depois podemos otimizar com um Hash Map'.\n\n### Comportamental: O Método STAR\n\nPara perguntas como 'Conte-me sobre um erro que você cometeu', use o método STAR:\n- **S**ituation (Situação)\n- **T**ask (Tarefa)\n- **A**ction (Ação)\n- **R**esult (Resultado)\n\nIsso dá estrutura para sua história e garante que você foque no que realmente importa.\n\n### Faça Perguntas Inteligentes\n\nA entrevista é uma via de mão dupla. Pergunte sobre o processo de deploy, como são feitos os code reviews e qual o maior desafio técnico que o time enfrentou recentemente. Isso mostra interesse e senioridade.",
+    "sources": ["Cracking the Coding Interview", "Experiência como Entrevistador"],
+    "links": [
+      { "text": "Tech Interview Handbook", "url": "https://www.techinterviewhandbook.org/" }
+    ]
+  },
+  {
+    "id": "soft-skills-introvertidos",
+    "title": "Networking para Devs: Sem 'falar pelos cotovelos'",
+    "author": "Borge Levisberg",
+    "date": "31 de Maio, 2024",
+    "tags": ["Carreira", "Soft Skills"],
+    "content": "A palavra 'Networking' dá arrepios em muitos desenvolvedores. Parece algo falso ou cansativo. Mas networking real é apenas **construir relacionamentos de confiança**.\n\n### Networking Assíncrono\n\nVocê não precisa ir a todos os meetups e ser a alma da festa. Você pode fazer networking ajudando pessoas no Stack Overflow, contribuindo para projetos Open Source ou escrevendo artigos técnicos. Seu trabalho fala por você.\n\n### A Escuta Ativa\n\nEm reuniões, você não precisa ser quem mais fala. Mas quando falar, seja preciso. Ouça as dores dos seus colegas e tente ajudar com soluções técnicas. Isso cria autoridade natural.\n\n### Comunidades Online\n\nParticipe de Discords, Slacks ou fóruns (como o nosso!). Tire dúvidas, compartilhe o que aprendeu. Quando você precisar de uma indicação, terá pessoas que já conhecem sua competência técnica.",
+    "sources": ["Psicologia Organizacional", "Comunidades Dev"],
+    "links": [
+      { "text": "Soft Skills for Developers", "url": "https://www.freecodecamp.org/news/soft-skills-for-developers/" }
+    ]
   }
 ]

@@ -418,6 +418,10 @@ function updateForumStats(posts) {
     `;
 }
 
+window.addEventListener('popstate', () => {
+    loadPosts();
+});
+
 window.addEventListener('DOMContentLoaded', () => {
     loadPosts();
 });
