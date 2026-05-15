@@ -25,114 +25,189 @@
         </button>
     </nav>
 
-    <div class="container" style="display: block; max-width: 1000px;">
-        <header style="text-align: center; margin-bottom: 20px; padding: 40px 0;">
-            <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Guia de Carreira & Preparação</h1>
-            <p style="font-size: 1.1rem; color: #6a737c;">Estratégias validadas para cada etapa da sua evolução profissional em tecnologia.</p>
-        </header>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Estágios</h3>
+            <ul>
+                <li class="active"><a href="#junior" style="text-decoration: none; color: inherit;"><i class='bx bx-rocket'></i> Junior / Estágio</a></li>
+                <li><a href="#pleno" style="text-decoration: none; color: inherit;"><i class='bx bx-trending-up'></i> Pleno / Middle</a></li>
+                <li><a href="#senior" style="text-decoration: none; color: inherit;"><i class='bx bx-crown'></i> Sênior / Lead</a></li>
+                <li><a href="#entrevistas" style="text-decoration: none; color: inherit;"><i class='bx bx-terminal'></i> Entrevistas</a></li>
+                <li><a href="#softskills" style="text-decoration: none; color: inherit;"><i class='bx bx-heart'></i> Soft Skills</a></li>
+            </ul>
+        </aside>
 
-        <nav class="career-nav">
-            <a href="#junior">Junior / Estágio</a>
-            <a href="#pleno">Pleno / Middle</a>
-            <a href="#senior">Sênior / Lead</a>
-            <a href="#entrevistas">Entrevistas Técnicas</a>
-            <a href="#geral">Soft Skills</a>
-        </nav>
+        <main class="content-area">
+            <header class="hero-section">
+                <h1>Guia de Carreira & Preparação</h1>
+                <p>Estratégias reais e humanizadas para cada etapa da sua jornada na tecnologia. Fuja do genérico e foque no que realmente importa para os recrutadores e times técnicos.</p>
+            </header>
 
-        <section id="junior" class="qa-section">
-            <h2 class="stage-title junior"><i class='bx bx-rocket'></i> Nível Junior: Conquistando a Primeira Vaga</h2>
+            <section id="junior" class="qa-section">
+                <h2 class="stage-title junior"><i class='bx bx-rocket'></i> Nível Junior: A Primeira Grande Barreira</h2>
 
-            <div class="qa-item">
-                <h3><i class='bx bx-folder-open'></i> Como montar um portfólio que chama atenção?</h3>
-                <p>Recrutadores levam segundos para avaliar um portfólio. Foque em qualidade sobre quantidade:</p>
-                <ul>
-                    <li><strong>Fuja do comum:</strong> Em vez de um Todo-list, faça um sistema de agendamento para um negócio local.</li>
-                    <li><strong>Readme é tudo:</strong> Explique o problema, a solução e as tecnologias usadas. Adicione um link para o deploy e prints/GIFs.</li>
-                    <li><strong>Código limpo:</strong> Comente o porquê de decisões complexas, não o que o código faz.</li>
-                </ul>
-                <div class="checklist-card">
-                    <h4>Checklist do Portfólio Junior</h4>
-                    <div class="checklist-item"><i class='bx bx-check-circle'></i> Pelo menos 2 projetos completos e autorais no GitHub.</div>
-                    <div class="checklist-item"><i class='bx bx-check-circle'></i> Readme em inglês (mostra ambição global).</div>
-                    <div class="checklist-item"><i class='bx bx-check-circle'></i> LinkedIn atualizado com as keywords certas.</div>
+                <div class="qa-item">
+                    <h3><i class='bx bx-folder-open'></i> O Portfólio além do Tutorial</h3>
+                    <p>Muitos iniciantes cometem o erro de encher o GitHub com projetos de cursos (o famoso Todo-list ou Pokedex). Para se destacar, você precisa mostrar que consegue resolver problemas reais.</p>
+                    <p><strong>Dica de Ouro:</strong> Procure um problema no seu dia a dia ou de um pequeno negócio local. Desenvolva uma solução simples, mas completa, com autenticação, tratamento de erros e um Readme que explique o seu processo de decisão.</p>
+                    <div class="checklist-card" data-checklist="junior-portfolio">
+                        <h4>Checklist: Portfólio que Vende</h4>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><i class='bx bx-circle'></i> Pelo menos 1 projeto autoral (não-tutorial)</div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><i class='bx bx-circle'></i> Readme com prints/GIFs e link para o deploy</div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><i class='bx bx-circle'></i> Código organizado e indentado (use Prettier)</div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><i class='bx bx-circle'></i> LinkedIn com foto profissional e resumo focado em tecnologia</div>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3><i class='bx bx-certification'></i> O Dilema da Graduação</h3>
+                    <p>Embora o mercado de TI seja muito focado em habilidades práticas, a faculdade ainda é a porta de entrada mais fácil para grandes empresas através de <strong>estágios</strong>. Se você não está na faculdade, seu networking precisa ser sua prioridade absoluta.</p>
+                </div>
+            </section>
+
+            <section id="pleno" class="qa-section">
+                <h2 class="stage-title middle"><i class='bx bx-trending-up'></i> Nível Pleno: O Valor da Autonomia</h2>
+                <div class="qa-item">
+                    <h3><i class='bx bx-code-alt'></i> Deixando de ser um "Resolvedor de Tickets"</h3>
+                    <p>O desenvolvedor Pleno é aquele que recebe um problema e, além de resolver, entende o impacto técnico da sua solução. Você deve começar a se preocupar com <strong>escalabilidade, segurança e testes</strong>.</p>
+                    <ul>
+                        <li>Domine ferramentas de Debug avançadas.</li>
+                        <li>Aprenda a escrever testes que realmente protegem o código de regressões.</li>
+                        <li>Comece a participar ativamente das decisões de arquitetura do time.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="senior" class="qa-section">
+                <h2 class="stage-title senior"><i class='bx bx-crown'></i> Nível Sênior: Liderança Técnica</h2>
+                <div class="qa-item">
+                    <h3><i class='bx bx-bulb'></i> Menos Código, Mais Impacto</h3>
+                    <p>Ser Sênior não é sobre saber todas as sintaxes de cor, mas sobre saber qual ferramenta usar para cada problema de negócio. Muitas vezes, a melhor solução sênior é convencer o time a <strong>não</strong> construir algo complexo desnecessariamente.</p>
+                    <p>Foque em mentorar os mais novos e em garantir que a cultura técnica do time esteja evoluindo.</p>
+                </div>
+            </section>
+
+            <section id="entrevistas" class="qa-section">
+                <h2 class="stage-title junior"><i class='bx bx-terminal'></i> Vencendo Entrevistas Técnicas</h2>
+                <div class="qa-item">
+                    <h3><i class='bx bx-user-voice'></i> Live Coding: Não sofra em silêncio</h3>
+                    <p>O maior erro no live coding é ficar mudo enquanto pensa. O entrevistador não quer apenas o código pronto; ele quer ver como você lida com a pressão e como estrutura seu raciocínio. Fale tudo o que está pensando, mesmo que seja "estou na dúvida entre usar um Map ou um Set aqui por causa de performance".</p>
+                </div>
+            </section>
+
+            <section id="softskills" class="qa-section">
+                <h2 class="stage-title tips"><i class='bx bx-heart'></i> Soft Skills: O Real Diferencial</h2>
+                <div class="qa-item">
+                    <h3><i class='bx bx-world'></i> Inglês não é luxo</h3>
+                    <p>Você pode ser um gênio do código, mas sem inglês seu teto salarial será sempre limitado ao mercado local. Aprender inglês técnico abre portas para empresas que pagam em dólar, multiplicando seu poder de compra imediatamente.</p>
+                </div>
+            </section>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="s-widget">
+                <div class="s-widget-header">Dicas Rápidas</div>
+                <div class="s-widget-content">
+                    <ul style="font-size: 0.85rem; color: #3b4045;">
+                        <li style="margin-bottom: 10px;"><i class='bx bx-check' style="color: var(--primary-color);"></i> Atualize seu LinkedIn semanalmente.</li>
+                        <li style="margin-bottom: 10px;"><i class='bx bx-check' style="color: var(--primary-color);"></i> Participe de comunidades no Discord/Slack.</li>
+                        <li style="margin-bottom: 10px;"><i class='bx bx-check' style="color: var(--primary-color);"></i> Estude fundamentos, não apenas frameworks.</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="qa-item">
-                <h3><i class='bx bx-certification'></i> Faculdade vs Cursos Livres?</h3>
-                <p>A faculdade oferece a base teórica e, principalmente, a oportunidade de <strong>estágio</strong>. Se você não está na faculdade, seu networking e portfólio precisam ser 2x mais fortes.</p>
-            </div>
-        </section>
-
-        <section id="pleno" class="qa-section">
-            <h2 class="stage-title middle"><i class='bx bx-trending-up'></i> Nível Pleno: Autonomia e Profundidade</h2>
-
-            <div class="qa-item">
-                <h3><i class='bx bx-code-alt'></i> Qual o diferencial de um Pleno?</h3>
-                <p>Um Pleno não apenas "faz funcionar", ele se preocupa com a <strong>manutenibilidade</strong>. Isso inclui testes automatizados, design patterns e performance.</p>
-                <ul>
-                    <li><strong>Testes:</strong> Unitários, integração e E2E não são opcionais.</li>
-                    <li><strong>Arquitetura:</strong> Entenda o porquê de usar MVC, Clean Arch ou Hexagonal.</li>
-                    <li><strong>Code Review:</strong> Saiba dar e receber feedbacks construtivos.</li>
-                </ul>
+            <div class="s-widget">
+                <div class="s-widget-header">Seu Progresso</div>
+                <div class="s-widget-content">
+                    <p style="font-size: 0.8rem; margin-bottom: 10px;">Complete as checklists para acompanhar sua evolução.</p>
+                    <div class="progress-bar-bg" style="height: 8px;">
+                        <div id="prep-progress-bar" class="progress-bar-fill" style="width: 0%"></div>
+                    </div>
+                    <p id="prep-progress-text" style="font-size: 0.75rem; margin-top: 5px; text-align: right;">0% concluído</p>
+                </div>
             </div>
 
-            <div class="qa-item">
-                <h3><i class='bx bx-git-repo-forked'></i> Devo ser Generalista ou Especialista?</h3>
-                <p>Foque no modelo em "T": Tenha uma base ampla em várias tecnologias (Fullstack), mas seja o "expert" em uma stack específica (ex: React ou Node).</p>
+            <div class="s-widget">
+                <div class="s-widget-header">Dúvidas de Carreira</div>
+                <div class="s-widget-content">
+                    <ul id="latest-activity-list" style="list-style: none;">
+                        <!-- JS Loaded -->
+                    </ul>
+                    <a href="forum.html?category=Carreira" style="font-size: 0.75rem; color: var(--link-color); text-decoration: none; margin-top: 10px; display: inline-block;">Ver mais no fórum →</a>
+                </div>
             </div>
-        </section>
-
-        <section id="senior" class="qa-section">
-            <h2 class="stage-title senior"><i class='bx bx-crown'></i> Nível Sênior: Impacto e Liderança</h2>
-
-            <div class="qa-item">
-                <h3><i class='bx bx-bulb'></i> O Sênior além do código</h3>
-                <p>Sênior é quem resolve problemas de negócio usando tecnologia, e às vezes a melhor solução é <strong>não escrever código</strong>.</p>
-                <ul>
-                    <li><strong>Mentoria:</strong> Ajude Juniores e Plenos a crescerem.</li>
-                    <li><strong>Trade-offs:</strong> Entenda que toda escolha técnica tem um custo e um benefício.</li>
-                    <li><strong>Visão de Produto:</strong> Entenda o impacto do seu código no cliente final.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="entrevistas" class="qa-section">
-            <h2 class="stage-title junior"><i class='bx bx-terminal'></i> Desvendando Entrevistas Técnicas</h2>
-
-            <div class="qa-item">
-                <h3><i class='bx bx-user-voice'></i> O segredo do Live Coding</h3>
-                <p>Muitos candidatos falham não por falta de técnica, mas por falta de comunicação. <strong>Pense em voz alta</strong>. O entrevistador quer ver seu processo de raciocínio, não apenas o resultado final.</p>
-            </div>
-
-            <div class="qa-item">
-                <h3><i class='bx bx-brain'></i> Estrutura STAR para perguntas comportamentais</h3>
-                <p>Para perguntas como "Conte sobre um desafio que você enfrentou", use:</p>
-                <ul>
-                    <li><strong>S</strong>ituation (Situação): O contexto.</li>
-                    <li><strong>T</strong>ask (Tarefa): O que precisava ser feito.</li>
-                    <li><strong>A</strong>ction (Ação): O que VOCÊ fez.</li>
-                    <li><strong>R</strong>esult (Resultado): O desfecho positivo.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="geral" class="qa-section">
-            <h2 class="stage-title tips"><i class='bx bx-heart'></i> Soft Skills e Carreira a Longo Prazo</h2>
-
-            <div class="qa-item">
-                <h3><i class='bx bx-world'></i> Inglês: O multiplicador de salário</h3>
-                <p>O mercado brasileiro paga bem, mas o mercado internacional (em dólar/euro) paga 3x a 5x mais. O inglês é a ferramenta técnica mais importante que você pode aprender depois da lógica de programação.</p>
-            </div>
-
-            <div class="qa-item">
-                <h3><i class='bx bx-shield-quarter'></i> Evitando o Burnout</h3>
-                <p>A área de tecnologia é uma maratona, não um sprint. Estabeleça limites, tenha hobbies fora das telas e entenda que o descanso faz parte da produtividade.</p>
-            </div>
-        </section>
+        </aside>
     </div>
 
     <script src="assets/functions.js"></script>
+    <script>
+        function toggleCheck(el) {
+            const icon = el.querySelector('i');
+            const checklistCard = el.closest('.checklist-card');
+            const listId = checklistCard.dataset.checklist;
+            const itemText = el.textContent.trim();
+
+            let saved = JSON.parse(localStorage.getItem('prepChecklist') || '{}');
+            if (!saved[listId]) saved[listId] = {};
+
+            if (icon.classList.contains('bx-circle')) {
+                icon.className = 'bx bx-check-circle';
+                el.style.color = '#5eba7d';
+                saved[listId][itemText] = true;
+            } else {
+                icon.className = 'bx bx-circle';
+                el.style.color = 'inherit';
+                saved[listId][itemText] = false;
+            }
+
+            localStorage.setItem('prepChecklist', JSON.stringify(saved));
+            updateOverallProgress();
+        }
+
+        function loadChecklist() {
+            const saved = JSON.parse(localStorage.getItem('prepChecklist') || '{}');
+            document.querySelectorAll('.checklist-card').forEach(card => {
+                const listId = card.dataset.checklist;
+                if (saved[listId]) {
+                    card.querySelectorAll('.checklist-item').forEach(item => {
+                        const text = item.textContent.trim();
+                        if (saved[listId][text]) {
+                            const icon = item.querySelector('i');
+                            icon.className = 'bx bx-check-circle';
+                            item.style.color = '#5eba7d';
+                        }
+                    });
+                }
+            });
+            updateOverallProgress();
+        }
+
+        function updateOverallProgress() {
+            const allItems = document.querySelectorAll('.checklist-item');
+            const checkedItems = document.querySelectorAll('.checklist-item .bx-check-circle');
+
+            const percent = allItems.length > 0 ? Math.round((checkedItems.length / allItems.length) * 100) : 0;
+
+            const bar = document.getElementById('prep-progress-bar');
+            const text = document.getElementById('prep-progress-text');
+
+            if (bar) bar.style.width = percent + '%';
+            if (text) text.textContent = percent + '% concluído';
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadChecklist();
+
+            // Handle sidebar active state on scroll or click
+            const links = document.querySelectorAll('.sidebar li');
+            links.forEach(li => {
+                li.addEventListener('click', () => {
+                    links.forEach(l => l.classList.remove('active'));
+                    li.classList.add('active');
+                });
+            });
+        });
+    </script>
     <script src="assets/tips.js"></script>
 </body>
 </html>

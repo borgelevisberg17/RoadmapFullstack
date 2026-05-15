@@ -72,7 +72,24 @@ function loadPosts() {
         localStorage.setItem('forumPosts', JSON.stringify(posts));
     }
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const catParam = urlParams.get('category');
+    const select = document.getElementById('filter-category');
+
+    // Only sync from URL if the select hasn't been modified yet or if it's the first load
+    if (catParam && select && !select.dataset.manuallyChanged) {
+        if (select.value !== catParam) {
+            select.value = catParam;
+            const trigger = select.closest('.custom-select-wrapper')?.querySelector('.custom-select-trigger');
+            if (trigger) {
+                const option = Array.from(select.options).find(o => o.value === catParam);
+                if (option) trigger.textContent = option.textContent;
+            }
+        }
+    }
+
     const filterCategory = document.getElementById('filter-category')?.value || 'Tudo';
+    const searchTerm = document.getElementById('forum-search')?.value.toLowerCase() || '';
     const container = document.getElementById('forum-posts');
     const questionsCountEl = document.getElementById('questions-count');
     const questionView = document.getElementById('question-view');
@@ -80,7 +97,6 @@ function loadPosts() {
     if (!container) return;
 
     // Switch view if ID in URL
-    const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('post');
 
     if (postId) {
@@ -92,9 +108,12 @@ function loadPosts() {
     questionView.style.display = 'none';
     document.getElementById('forum-title').textContent = 'Todas as Perguntas';
 
-    const filteredPosts = posts.filter(post =>
-        filterCategory === 'Tudo' || post.category === filterCategory
-    );
+    const filteredPosts = posts.filter(post => {
+        const matchesCategory = filterCategory === 'Tudo' || post.category === filterCategory;
+        const matchesSearch = post.title.toLowerCase().includes(searchTerm) ||
+                             post.content.toLowerCase().includes(searchTerm);
+        return matchesCategory && matchesSearch;
+    });
 
     if (questionsCountEl) {
         questionsCountEl.textContent = `${filteredPosts.length} pergunta${filteredPosts.length !== 1 ? 's' : ''}`;
@@ -256,9 +275,22 @@ function backToForum() {
 
     const filters = document.querySelector('.forum-filters');
     const askBtn = document.querySelector('header .btn');
+    const titleEl = document.getElementById('forum-title');
     if (filters) filters.style.display = 'flex';
     if (askBtn) askBtn.style.display = 'block';
+    if (titleEl) titleEl.textContent = 'Todas as Perguntas';
 
+    loadPosts();
+}
+
+function filterByCategory(category) {
+    const select = document.getElementById('filter-category');
+    if (select) select.dataset.manuallyChanged = 'true';
+
+    const url = new URL(window.location);
+    url.searchParams.set('category', category);
+    url.searchParams.delete('post'); // Back to list if we were in a post
+    window.history.pushState({}, '', url);
     loadPosts();
 }
 

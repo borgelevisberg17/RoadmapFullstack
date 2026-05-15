@@ -869,9 +869,15 @@ pre code {
     gap: 10px;
     margin-bottom: 10px;
     font-size: 0.9rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.checklist-item:hover {
+    color: var(--primary-color);
 }
 .checklist-item i {
     color: #5eba7d;
+    font-size: 1.2rem;
 }
 
 /* Sidebar widget */
