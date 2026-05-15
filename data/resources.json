@@ -124,5 +124,47 @@
     "books": ["Mastering PostgreSQL - Hans-Jürgen Schönig", "PostgreSQL High Performance - Gregory Smith"],
     "courses": ["https://www.postgresqltutorial.com/", "https://www.codecademy.com/learn/learn-postgresql", "https://postgresweekly.com/"],
     "projects": ["Modelagem de um banco para rede social", "Otimização de performance com índices", "Implementação de Full-text Search avançada"]
+  },
+  "Git": {
+    "docs": "https://git-scm.com/doc",
+    "youtube": ["Willian Justen", "Código Fonte TV", "Traversy Media"],
+    "books": ["Pro Git - Scott Chacon", "Git Pocket Guide - Richard E. Silverman"],
+    "courses": ["https://www.udemy.com/course/git-e-github-para-iniciantes/", "https://learngitbranching.js.org/"],
+    "projects": ["Crie um repositório e gerencie branches", "Contribuir para um projeto Open Source"]
+  },
+  "Next.js": {
+    "docs": "https://nextjs.org/docs",
+    "youtube": ["Jack Herrington", "Lee Robinson", "Rocketseat"],
+    "books": ["Real-World Next.js - Michele Riva"],
+    "courses": ["https://nextjs.org/learn", "https://egghead.io/courses/build-a-full-stack-app-with-next-js-supabase-and-stripe-67ca"],
+    "projects": ["Blog com SSR e Markdown", "E-commerce com Next.js e Stripe"]
+  },
+  "NestJS": {
+    "docs": "https://docs.nestjs.com/",
+    "youtube": ["Kamil Myśliwiec", "Marius Espejo", "Rodrigo Branas"],
+    "books": ["Nest.js Progressively - Kevin Burkett"],
+    "courses": ["https://university.nestjs.com/", "https://www.udemy.com/course/nestjs-zero-to-hero/"],
+    "projects": ["Microserviço de autenticação", "API escalável com NestJS e TypeORM"]
+  },
+  "Spring Boot": {
+    "docs": "https://spring.io/projects/spring-boot",
+    "youtube": ["Loiane Groner", "Amigoscode", "Michelli Brito"],
+    "books": ["Spring Boot in Action - Craig Walls"],
+    "courses": ["https://spring.io/guides", "https://www.udemy.com/course/spring-boot-and-spring-framework-tutorial-for-beginners/"],
+    "projects": ["Sistema de gestão de usuários", "API de agendamento médico"]
+  },
+  "Flutter": {
+    "docs": "https://docs.flutter.dev/",
+    "youtube": ["Reso Coder", "Flutterly", "Filipe Deschamps"],
+    "books": ["Flutter in Action - Eric Windmill"],
+    "courses": ["https://flutter.dev/learn", "https://www.udemy.com/course/flutter-bootcamp-with-dart/"],
+    "projects": ["App de notícias", "Clone do layout do Instagram com Flutter"]
+  },
+  "Bash": {
+    "docs": "https://www.gnu.org/software/bash/manual/",
+    "youtube": ["Linux Tips", "NetworkChuck", "The Linux Experiment"],
+    "books": ["The Linux Command Line - William Shotts"],
+    "courses": ["https://www.freecodecamp.org/news/bash-scripting-tutorial/", "https://linuxjourney.com/"],
+    "projects": ["Script de backup automatizado", "Ferramenta de automação de setup de ambiente"]
   }
 }
