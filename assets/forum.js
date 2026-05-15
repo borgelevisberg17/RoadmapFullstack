@@ -48,11 +48,43 @@ const seedPosts = [
         answers: [
             { id: 'a3', content: "A faculdade ajuda muito no networking e estágio. Os cursos dão a base técnica rápida. Se tiver tempo e recurso, faça os dois.", votes: 12, date: "2024-05-24T15:00:00Z", accepted: false, author: "SeniorEng", reputation: 3400 }
         ]
+    },
+    {
+        id: 'p4',
+        title: "Otimização de Queries complexas em PostgreSQL",
+        content: "Estou com uma query que faz muitos JOINs e está levando mais de 2 segundos. Já usei EXPLAIN ANALYZE, mas não estou sabendo interpretar os nós de 'Seq Scan'. Qual a melhor estratégia para indexação nesse caso?",
+        category: "Dúvida Técnica",
+        tags: ["postgresql", "database", "performance"],
+        author: "DBA_Junior",
+        reputation: 85,
+        date: "2024-06-04T14:20:00Z",
+        votes: 12,
+        views: 310,
+        answers: [
+            { id: 'a4', content: "O 'Seq Scan' indica que o Postgres está lendo a tabela inteira. Verifique se os campos usados no JOIN e no WHERE possuem índices (B-tree normalmente). Considere também o uso de índices compostos se você filtra por mais de uma coluna frequentemente.", votes: 8, date: "2024-06-04T16:00:00Z", accepted: true, author: "PostgresGuru", reputation: 2100 }
+        ]
+    },
+    {
+        id: 'p5',
+        title: "Dúvida: CI/CD para Frontend com GitHub Actions",
+        content: "Como configurar um workflow que rode os testes, faça o build e envie para o S3 apenas se estiver na branch main? Gostaria de saber como gerenciar as Secrets (chaves da AWS) de forma segura.",
+        category: "Dúvida Técnica",
+        tags: ["devops", "github-actions", "frontend"],
+        author: "DevOpsLearner",
+        reputation: 23,
+        date: "2024-06-05T09:00:00Z",
+        votes: 7,
+        views: 185,
+        answers: [
+            { id: 'a5', content: "Use o campo 'on: push: branches: [main]' para filtrar a branch. Para as chaves, vá em Settings > Secrets > Actions no seu repo. No YAML, acesse via ${{ secrets.AWS_ACCESS_KEY_ID }}.", votes: 10, date: "2024-06-05T10:30:00Z", accepted: false, author: "CloudMaster", reputation: 1250 }
+        ]
     }
 ];
 
 function getRelativeTime(dateString) {
     const date = new Date(dateString);
+    if (isNaN(date.getTime())) return dateString; // Return original if invalid
+
     const now = new Date();
     const diffInSeconds = Math.floor((now - date) / 1000);
 
@@ -61,7 +93,7 @@ function getRelativeTime(dateString) {
     if (diffInSeconds < 86400) return `há ${Math.floor(diffInSeconds / 3600)} horas`;
     if (diffInSeconds < 2592000) return `há ${Math.floor(diffInSeconds / 86400)} dias`;
 
-    return date.toLocaleDateString();
+    return date.toLocaleDateString('pt-BR');
 }
 
 function loadPosts() {
@@ -142,6 +174,14 @@ function loadPosts() {
 
         const card = document.createElement('div');
         card.className = 'question-summary';
+        card.style.cursor = 'pointer';
+        card.onclick = (e) => {
+            // Prevent trigger if clicking on specific links or tags if they had separate actions
+            if (e.target.tagName !== 'A' && !e.target.classList.contains('tech-tag')) {
+                showPost(post.id);
+            }
+        };
+
         card.innerHTML = `
             ${statsHtml}
             <div class="question-content-summary">
