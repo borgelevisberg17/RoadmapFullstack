@@ -9,7 +9,7 @@ const seedPosts = [
         id: 'p1',
         title: "Como começar com React em 2024?",
         content: "Tenho uma base boa de HTML/CSS e JS básico. Qual o melhor caminho para aprender React agora? Devo ir direto para Next.js ou focar no React puro primeiro?",
-        category: "Dúvida Técnica",
+        category: "Dúvidas Técnicas",
         tags: ["react", "frontend", "iniciante"],
         author: "DevAnon",
         reputation: 42,
@@ -53,7 +53,7 @@ const seedPosts = [
         id: 'p4',
         title: "Otimização de Queries complexas em PostgreSQL",
         content: "Estou com uma query que faz muitos JOINs e está levando mais de 2 segundos. Já usei EXPLAIN ANALYZE, mas não estou sabendo interpretar os nós de 'Seq Scan'. Qual a melhor estratégia para indexação nesse caso?",
-        category: "Dúvida Técnica",
+        category: "Dúvidas Técnicas",
         tags: ["postgresql", "database", "performance"],
         author: "DBA_Junior",
         reputation: 85,
@@ -65,25 +65,62 @@ const seedPosts = [
         ]
     },
     {
-        id: 'p5',
-        title: "Dúvida: CI/CD para Frontend com GitHub Actions",
-        content: "Como configurar um workflow que rode os testes, faça o build e envie para o S3 apenas se estiver na branch main? Gostaria de saber como gerenciar as Secrets (chaves da AWS) de forma segura.",
-        category: "Dúvida Técnica",
-        tags: ["devops", "github-actions", "frontend"],
-        author: "DevOpsLearner",
-        reputation: 23,
-        date: "2024-06-05T09:00:00Z",
-        votes: 7,
-        views: 185,
-        answers: [
-            { id: 'a5', content: "Use o campo 'on: push: branches: [main]' para filtrar a branch. Para as chaves, vá em Settings > Secrets > Actions no seu repo. No YAML, acesse via ${{ secrets.AWS_ACCESS_KEY_ID }}.", votes: 10, date: "2024-06-05T10:30:00Z", accepted: false, author: "CloudMaster", reputation: 1250 }
-        ]
+        id: 'p6',
+        title: "Melhores técnicas de estudo para conciliar trabalho e estudos",
+        content: "Trabalho 8h por dia e estou tentando transicionar para Fullstack. Alguém usa a técnica Pomodoro ou outra forma de organização que realmente funcione?",
+        category: "Dicas de Estudo",
+        tags: ["estudo", "produtividade", "foco"],
+        author: "WorkingDev",
+        reputation: 15,
+        date: "2024-06-07T10:00:00Z",
+        votes: 10,
+        views: 150,
+        answers: []
+    },
+    {
+        id: 'p7',
+        title: "Grupo de estudos focado em React e Next.js para iniciantes",
+        content: "Estou montando um grupo no Discord para estudarmos juntos a documentação do Next.js e criar um projeto real. Quem tiver interesse, comenta aqui!",
+        category: "Projetos em Grupo",
+        tags: ["estudo", "nextjs", "comunidade"],
+        author: "CommunityLeader",
+        reputation: 88,
+        date: "2024-06-08T15:30:00Z",
+        votes: 25,
+        views: 420,
+        answers: []
+    },
+    {
+        id: 'p8',
+        title: "Como organizar o tempo para aprender Fullstack do zero?",
+        content: "São tantas tecnologias (HTML, CSS, JS, Node, React, Bancos de dados...). Qual a ordem ideal para não se perder?",
+        category: "Dicas de Estudo",
+        tags: ["roadmap", "fullstack", "aprendizado"],
+        author: "NewbieCoder",
+        reputation: 5,
+        date: "2024-06-09T09:15:00Z",
+        votes: 18,
+        views: 310,
+        answers: []
+    },
+    {
+        id: 'p9',
+        title: "Projeto open source: Buscando contribuidores para um App de finanças",
+        content: "O projeto está sendo feito com Node.js e React. É uma ótima oportunidade para quem quer colocar o primeiro projeto no portfólio.",
+        category: "Projetos em Grupo",
+        tags: ["opensource", "portfolio", "nodejs"],
+        author: "ProjectOwner",
+        reputation: 120,
+        date: "2024-06-10T14:00:00Z",
+        votes: 14,
+        views: 280,
+        answers: []
     }
 ];
 
 function getRelativeTime(dateString) {
     const date = new Date(dateString);
-    if (isNaN(date.getTime())) return dateString; // Return original if invalid
+    if (isNaN(date.getTime())) return dateString;
 
     const now = new Date();
     const diffInSeconds = Math.floor((now - date) / 1000);
@@ -106,9 +143,44 @@ function loadPosts() {
 
     const urlParams = new URLSearchParams(window.location.search);
     const catParam = urlParams.get('category');
-    const select = document.getElementById('filter-category');
+    const postId = urlParams.get('post');
 
-    // Only sync from URL if the select hasn't been modified yet or if it's the first load
+    const dashboardContainer = document.getElementById('forum-dashboard');
+    const postsContainer = document.getElementById('forum-posts');
+    const filtersContainer = document.querySelector('.forum-filters');
+    const searchContainer = document.getElementById('forum-search-container');
+    const questionView = document.getElementById('question-view');
+    const titleEl = document.getElementById('forum-title');
+    const questionsCountEl = document.getElementById('questions-count');
+
+    if (!postsContainer) return;
+
+    // Default visibility reset
+    if (dashboardContainer) dashboardContainer.style.display = 'none';
+    postsContainer.style.display = 'none';
+    if (filtersContainer) filtersContainer.style.display = 'none';
+    if (searchContainer) searchContainer.style.display = 'none';
+    questionView.style.display = 'none';
+
+    // 1. Post Detail View
+    if (postId) {
+        showPost(postId, false);
+        return;
+    }
+
+    // 2. Dashboard View (Landing)
+    if (!catParam) {
+        renderForumDashboard(posts);
+        if (titleEl) titleEl.textContent = 'Fórum da Comunidade';
+        return;
+    }
+
+    // 3. Category List View
+    postsContainer.style.display = 'block';
+    if (filtersContainer) filtersContainer.style.display = 'flex';
+    if (searchContainer) searchContainer.style.display = 'block';
+
+    const select = document.getElementById('filter-category');
     if (catParam && select && !select.dataset.manuallyChanged) {
         if (select.value !== catParam) {
             select.value = catParam;
@@ -120,25 +192,12 @@ function loadPosts() {
         }
     }
 
-    const filterCategory = document.getElementById('filter-category')?.value || 'Tudo';
+    const filterCategory = catParam || 'Tudo';
     const searchTerm = document.getElementById('forum-search')?.value.toLowerCase() || '';
-    const container = document.getElementById('forum-posts');
-    const questionsCountEl = document.getElementById('questions-count');
-    const questionView = document.getElementById('question-view');
 
-    if (!container) return;
-
-    // Switch view if ID in URL
-    const postId = urlParams.get('post');
-
-    if (postId) {
-        showPost(postId, false);
-        return;
+    if (titleEl) {
+        titleEl.textContent = filterCategory === 'Tudo' ? 'Todas as Perguntas' : filterCategory;
     }
-
-    container.style.display = 'block';
-    questionView.style.display = 'none';
-    document.getElementById('forum-title').textContent = 'Todas as Perguntas';
 
     const filteredPosts = posts.filter(post => {
         const matchesCategory = filterCategory === 'Tudo' || post.category === filterCategory;
@@ -151,10 +210,10 @@ function loadPosts() {
         questionsCountEl.textContent = `${filteredPosts.length} pergunta${filteredPosts.length !== 1 ? 's' : ''}`;
     }
 
-    container.innerHTML = '';
+    postsContainer.innerHTML = '';
 
     if (filteredPosts.length === 0) {
-        container.innerHTML = '<p style="text-align: center; opacity: 0.6; padding: 40px;">Nenhuma pergunta encontrada nesta categoria.</p>';
+        postsContainer.innerHTML = '<p style="text-align: center; opacity: 0.6; padding: 40px;">Nenhuma pergunta encontrada nesta categoria.</p>';
         return;
     }
 
@@ -176,7 +235,6 @@ function loadPosts() {
         card.className = 'question-summary';
         card.style.cursor = 'pointer';
         card.onclick = (e) => {
-            // Prevent trigger if clicking on specific links or tags if they had separate actions
             if (e.target.tagName !== 'A' && !e.target.classList.contains('tech-tag')) {
                 showPost(post.id);
             }
@@ -197,10 +255,41 @@ function loadPosts() {
                 </div>
             </div>
         `;
-        container.appendChild(card);
+        postsContainer.appendChild(card);
     });
 
     updateForumStats(posts);
+}
+
+function renderForumDashboard(posts) {
+    const dashboardContainer = document.getElementById('forum-dashboard');
+    if (!dashboardContainer) return;
+
+    dashboardContainer.style.display = 'block';
+
+    const categories = [
+        { name: 'Dúvidas Técnicas', icon: 'bx-code-alt', desc: 'Problemas com código, frameworks e ferramentas.' },
+        { name: 'Dicas de Estudo', icon: 'bx-book-reader', desc: 'Melhores práticas, caminhos de aprendizado e foco.' },
+        { name: 'Projetos em Grupo', icon: 'bx-group', desc: 'Encontre parceiros para codar e aprender juntos.' },
+        { name: 'Carreira', icon: 'bx-briefcase', desc: 'Dicas de mercado, currículo, entrevistas e soft skills.' },
+        { name: 'Dica / Tutorial', icon: 'bx-bulb', desc: 'Compartilhe conhecimento e tutoriais úteis.' }
+    ];
+
+    dashboardContainer.innerHTML = `
+        <div class="forum-dashboard-grid">
+            ${categories.map(cat => {
+                const count = posts.filter(p => p.category === cat.name).length;
+                return `
+                    <div class="forum-category-card" onclick="filterByCategory('${cat.name}')">
+                        <div class="category-icon"><i class='bx ${cat.icon}'></i></div>
+                        <h3>${cat.name}</h3>
+                        <p>${cat.desc}</p>
+                        <div class="category-stats">${count} tópicos</div>
+                    </div>
+                `;
+            }).join('')}
+        </div>
+    `;
 }
 
 function showPost(id, shouldPushState = true) {
@@ -223,16 +312,17 @@ function showPost(id, shouldPushState = true) {
     }
 
     const container = document.getElementById('forum-posts');
+    const dashboardContainer = document.getElementById('forum-dashboard');
     const questionView = document.getElementById('question-view');
     const content = document.getElementById('single-post-container');
     const titleEl = document.getElementById('forum-title');
     const searchContainer = document.getElementById('forum-search-container');
 
+    if (dashboardContainer) dashboardContainer.style.display = 'none';
     container.style.display = 'none';
     questionView.style.display = 'block';
     titleEl.textContent = post.title;
 
-    // Hide filters, search and "Ask" button for a cleaner view
     const filters = document.querySelector('.forum-filters');
     const askBtn = document.querySelector('header .btn');
     if (filters) filters.style.display = 'none';
@@ -315,6 +405,7 @@ function showPost(id, shouldPushState = true) {
 function backToForum() {
     const url = new URL(window.location);
     url.searchParams.delete('post');
+    url.searchParams.delete('category');
     window.history.pushState({}, '', url);
 
     const filters = document.querySelector('.forum-filters');
@@ -325,7 +416,7 @@ function backToForum() {
     if (filters) filters.style.display = 'flex';
     if (askBtn) askBtn.style.display = 'block';
     if (searchContainer) searchContainer.style.display = 'block';
-    if (titleEl) titleEl.textContent = 'Todas as Perguntas';
+    if (titleEl) titleEl.textContent = 'Fórum da Comunidade';
 
     loadPosts();
 }
@@ -336,7 +427,7 @@ function filterByCategory(category) {
 
     const url = new URL(window.location);
     url.searchParams.set('category', category);
-    url.searchParams.delete('post'); // Back to list if we were in a post
+    url.searchParams.delete('post');
     window.history.pushState({}, '', url);
     loadPosts();
 }
@@ -344,16 +435,17 @@ function filterByCategory(category) {
 function togglePostForm() {
     const form = document.getElementById('post-form');
     const postsList = document.getElementById('forum-posts');
+    const dashboard = document.getElementById('forum-dashboard');
     const stats = document.querySelector('.forum-filters');
 
     if (form.style.display === 'none') {
         form.style.display = 'block';
         postsList.style.display = 'none';
-        stats.style.display = 'none';
+        if (dashboard) dashboard.style.display = 'none';
+        if (stats) stats.style.display = 'none';
     } else {
         form.style.display = 'none';
-        postsList.style.display = 'block';
-        stats.style.display = 'flex';
+        loadPosts(); // Handle which view to show
     }
 }
 
@@ -385,7 +477,6 @@ function submitPost() {
     posts.push(newPost);
     localStorage.setItem('forumPosts', JSON.stringify(posts));
 
-    // Clear
     document.getElementById('post-title').value = '';
     document.getElementById('post-content').value = '';
 
