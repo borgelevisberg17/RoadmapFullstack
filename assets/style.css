@@ -1,19 +1,19 @@
 :root {
-    --primary-color: #f48024; /* Stack Overflow orange */
-    --secondary-color: #232629;
+    --primary-color: #4f46e5; /* Modern Indigo */
+    --secondary-color: #1e1b4b;
     --bg-light: #ffffff;
-    --bg-dark: #2d2d2d;
-    --text-light: #232629;
-    --text-dark: #f8f9f9;
-    --border-color: #e3e6e8;
-    --border-color-dark: #4a4e51;
-    --link-color: #0074cc;
-    --link-hover: #0a95ff;
-    --code-bg: #f6f6f6;
-    --code-bg-dark: #1e1e1e;
-    --tag-bg: #e1ecf4;
-    --tag-color: #39739d;
-    --tag-hover-bg: #d1e2ee;
+    --bg-dark: #0f172a;
+    --text-light: #1e293b;
+    --text-dark: #f1f5f9;
+    --border-color: #e2e8f0;
+    --border-color-dark: #334155;
+    --link-color: #4f46e5;
+    --link-hover: #4338ca;
+    --code-bg: #f8fafc;
+    --code-bg-dark: #1e293b;
+    --tag-bg: #f1f5f9;
+    --tag-color: #475569;
+    --tag-hover-bg: #e2e8f0;
     --sidebar-width: 164px;
     --right-sidebar-width: 300px;
 }
@@ -43,7 +43,6 @@ body {
 }
 
 nav {
-    border-top: 3px solid var(--primary-color);
     border-bottom: 1px solid var(--border-color);
     padding: 10px 20px;
     display: flex;
@@ -241,8 +240,7 @@ main.content-area {
 }
 
 .category-card:hover {
-    border-color: var(--primary-color);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-color: var(--border-color);
 }
 
 .category-card h3 {
@@ -417,7 +415,7 @@ main.content-area {
 
 .progress-bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary-color), #ffb347);
+    background: var(--primary-color);
     transition: width 0.5s ease-out;
 }
 
@@ -833,8 +831,7 @@ pre code {
     transition: transform 0.2s;
 }
 .qa-item:hover {
-    transform: translateX(5px);
-    border-left: 4px solid var(--primary-color);
+    border-left: 1px solid var(--border-color);
 }
 .qa-item h3 {
     color: var(--primary-color);
@@ -1015,7 +1012,7 @@ pre code {
     cursor: pointer;
     font-size: 0.85rem;
     border: 1px solid transparent;
-    background: #0095ff;
+    background: var(--primary-color);
     color: white;
     box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
     text-decoration: none;
@@ -1024,7 +1021,7 @@ pre code {
 }
 
 .btn:hover {
-    background: #0074cc;
+    filter: brightness(0.9);
 }
 
 .btn-outline {

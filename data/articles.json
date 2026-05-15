@@ -3,7 +3,7 @@
     "id": "vale-do-aprendizado",
     "title": "O Vale do Aprendizado: Por que parece que você desaprendeu?",
     "author": "Borge Levisberg",
-    "date": "24 de Maio, 2024",
+    "date": "2024-05-24T00:00:00Z",
     "content": "Sabe aquele momento em que você termina um curso básico de HTML e CSS, sente que é o mestre da web, e logo em seguida tenta fazer um projeto sozinho e trava completamente? Parabéns, você entrou no **Vale do Aprendizado**.\n\nIsso acontece porque seguir um tutorial é como andar de bicicleta com rodinhas. O instrutor guia cada movimento seu. Quando as rodinhas saem, o equilíbrio é com você. \n\n### Como sair do vale?\n\n- **Aceite o erro**: Você vai esquecer como centralizar uma div. Eu esqueço quase todo dia. O segredo não é decorar, é saber onde pesquisar.\n- **Projetos pequenos**: Não tente fazer um clone do Facebook logo de cara. Comece com um contador de cliques em JS.\n- **Leia o erro**: O terminal não está gritando com você, ele está te dando o mapa do tesouro. Leia a mensagem de erro com calma.\n\n```javascript\n// O erro é seu amigo\ntry {\n  voce.aprende();\n} catch (erro) {\n  console.log(\"Continue tentando: \", erro.message);\n}\n```\n\nNão tenha pressa. Cada erro é um degrau na sua evolução. Se estiver travado, dê uma olhada no nosso [Fórum](forum.html) ou procure por ajuda na [MDN](https://developer.mozilla.org/).",
     "sources": ["Experiência Prática", "Comunidade Dev"],
     "links": [
@@ -14,7 +14,7 @@
     "id": "git-na-pratica",
     "title": "Git Sem Medo: O workflow que você realmente vai usar",
     "author": "Borge Levisberg",
-    "date": "24 de Maio, 2024",
+    "date": "2024-05-24T00:00:00Z",
     "content": "Git parece assustador com seus comandos e termos como `rebase` ou `cherry-pick`. Mas a verdade é que 90% do seu dia a dia se resume a uns 5 comandos. \n\nEsqueça a interface visual por um momento. Entender o terminal te dá superpoderes e te salva de 'detonados' acidentais no código da equipe.\n\n### O Ciclo Sagrado\n\nSempre que for começar algo novo, garanta que está no lugar certo:\n\n```bash\n# Atualiza sua máquina com o que tem no servidor\ngit pull origin main\n\n# Cria uma 'ramificação' para sua nova funcionalidade\ngit checkout -b minha-nova-feature\n```\n\nDepois de codar, é hora de salvar:\n\n```bash\n# Adiciona as mudanças\ngit add .\n\n# Dá um nome para o que você fez\ngit commit -m \"feat: adiciona sistema de login\"\n\n# Envia para o mundo\ngit push origin minha-nova-feature\n```\n\n### Dicas de Ouro\n\n- **Commits Pequenos**: É melhor fazer 10 commits pequenos do que um gigante que ninguém entende.\n- **Mensagens Claras**: Use padrões como [Conventional Commits](https://www.conventionalcommits.org/).\n- **Não entre em pânico**: Quase tudo no Git pode ser desfeito. O comando `git reflog` é o seu botão de 'Ctrl+Z' de emergência.",
     "sources": ["Git Documentation", "GitHub Flow"],
     "links": [
@@ -26,7 +26,7 @@
     "id": "clean-code-introducao",
     "title": "Código Limpo: Por que a estética do seu código importa?",
     "author": "Borge Levisberg",
-    "date": "25 de Maio, 2024",
+    "date": "2024-05-25T00:00:00Z",
     "content": "Você já abriu um código que você mesmo escreveu há seis meses e pensou: 'Quem foi o maluco que fez isso?'. Se sim, você sentiu na pele a falta de **Clean Code**.\n\nEscrever código limpo não é sobre ser perfeccionista, é sobre ser empático com o 'você do futuro' e com seus colegas de equipe.\n\n### Princípios Básicos\n\n- **Nomes Significativos**: Em vez de `let d = 10;`, use `let diasParaVencimento = 10;`. O nome deve dizer o que a variável faz.\n- **Funções Pequenas**: Uma função deve fazer apenas uma coisa e fazê-la bem.\n- **Comentários Necessários**: O código deve ser autoexplicativo. Use comentários apenas para explicar o 'porquê' de uma decisão complexa, não o 'quê' o código está fazendo.\n\n```javascript\n// Ruim\nfunction c(a, b) {\n  return a + b;\n}\n\n// Bom\nfunction calcularTotalPedido(subtotal, frete) {\n  return subtotal + frete;\n}\n```\n\nLembre-se: 'Qualquer tolo consegue escrever código que um computador entenda. Bons programadores escrevem código que humanos entendam.' (Martin Fowler)",
     "sources": ["Clean Code (Robert C. Martin)", "Refactoring (Martin Fowler)"],
     "links": [
@@ -37,7 +37,7 @@
     "id": "arquitetura-mvc",
     "title": "Entendendo o MVC: A base das aplicações modernas",
     "author": "Borge Levisberg",
-    "date": "25 de Maio, 2024",
+    "date": "2024-05-25T00:00:00Z",
     "content": "O MVC (Model-View-Controller) é um dos padrões de arquitetura mais antigos e mais utilizados na web. Ele ajuda a separar as responsabilidades do seu código, tornando-o mais fácil de manter.\n\n### As Três Peças do Quebra-cabeça\n\n1. **Model (Modelo)**: Lida com os dados e a lógica de negócio. É onde você interage com o banco de dados.\n2. **View (Visão)**: É o que o usuário vê (o HTML/CSS). Ela não deve processar lógica complexa, apenas exibir informações.\n3. **Controller (Controlador)**: O intermediário. Ele recebe o pedido do usuário, pede os dados para o Model e envia para a View.\n\n### Por que usar?\n\nImagine que você quer mudar o visual do seu site de azul para vermelho. Se o seu código estiver misturado, você terá que mexer em tudo. No MVC, você altera apenas a **View**, mantendo o **Model** intacto.\n\n```php\n// Exemplo Simplista em PHP/Laravel\n// Controller\npublic function show(User $user) {\n    return view('profile', ['user' => $user]);\n}\n```\n\nEntender o MVC é o primeiro passo para dominar frameworks como Laravel, Django ou Spring Boot.",
     "sources": ["Padrões de Arquitetura de Software", "Documentação Laravel"],
     "links": [
@@ -48,7 +48,7 @@
     "id": "soft-skills-dev",
     "title": "Além do Código: Soft Skills que todo Dev precisa",
     "author": "Borge Levisberg",
-    "date": "25 de Maio, 2024",
+    "date": "2024-05-25T00:00:00Z",
     "content": "Você pode ser o melhor programador do mundo, mas se não souber se comunicar, sua carreira terá um teto. Programação é um esporte de equipe.\n\nAs **Soft Skills** são habilidades comportamentais que te ajudam a trabalhar melhor com outras pessoas e a lidar com os desafios do dia a dia.\n\n### As mais importantes\n\n- **Comunicação**: Saiba explicar problemas técnicos para pessoas que não são técnicas (clientes, gestores).\n- **Trabalho em Equipe**: Estar disposto a ajudar e a pedir ajuda quando necessário.\n- **Adaptabilidade**: O mundo da tecnologia muda rápido. Esteja aberto a aprender novas ferramentas e processos.\n- **Empatia**: Entenda que por trás de cada bug reportado, existe um usuário frustrado.\n\n### Como desenvolver?\n\nLeia livros sobre psicologia e liderança, participe de comunidades e, principalmente, pratique a escuta ativa em suas reuniões. Ser um 'dev gente boa' abre tantas portas quanto saber uma linguagem nova.",
     "sources": ["The Pragmatic Programmer", "Experiência de Mercado"],
     "links": [
@@ -59,7 +59,7 @@
     "id": "ia-no-desenvolvimento",
     "title": "A Era da IA: Como o Copilot e ChatGPT mudaram o jogo",
     "author": "Borge Levisberg",
-    "date": "26 de Maio, 2024",
+    "date": "2024-05-26T00:00:00Z",
     "content": "A Inteligência Artificial não vai substituir os programadores, mas os programadores que usam IA vão substituir os que não usam. \n\nFerramentas como GitHub Copilot, ChatGPT e Claude transformaram a forma como escrevemos código, automatizando tarefas repetitivas e ajudando a debugar problemas complexos em segundos.\n\n### O Novo Workflow\n\n- **Pair Programming com a IA**: Use a IA para gerar boilerplate, sugerir nomes de variáveis ou explicar blocos de código confusos.\n- **Prompt Engineering**: Aprenda a fazer as perguntas certas. Quanto mais específico o contexto, melhor o código gerado.\n- **Revisão Crítica**: Nunca confie cegamente na IA. Ela pode gerar alucinações ou código inseguro. Você é o piloto, a IA é o copiloto.\n\n```javascript\n// Exemplo de prompt: \"Gere uma função JS que valide um e-mail usando regex\"\nfunction validarEmail(email) {\n  const regex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  return regex.test(email);\n}\n```\n\nDomine essas ferramentas para aumentar sua produtividade e focar na arquitetura e na lógica de alto nível.",
     "sources": ["GitHub Blog", "OpenAI Documentation"],
     "links": [
@@ -70,7 +70,7 @@
     "id": "computacao-quantica-intro",
     "title": "Computação Quântica: O que você precisa saber hoje",
     "author": "Borge Levisberg",
-    "date": "26 de Maio, 2024",
+    "date": "2024-05-26T00:00:00Z",
     "content": "Enquanto os computadores clássicos usam bits (0 ou 1), os computadores quânticos usam **qubits**. Graças à sobreposição e ao emaranhamento, eles podem processar informações de uma forma que deixaria o supercomputador mais rápido do mundo comendo poeira.\n\n### Por que isso importa?\n\n- **Criptografia**: Computadores quânticos poderão quebrar a maioria dos sistemas de segurança atuais. Daí a importância da criptografia pós-quântica.\n- **Simulação de Moléculas**: Revolucionará a medicina e a ciência dos materiais.\n- **Otimização Extrema**: Resolverá problemas logísticos complexos em segundos.\n\n### Como se preparar?\n\nAinda estamos no 'estágio das válvulas' da computação quântica. Mas você já pode experimentar com bibliotecas como **Qiskit** da IBM ou **Cirq** do Google usando Python.\n\n```python\n# Exemplo básico Qiskit\nfrom qiskit import QuantumCircuit\nqc = QuantumCircuit(2)\nqc.h(0) # Portão Hadamard (sobreposição)\nqc.cx(0, 1) # CNOT (emaranhamento)\n```\n\nÉ um campo fascinante que redefine o que é possível na computação.",
     "sources": ["IBM Quantum", "Quanta Magazine"],
     "links": [
@@ -81,7 +81,7 @@
     "id": "vibing-code-dx",
     "title": "Vibing Code: Por que a Developer Experience (DX) é Vital",
     "author": "Borge Levisberg",
-    "date": "26 de Maio, 2024",
+    "date": "2024-05-26T00:00:00Z",
     "content": "Vibing Code é sobre o 'fluxo'. É quando as ferramentas, a documentação e a cultura da empresa trabalham juntas para que o desenvolvedor se sinta produtivo e feliz. Isso é **Developer Experience (DX)**.\n\nUma DX ruim (ferramentas lentas, processos burocráticos) mata a criatividade e gera burnout.\n\n### Pilares de uma boa DX\n\n- **Documentação Clara**: Você deve encontrar o que precisa em 2 cliques.\n- **Ferramental Rápido**: O build não deve demorar 15 minutos.\n- **Cultura de Feedback**: Processos de Code Review que ensinam em vez de apenas criticar.\n- **Autonomia**: Menos reuniões inúteis, mais tempo de foco.\n\nQuando o código 'vibra', o time entrega mais e com mais qualidade. DX não é luxo, é estratégia de retenção de talentos.",
     "sources": ["DX Tips Blog", "Modern Software Engineering"],
     "links": [
@@ -92,7 +92,7 @@
     "id": "web3-introducao",
     "title": "Web3: A Internet da Propriedade e Descentralização",
     "author": "Borge Levisberg",
-    "date": "27 de Maio, 2024",
+    "date": "2024-05-27T00:00:00Z",
     "content": "A Web1 era leitura (estática). A Web2 é leitura e escrita (social). A Web3 é leitura, escrita e **propriedade**.\n\nUsando a tecnologia **Blockchain**, a Web3 visa tirar o poder das grandes empresas (Big Techs) e devolvê-lo aos usuários através de redes descentralizadas.\n\n### Componentes Chave\n\n- **Smart Contracts**: Contratos que se executam sozinhos quando as condições são atingidas (escritos em linguagens como Solidity).\n- **DAOs**: Organizações Autônomas Descentralizadas, onde as decisões são tomadas por votação da comunidade via tokens.\n- **Identidade Soberana**: Você é dono dos seus dados e decide quem pode acessá-los.\n\n```solidity\n// Exemplo de Smart Contract simples\ncontract OlaMundo {\n    string public saudacao = \"Ola Web3!\";\n}\n```\n\nAinda há muitos desafios (escalabilidade, UX), mas a proposta de uma internet mais justa é poderosa.",
     "sources": ["Ethereum Foundation", "Web3 University"],
     "links": [
@@ -103,7 +103,7 @@
     "id": "edge-computing-futuro",
     "title": "Edge Computing: Processando dados onde a ação acontece",
     "author": "Borge Levisberg",
-    "date": "27 de Maio, 2024",
+    "date": "2024-05-27T00:00:00Z",
     "content": "Por que enviar todos os dados de um carro autônomo para a nuvem se a decisão de frear precisa ser tomada em milissegundos? Isso é **Edge Computing**.\n\nEm vez de centralizar tudo em grandes Data Centers, processamos os dados o mais próximo possível da fonte (o 'borda' ou edge).\n\n### Vantagens Reais\n\n- **Baixa Latência**: Crucial para IoT, jogos online e cirurgias remotas.\n- **Economia de Banda**: Você não envia dados brutos inúteis, apenas os resultados processados.\n- **Privacidade**: Dados sensíveis podem ser processados localmente sem nunca sair do dispositivo.\n\nO futuro do desenvolvimento web passa por funções 'edge' (como Cloudflare Workers ou Vercel Edge Functions) que rodam código mais perto do usuário final.",
     "sources": ["Cloudflare Learning", "AWS Edge Computing"],
     "links": [
@@ -114,7 +114,7 @@
     "id": "seguranca-nuvem",
     "title": "Segurança em Nuvem: O Modelo de Responsabilidade Compartilhada",
     "author": "Borge Levisberg",
-    "date": "27 de Maio, 2024",
+    "date": "2024-05-27T00:00:00Z",
     "content": "Muitas empresas acham que ao migrar para a AWS ou Azure, a segurança é problema deles. Errado. Existe o **Modelo de Responsabilidade Compartilhada**.\n\nA nuvem protege a infraestrutura física, mas você é responsável por proteger o que coloca lá dentro (configurações, dados, aplicações).\n\n### Melhores Práticas\n\n- **Princípio do Menor Privilégio**: Dê apenas as permissões necessárias para cada usuário ou serviço.\n- **Criptografia em Repouso e em Trânsito**: Nunca deixe dados sensíveis desprotegidos.\n- **Monitoramento e Logs**: Saiba quem acessou o quê e quando.\n- **Configurações de Rede (VPCs)**: Não deixe seu banco de dados exposto para a internet pública.\n\nSegurança não é um produto, é um processo contínuo de vigilância e melhoria.",
     "sources": ["AWS Security Documentation", "OWASP Cloud Security"],
     "links": [
@@ -125,7 +125,7 @@
     "id": "evolucao-frontend",
     "title": "O Futuro do Front-end: Além dos Frameworks",
     "author": "Borge Levisberg",
-    "date": "28 de Maio, 2024",
+    "date": "2024-05-28T00:00:00Z",
     "content": "Estamos saindo da era do 'SPA para tudo' e entrando em uma fase de **Rendering Híbrido**. Tecnologias como Server Components do React, Qwik (resumibilidade) e Astro (ilhas de interatividade) estão mudando as regras.\n\nO foco voltou a ser a performance e o envio de menos JavaScript para o cliente.\n\n### Tendências para observar\n\n- **WebAssembly (WASM)**: Rode código de alta performance (C++, Rust) no navegador.\n- **Container Queries**: Estilize elementos com base no tamanho do seu container, não apenas na largura da tela.\n- **CSS modernizado**: Grid, Flexbox e novas funções (como `clamp` e `has`) tornam o CSS quase uma linguagem de programação.\n\n```css\n/* Exemplo de Container Query */\n.card-container {\n  container-type: inline-size;\n}\n@container (min-width: 400px) {\n  .card { display: flex; }\n}\n```\n\nO front-end moderno é sobre entregar a melhor experiência com a menor carga possível.",
     "sources": ["State of JS", "Web.dev"],
     "links": [
@@ -136,7 +136,7 @@
     "id": "deep-learning-iniciantes",
     "title": "Deep Learning: O motor por trás da IA Moderna",
     "author": "Borge Levisberg",
-    "date": "28 de Maio, 2024",
+    "date": "2024-05-28T00:00:00Z",
     "content": "Deep Learning é um subcampo do Machine Learning que utiliza redes neurais artificiais com muitas camadas (daí o 'deep' ou profundo) para aprender padrões complexos em grandes volumes de dados.\n\nÉ a tecnologia por trás do reconhecimento facial, tradução automática e os LLMs (como o GPT-4).\n\n### Conceitos Fundamentais\n\n- **Neurônios Artificiais**: Unidades de processamento que recebem entradas, aplicam pesos e geram uma saída.\n- **Backpropagation**: O processo pelo qual a rede 'aprende' com seus erros, ajustando os pesos para melhorar a precisão.\n- **Bibliotecas Populares**: TensorFlow (Google) e PyTorch (Meta) são as ferramentas padrão da indústria.\n\n```python\n# Exemplo simplista com PyTorch\nimport torch.nn as nn\nmodel = nn.Sequential(\n    nn.Linear(784, 128),\n    nn.ReLU(),\n    nn.Linear(128, 10)\n)\n```\n\nNão é mágica, é matemática pesada (álgebra linear e cálculo) aplicada de forma brilhante.",
     "sources": ["Deep Learning Book (Ian Goodfellow)", "Fast.ai"],
     "links": [
@@ -147,9 +147,9 @@
     "id": "guia-junior-real",
     "title": "Manual de Sobrevivência do Junior: O que não te ensinam no curso",
     "author": "Borge Levisberg",
-    "date": "29 de Maio, 2024",
+    "date": "2024-05-29T00:00:00Z",
     "tags": ["Carreira", "Junior"],
-    "content": "Você conseguiu o primeiro emprego ou estágio. E agora? O pânico de abrir o repositório da empresa e ver 50.000 linhas de código é real. Este guia foca no que realmente importa nos seus primeiros 90 dias.\n\n### 1. Pare de tentar entender tudo de uma vez\n\nNinguém, nem o Sênior que está lá há 5 anos, entende 100% do código da empresa. Foque no **pequeno pedaço** que você precisa alterar. Siga o fluxo da execução, use o debugger e entenda o que entra e o que sai daquela função específica. A compreensão do todo virá com o tempo.\n\n### 2. A Regra dos 30 Minutos (e como pedir ajuda)\n\nSe você está travado há 30 minutos em um problema, peça ajuda. Mas nunca chegue apenas dizendo 'não funciona'. \n\n**O jeito certo de pedir ajuda:**\n- 'Estou tentando resolver o problema X.'\n- 'Eu já tentei as abordagens A e B.'\n- 'Eu pesquisei na documentação e vi o erro Y.'\n\nIsso mostra para os seus colegas que você tem autonomia e respeita o tempo deles.\n\n### 3. Documentação é sua Alavanca\n\nAntes de perguntar 'como eu rodo o projeto?', leia o Readme. Se a informação estiver incompleta ou errada, **parabéns: você encontrou sua primeira grande contribuição**. Corrija o Readme depois que descobrir a resposta. Ser o Junior que melhora a documentação é o caminho mais rápido para ganhar confiança do time.\n\n### 4. Resolva o Problema, Depois Refatore\n\nNo início, seu foco deve ser a entrega de valor. Código perfeito que não vai para produção não ajuda ninguém. Escreva uma solução que funcione, garanta que ela tenha testes básicos, e só então se preocupe se deveria usar `forEach` ou `map`. O mercado valoriza 'problem solvers'.\n\n### 5. Aprenda a Lidar com o Erro\n\nO terminal não está gritando com você. Ele está te dando informações valiosas. Leia o Stack Trace, entenda a linha onde o erro ocorreu. Aprender a ler mensagens de erro é o que separa os amadores dos profissionais.",
+    "content": "Você conseguiu o primeiro emprego ou estágio. E agora? O pânico de abrir o repositório da empresa e ver 50.000 lines de código é real. Este guia foca no que realmente importa nos seus primeiros 90 dias.\n\n### 1. Pare de tentar entender tudo de uma vez\n\nNinguém, nem o Sênior que está lá há 5 anos, entende 100% do código da empresa. Foque no **pequeno pedaço** que você precisa alterar. Siga o fluxo da execução, use o debugger e entenda o que entra e o que sai daquela função específica. A compreensão do todo virá com o tempo.\n\n### 2. A Regra dos 30 Minutos (e como pedir ajuda)\n\nSe você está travado há 30 minutos em um problema, peça ajuda. Mas nunca chegue apenas dizendo 'não funciona'. \n\n**O jeito certo de pedir ajuda:**\n- 'Estou tentando resolver o problema X.'\n- 'Eu já tentei as abordagens A e B.'\n- 'Eu pesquisei na documentação e vi o erro Y.'\n\nIsso mostra para os seus colegas que você tem autonomia e respeita o tempo deles.\n\n### 3. Documentação é sua Alavanca\n\nAntes de perguntar 'como eu rodo o projeto?', leia o Readme. Se a informação estiver incompleta ou errada, **parabéns: você encontrou sua primeira grande contribuição**. Corrija o Readme depois que descobrir a resposta. Ser o Junior que melhora a documentação é o caminho mais rápido para ganhar confiança do time.\n\n### 4. Resolva o Problema, Depois Refatore\n\nNo início, seu foco deve ser a entrega de valor. Código perfeito que não vai para produção não ajuda ninguém. Escreva uma solução que funcione, garanta que ela tenha testes básicos, e só então se preocupe se deveria usar `forEach` ou `map`. O mercado valoriza 'problem solvers'.\n\n### 5. Aprenda a Lidar com o Erro\n\nO terminal não está gritando com você. Ele está te dando informações valiosas. Leia o Stack Trace, entenda a linha onde o erro ocorreu. Aprender a ler mensagens de erro é o que separa os amadores dos profissionais.",
     "sources": ["Experiência em Startups", "Mentoria de Desenvolvedores"],
     "links": [
       { "text": "The Junior Developer Survival Guide", "url": "https://www.freecodecamp.org/news/the-junior-developer-survival-guide/" }
@@ -159,7 +159,7 @@
     "id": "transicao-pleno",
     "title": "A Ascensão para Pleno: Dominando a Autonomia",
     "author": "Borge Levisberg",
-    "date": "29 de Maio, 2024",
+    "date": "2024-05-29T00:00:00Z",
     "tags": ["Carreira", "Pleno"],
     "content": "O que separa um Junior de um Pleno não é o tempo de casa, mas a **autonomia**. Enquanto o Junior precisa de instruções detalhadas, o Pleno consegue pegar uma necessidade de negócio e transformá-la em uma solução técnica robusta.\n\n### 1. Entenda o 'Porquê' do Ticket\n\nO Junior foca no 'Como'. O Pleno foca no 'Porquê'. Se você recebe uma tarefa para criar um novo botão, pergunte qual problema o usuário está tentando resolver. Muitas vezes, a solução técnica correta é diferente do que foi pedido inicialmente.\n\n### 2. Domine o Diagnóstico (Observabilidade)\n\nSaber escrever código é apenas metade do trabalho. A outra metade é saber por que ele falha. O Pleno domina ferramentas de log (Datadog, New Relic), entende o Network Tab do navegador e sabe analisar a performance de uma query SQL. Se o sistema cair, você deve ser capaz de encontrar a causa raiz.\n\n### 3. Código para Humanos\n\nEscreva código que seus colegas consigam manter. Isso significa aplicar princípios de **Clean Code** e **SOLID** não porque é bonito, mas porque economiza dinheiro e tempo da empresa. Um bom Code Review de um Pleno foca na arquitetura e na manutenibilidade, não apenas em sintaxe.\n\n### 4. Responsabilidade de Ponta a Ponta\n\nSer Pleno significa ser dono da funcionalidade. Desde a escrita do código, passando pelos testes unitários, até o deploy e monitoramento em produção. Você é o garantidor de que o que foi entregue realmente resolve o problema sem quebrar o restante do sistema.\n\n### 5. Comece a Mentorar\n\nAjude os Juniors e estagiários. A melhor forma de consolidar seu conhecimento sênior é ensinando a base para quem está começando. Isso desenvolve sua comunicação e liderança técnica.",
     "sources": ["Carreira em Big Techs", "Livro: The Staff Engineer's Path"],
@@ -171,7 +171,7 @@
     "id": "senior-alem-syntax",
     "title": "Sênior além da Syntax: Arquitetura e Impacto",
     "author": "Borge Levisberg",
-    "date": "30 de Maio, 2024",
+    "date": "2024-05-30T00:00:00Z",
     "tags": ["Carreira", "Sênior"],
     "content": "Ser Sênior é sobre **decisões e trade-offs**. Muitas vezes, a contribuição mais valiosa de um Sênior é evitar que o time escreva código desnecessário ou complexo demais para o momento do negócio.\n\n### 1. Arquitetura é Escolher seus Problemas\n\nNão existe solução perfeita em engenharia de software, existem apenas escolhas com diferentes consequências. O Sênior não escolhe uma tecnologia porque ela é 'nova' ou 'está na moda', mas porque ela resolve um problema específico de escalabilidade, custo ou tempo de desenvolvimento. Ele sabe justificar por que SQL é melhor que NoSQL para o cenário atual, e vice-versa.\n\n### 2. O Desenvolvedor como Multiplicador\n\nO sucesso de um Sênior é medido pelo desempenho do time ao seu redor. Se você é a única pessoa que consegue resolver os problemas complexos, você se tornou um gargalo técnico. Seu papel é disseminar conhecimento, criar padrões que facilitem o trabalho dos outros e garantir que o nível técnico médio da equipe suba constantemente.\n\n### 3. Visão de Negócio e Pragmatismo\n\nUm Sênior entende como a empresa gera receita. Ele sabe que um código 100% puro academicamente, mas que demora 6 meses para ser entregue, pode quebrar a empresa. O pragmatismo sênior envolve saber onde é seguro 'cortar caminho' e onde a dívida técnica é inaceitável.\n\n### 4. Comunicação com Stakeholders\n\nVocê deve ser capaz de traduzir termos técnicos complexos para pessoas de produto, design e negócios. Ser sênior envolve participar de reuniões estratégicas e influenciar o roadmap do produto com base no que é tecnicamente viável e sustentável.\n\n### 5. Mentoria de Carreira\n\nAlém da mentoria técnica diária, o Sênior ajuda Plenos e Juniors a traçarem seus caminhos de evolução. Ele identifica lacunas de conhecimento no time e sugere planos de estudo e melhorias de processos que beneficiam a todos.",
     "sources": ["Liderança Técnica em Projetos Open Source", "Clean Architecture"],
@@ -183,7 +183,7 @@
     "id": "guia-entrevistas-tech",
     "title": "Vencendo Entrevistas: Pense em voz alta",
     "author": "Borge Levisberg",
-    "date": "30 de Maio, 2024",
+    "date": "2024-05-30T00:00:00Z",
     "tags": ["Carreira", "Entrevistas"],
     "content": "Muitos desenvolvedores excelentes travam em entrevistas técnicas. O segredo não é saber a resposta de cor, mas sim **como você chega nela**.\n\n### O Protocolo 'Think Aloud'\n\nOs entrevistadores querem ver seu raciocínio. Se você ficar mudo por 10 minutos, eles não sabem se você está perto da solução ou totalmente perdido. Fale o que está pensando: 'Vou começar usando um loop simples, mas sei que isso tem complexidade O(n^2), depois podemos otimizar com um Hash Map'.\n\n### Comportamental: O Método STAR\n\nPara perguntas como 'Conte-me sobre um erro que você cometeu', use o método STAR:\n- **S**ituation (Situação)\n- **T**ask (Tarefa)\n- **A**ction (Ação)\n- **R**esult (Resultado)\n\nIsso dá estrutura para sua história e garante que você foque no que realmente importa.\n\n### Faça Perguntas Inteligentes\n\nA entrevista é uma via de mão dupla. Pergunte sobre o processo de deploy, como são feitos os code reviews e qual o maior desafio técnico que o time enfrentou recentemente. Isso mostra interesse e senioridade.",
     "sources": ["Cracking the Coding Interview", "Experiência como Entrevistador"],
@@ -192,10 +192,46 @@
     ]
   },
   {
+    "id": "arquitetura-microservicos",
+    "title": "Arquitetura de Microserviços: Quando e como dividir seu Monolito",
+    "author": "Borge Levisberg",
+    "date": "2024-06-01T10:00:00Z",
+    "tags": ["Arquitetura", "Backend", "Microserviços"],
+    "content": "A transição de um monolito para microserviços é uma das decisões mais complexas que um time de engenharia pode tomar. Não é apenas uma mudança técnica, mas organizacional.\n\n### Quando mudar?\n\n- **Escalabilidade Seletiva**: Você precisa escalar apenas o módulo de pagamentos, não a aplicação inteira.\n- **Independência de Times**: Times diferentes precisam trabalhar em linguagens ou ciclos de deploy diferentes.\n- **Complexidade do Monolito**: O código ficou tão grande que ninguém mais consegue entender o impacto de uma pequena mudança.\n\n### Desafios Reais\n\n1. **Consistência de Dados**: Como garantir que os dados estejam certos em bancos diferentes? (Padrão Saga).\n2. **Observabilidade**: Se um erro acontece, como rastrear o pedido através de 10 serviços? (Distributed Tracing).\n3. **Latência**: Chamadas de rede são muito mais lentas que chamadas de função em memória.\n\n```json\n// Exemplo de comunicação via API Gateway\n{\n  \"service\": \"orders\",\n  \"endpoint\": \"/create\",\n  \"payload\": { \"product_id\": 101, \"user_id\": 55 }\n}\n```\n\nComece pequeno. Extraia um serviço por vez e garanta que você tenha uma infraestrutura de monitoramento sólida antes de prosseguir.",
+    "sources": ["Building Microservices (Sam Newman)", "Microservices.io"],
+    "links": [
+      { "text": "Microservices Patterns", "url": "https://microservices.io/patterns/index.html" }
+    ]
+  },
+  {
+    "id": "react-patterns-avancados",
+    "title": "Padrões Avançados de React: Hooks Customizados e Composição",
+    "author": "Borge Levisberg",
+    "date": "2024-06-02T11:00:00Z",
+    "tags": ["React", "Frontend", "Clean Code"],
+    "content": "Escrever componentes React é fácil. Escrever componentes reutilizáveis, performáticos e fáceis de testar é o que separa os Seniors dos demais.\n\n### Composição de Componentes\n\nEm vez de passar 20 props para um componente gigante, use a composição. Isso evita o 'prop drilling' e torna o código mais legível.\n\n### Hooks Customizados\n\nExtraia a lógica de negócio do seu componente para hooks. Isso permite que você teste a lógica de forma isolada e a reutilize em diferentes partes da aplicação.\n\n```javascript\n// Hook customizado para gerenciar formulários\nfunction useForm(initialState) {\n  const [values, setValues] = useState(initialState);\n  \n  const handleChange = (e) => {\n    setValues({ ...values, [e.target.name]: e.target.value });\n  };\n\n  return [values, handleChange];\n}\n```\n\nDomine o `useMemo` e `useCallback` para evitar re-renderizações desnecessárias em aplicações de grande escala.",
+    "sources": ["Kent C. Dodds Blog", "React Documentation"],
+    "links": [
+      { "text": "Advanced React Patterns", "url": "https://epicreact.dev/articles" }
+    ]
+  },
+  {
+    "id": "seguranca-api-oauth2",
+    "title": "Segurança em APIs REST: O Guia Definitivo do OAuth2 e OIDC",
+    "author": "Borge Levisberg",
+    "date": "2024-06-03T09:30:00Z",
+    "tags": ["Segurança", "Backend", "API"],
+    "content": "Expor uma API sem a devida proteção é um convite ao desastre. OAuth2 é o padrão de mercado para autorização, e OpenID Connect (OIDC) adiciona a camada de autenticação sobre ele.\n\n### O Fluxo 'Authorization Code'\n\nEste é o fluxo mais seguro para aplicações web. O usuário nunca compartilha sua senha com a sua aplicação, mas sim com o servidor de identidade (como Auth0 ou Keycloak).\n\n### JWT (JSON Web Tokens)\n\nEntenda como funcionam os tokens. Eles são assinados (não criptografados!) e contêm 'claims' sobre o usuário.\n\n```bash\n# Decodificando um JWT (apenas para ver o payload)\necho \"header.payload.signature\" | cut -d \".\" -f 2 | base64 -d\n```\n\nSempre use HTTPS, valide o emissor (`iss`) e a expiração (`exp`) do token no seu backend.",
+    "sources": ["OAuth 2.0 Simplified (Aaron Parecki)", "OWASP API Security"],
+    "links": [
+      { "text": "OAuth.net", "url": "https://oauth.net/2/" }
+    ]
+  },
+  {
     "id": "soft-skills-introvertidos",
     "title": "Networking para Devs: Sem 'falar pelos cotovelos'",
     "author": "Borge Levisberg",
-    "date": "31 de Maio, 2024",
+    "date": "2024-05-31T00:00:00Z",
     "tags": ["Carreira", "Soft Skills"],
     "content": "A palavra 'Networking' dá arrepios em muitos desenvolvedores. Parece algo falso ou cansativo. Mas networking real é apenas **construir relacionamentos de confiança**.\n\n### Networking Assíncrono\n\nVocê não precisa ir a todos os meetups e ser a alma da festa. Você pode fazer networking ajudando pessoas no Stack Overflow, contribuindo para projetos Open Source ou escrevendo artigos técnicos. Seu trabalho fala por você.\n\n### A Escuta Ativa\n\nEm reuniões, você não precisa ser quem mais fala. Mas quando falar, seja preciso. Ouça as dores dos seus colegas e tente ajudar com soluções técnicas. Isso cria autoridade natural.\n\n### Comunidades Online\n\nParticipe de Discords, Slacks ou fóruns (como o nosso!). Tire dúvidas, compartilhe o que aprendeu. Quando você precisar de uma indicação, terá pessoas que já conhecem sua competência técnica.",
     "sources": ["Psicologia Organizacional", "Comunidades Dev"],

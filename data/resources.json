@@ -82,5 +82,47 @@
     "books": ["Docker: Up & Running - Sean P. Kane", "Docker Deep Dive - Nigel Poulton"],
     "courses": ["https://www.docker.com/101-tutorial/", "https://training.play-with-docker.com/"],
     "projects": ["Containerizar uma aplicação Fullstack", "Configurar CI/CD com Docker"]
+  },
+  "Redis": {
+    "docs": "https://redis.io/docs/",
+    "youtube": ["Redis", "Hussein Nasser", "Traversy Media"],
+    "books": ["Redis in Action - Josiah Carlson"],
+    "courses": ["https://university.redis.com/"],
+    "projects": ["Implemente cache em uma API Node.js", "Sistema de ranking em tempo real"]
+  },
+  "MongoDB": {
+    "docs": "https://www.mongodb.com/docs/",
+    "youtube": ["MongoDB", "Academind", "Web Dev Simplified"],
+    "books": ["MongoDB: The Definitive Guide - Shannon Bradshaw"],
+    "courses": ["https://university.mongodb.com/"],
+    "projects": ["Crie um blog com NoSQL", "Sistema de catálogo de produtos flexível"]
+  },
+  "AWS": {
+    "docs": "https://docs.aws.amazon.com/",
+    "youtube": ["AWS", "Be A Better Dev", "Digital Cloud Training"],
+    "books": ["AWS Certified Solutions Architect Study Guide"],
+    "courses": ["https://explore.skillbuilder.aws/", "https://www.freecodecamp.org/news/aws-certified-cloud-practitioner-study-guide/"],
+    "projects": ["Hospede um site estático no S3", "Deploy de aplicação com Elastic Beanstalk"]
+  },
+  "Kubernetes": {
+    "docs": "https://kubernetes.io/docs/home/",
+    "youtube": ["Nana Janashia", "Jeff Geerling", "LinuxTips"],
+    "books": ["Kubernetes up & running - Brendan Burns"],
+    "courses": ["https://kubernetes.io/docs/tutorials/", "https://www.edx.org/course/introduction-to-kubernetes"],
+    "projects": ["Orquestrar microserviços localmente com Minikube"]
+  },
+  "React Native": {
+    "docs": "https://reactnative.dev/docs/getting-started",
+    "youtube": ["Rocketseat", "The Net Ninja", "Programming with Mosh"],
+    "books": ["React Native in Action - Andrew Code"],
+    "courses": ["https://reactnative.dev/docs/tutorial", "https://www.udemy.com/course/the-complete-react-native-and-redux-course/"],
+    "projects": ["App de Clima com Geolocalização", "Clone do layout do Uber"]
+  },
+  "PostgreSQL": {
+    "docs": "https://www.postgresql.org/docs/",
+    "youtube": ["Hussein Nasser", "PostgreSQL", "Rodrigo Branas"],
+    "books": ["Mastering PostgreSQL - Hans-Jürgen Schönig"],
+    "courses": ["https://www.postgresqltutorial.com/", "https://www.codecademy.com/learn/learn-postgresql"],
+    "projects": ["Modelagem de um banco para rede social", "Otimização de performance com índices"]
   }
 }
