@@ -506,6 +506,13 @@ pre code {
     font-weight: 400;
 }
 
+.article-body h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
 .article-body p {
     margin-bottom: 16px;
 }
@@ -526,6 +533,46 @@ pre code {
 
 .article-body a:hover {
     color: var(--link-hover);
+}
+
+.article-body blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding: 12px 20px;
+    margin: 20px 0;
+    background: var(--tag-bg);
+    font-style: italic;
+    border-radius: 0 4px 4px 0;
+    line-height: 1.6;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin: 24px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.article-body table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.article-body th {
+    background-color: var(--tag-bg);
+    font-weight: 600;
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.article-body td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.article-body tr:last-child td {
+    border-bottom: none;
 }
 
 /* Forum Specific */

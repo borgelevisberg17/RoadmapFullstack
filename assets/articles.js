@@ -187,42 +187,71 @@ function renderArticles() {
 }
 
 function parseMarkdown(text) {
+    if (!text) return '';
+
+    // Basic HTML Escaping
     let html = text
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
 
     const codeBlocks = [];
-    html = html.replace(/```(javascript|typescript|bash|css|html|sql|php|python|json|yaml|dockerfile)\n([\s\S]*?)\n```/g, (match, lang, code) => {
+    html = html.replace(/```(?:([a-z]+)\n)?([\s\S]*?)\n```/g, (match, lang, code) => {
         const placeholder = `__CODE_BLOCK_${codeBlocks.length}__`;
+        const displayLang = lang || 'text';
         codeBlocks.push(`
             <div class="code-container" style="position: relative;">
                 <button onclick="copyCode(this)" style="position: absolute; right: 10px; top: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 3px; cursor: pointer; font-size: 0.7rem; padding: 2px 5px;">Copiar</button>
-                <pre><code class="language-${lang}">${code}</code></pre>
+                <pre><code class="language-${displayLang}">${code}</code></pre>
             </div>
         `);
         return placeholder;
     });
 
+    // Helper for inline formatting
+    function applyInline(str) {
+        return str
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+    }
+
+    // Table Parsing - must be before headers/lists to avoid conflicts
+    html = html.replace(/^\s*\|(.+)\|\s*\n\s*\|([-|\s:]+)\|\s*\n((?:\s*\|.+\|\s*\n?)*)/gm, (match, header, separator, rows) => {
+        const headerCols = header.split('|').map(c => c.trim()).filter(c => c !== "");
+        const tableHeader = `<thead><tr>${headerCols.map(c => `<th>${applyInline(c)}</th>`).join('')}</tr></thead>`;
+
+        const tableRows = rows.trim().split('\n').map(row => {
+            const cols = row.split('|').map(c => c.trim()).filter(c => c !== "");
+            return `<tr>${cols.map(c => `<td>${applyInline(c)}</td>`).join('')}</tr>`;
+        }).join('');
+
+        return `<div class="table-container"><table>${tableHeader}<tbody>${tableRows}</tbody></table></div>\n`;
+    });
+
+    // Block level elements
     html = html
-        .replace(/^### (.*$)/gm, '<h3>$1</h3>')
-        .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-        .replace(/^# (.*$)/gm, '<h1>$1</h1>')
-        .replace(/`([^`]+)`/g, '<code>$1</code>')
-        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
-        .replace(/^\s*[-*]\s+(.*)/gm, '<li>$1</li>');
+        .replace(/^#### (.*$)/gm, (m, p1) => `<h4>${applyInline(p1)}</h4>`)
+        .replace(/^### (.*$)/gm, (m, p1) => `<h3>${applyInline(p1)}</h3>`)
+        .replace(/^## (.*$)/gm, (m, p1) => `<h2>${applyInline(p1)}</h2>`)
+        .replace(/^# (.*$)/gm, (m, p1) => `<h1>${applyInline(p1)}</h1>`)
+        .replace(/^\s*>\s+(.*)/gm, (m, p1) => `<blockquote>${applyInline(p1)}</blockquote>`)
+        .replace(/^\s*[-*]\s+(.*)/gm, (m, p1) => `<li>${applyInline(p1)}</li>`);
 
     html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>\n$1</ul>\n');
+    html = html.replace(/((?:<blockquote>.*<\/blockquote>\n?)+)/g, match => {
+        const content = match.replace(/<\/?blockquote>\n?/g, '<br>').replace(/^<br>|<br>$/g, '');
+        return `<blockquote>${content}</blockquote>`;
+    });
 
     let lines = html.split(/\n\n+/);
     html = lines.map(line => {
         const trimmed = line.trim();
         if (!trimmed) return '';
-        if (/^<(h1|h2|h3|ul|li|pre|div|a|strong|code)/.test(trimmed)) {
+        if (/^<(h1|h2|h3|h4|ul|li|pre|div|a|strong|code|table|thead|tbody|tr|th|td|blockquote)/.test(trimmed)) {
             return trimmed;
         }
-        return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
+        return `<p>${applyInline(trimmed).replace(/\n/g, '<br>')}</p>`;
     }).join('\n');
 
     codeBlocks.forEach((block, i) => {
